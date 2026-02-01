@@ -4,31 +4,34 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 ---
 
-<BaseLayout title="About" description="Learn about Commonwealth Labs and our mission to strengthen democracy through open-source civic technology.">
+<BaseLayout title="About" description="Learn about Commonwealth Labs and our mission to strengthen democracy through citizen-built civic technology.">
   <Hero
     title="About"
-    subtitle="We believe democracy works better when citizens have access to clear, accurate information about the decisions that affect their lives."
+    subtitle="Democracy is in trouble. Not because people stopped caring—but because the tools of civic life were built for institutions, not citizens."
   />
 
   <Section>
     <div class="max-w-2xl">
       <h2 class="text-2xl font-semibold mb-6 tracking-tight">Our mission</h2>
+      <p class="text-slate-dark/80 mb-4">
+        Information is buried in jargon. Participation requires expertise. And the platforms that promise to help often profit from the confusion.
+      </p>
       <p class="text-slate-dark/80 mb-10">
-        Commonwealth Labs builds open-source tools that help citizens engage with their government.
+        We believe there's a remedy: tools built by citizens, for citizens. Technology that communities own and control. That's what Commonwealth Labs exists to build.
       </p>
 
       <div class="space-y-8">
         <div class="border-l-2 border-sage pl-6">
-          <h3 class="font-medium mb-2">Civic information should be accessible</h3>
-          <p class="text-slate-dark/80 text-sm">Legislative text is complex. AI can help make it accessible to everyone.</p>
+          <h3 class="font-medium mb-2">Civic information belongs to everyone</h3>
+          <p class="text-slate-dark/80 text-sm">Legislative text shouldn't require a law degree. We use AI to make it accessible to all.</p>
         </div>
         <div class="border-l-2 border-slate-dark/10 pl-6">
-          <h3 class="font-medium mb-2">Civic technology should be open</h3>
-          <p class="text-slate-dark/80 text-sm">The tools that power democracy should be transparent and controlled by communities.</p>
+          <h3 class="font-medium mb-2">Citizens should control civic infrastructure</h3>
+          <p class="text-slate-dark/80 text-sm">The tools that power democracy must be transparent, auditable, and owned by communities.</p>
         </div>
         <div class="border-l-2 border-slate-dark/10 pl-6">
-          <h3 class="font-medium mb-2">Privacy is non-negotiable</h3>
-          <p class="text-slate-dark/80 text-sm">Citizens should research civic issues without being tracked or monetized.</p>
+          <h3 class="font-medium mb-2">Privacy is a civic right</h3>
+          <p class="text-slate-dark/80 text-sm">Research your representatives, explore legislation, engage with your government—without being tracked or monetized.</p>
         </div>
       </div>
     </div>
@@ -36,7 +39,7 @@ import Section from '../components/Section.astro';
 
   <Section
     title="What we build"
-    subtitle="The QCKSTRT platform powers all Commonwealth Labs deployments."
+    subtitle="Tools that put civic power back in citizens' hands."
     background="gray"
   >
     <div class="grid md:grid-cols-2 gap-8">
@@ -61,23 +64,23 @@ import Section from '../components/Section.astro';
 
   <Section background="dark">
     <div class="max-w-2xl">
-      <h2 class="text-2xl font-semibold mb-4 tracking-tight">100% open source</h2>
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Community-owned from day one</h2>
       <p class="text-white/70 mb-10">
-        Every line of code is open under AGPL-3.0. Inspect how it works, verify our claims, run your own instance.
+        This isn't a product you license. It's infrastructure you own. When we launch, every line of code will be yours under AGPL-3.0. Fork it. Modify it. Make it serve your community. That's the point.
       </p>
 
       <div class="grid sm:grid-cols-3 gap-8">
         <div>
-          <h3 class="font-medium mb-1">Transparent</h3>
-          <p class="text-white/70 text-sm">Anyone can audit the code</p>
+          <h3 class="font-medium mb-1">Fully transparent</h3>
+          <p class="text-white/70 text-sm">Audit the code. Verify our claims.</p>
         </div>
         <div>
-          <h3 class="font-medium mb-1">Self-hostable</h3>
-          <p class="text-white/70 text-sm">Complete data control</p>
+          <h3 class="font-medium mb-1">Community-controlled</h3>
+          <p class="text-white/70 text-sm">Your data. Your infrastructure. Your rules.</p>
         </div>
         <div>
-          <h3 class="font-medium mb-1">Community-driven</h3>
-          <p class="text-white/70 text-sm">Improvements benefit everyone</p>
+          <h3 class="font-medium mb-1">Collectively stronger</h3>
+          <p class="text-white/70 text-sm">What one community builds, all communities gain.</p>
         </div>
       </div>
     </div>
@@ -85,24 +88,20 @@ import Section from '../components/Section.astro';
 
   <Section title="Get in touch">
     <p class="text-slate-dark/80 mb-8 max-w-lg">
-      Interested in deploying the platform, contributing, or learning more?
+      Interested in bringing citizen-owned civic technology to your community?
     </p>
     <div class="flex gap-3">
       <a
-        href="https://github.com/rodneygagnon/qckstrt/discussions"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="mailto:hello@commonwealthlabs.io"
         class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
       >
-        Start a Discussion
+        Contact Us
       </a>
       <a
-        href="https://github.com/rodneygagnon/qckstrt/issues"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/get-involved"
         class="inline-flex items-center text-slate-dark/80 hover:text-slate-dark px-5 py-2.5 text-sm font-medium transition-colors"
       >
-        Report an Issue
+        Get Involved
       </a>
     </div>
   </Section>

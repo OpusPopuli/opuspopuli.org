@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+
+const comparison = [
+  { platform: 'Decide what you should see', tool: 'Give you access to everything' },
+  { platform: 'Optimize for engagement', tool: 'Optimize for understanding' },
+  { platform: 'Represent your interests to you', tool: 'Help you understand your interests' },
+  { platform: 'You\'re the product', tool: 'You\'re the owner' },
+  { platform: 'Delegate your sovereignty', tool: 'Enhance your sovereignty' },
+];
+
+const directAccessExamples = [
+  {
+    title: 'For ballot propositions',
+    description: 'The actual text, made comprehensible. Clear explanation of what it does. Fiscal analysis showing costs and benefits. Arguments for and against—without algorithmic amplification of whatever generates more engagement. Tools to understand personal and community impact.',
+  },
+  {
+    title: 'For government meetings',
+    description: 'Every public meeting searchable and accessible. Not curated. Not filtered. Available.',
+  },
+  {
+    title: 'For laws and codes',
+    description: 'The actual legal text, navigable. Not interpreted for you. Accessible to you.',
+  },
+];
+---
+
+<BaseLayout title="Why It Matters" description="The chains are written in code. Understanding why citizen-built civic tools matter for democracy.">
+  <Hero
+    title="The chains are written in code"
+    subtitle="Rousseau wrote that man is born free, yet everywhere in chains. Today, those chains aren't forged by monarchs. They're algorithms, platforms, and systems that shape our political reality without our consent."
+  />
+
+  <Section title="We've delegated our sovereignty">
+    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+      <p>
+        When you scroll through your feed, an algorithm is representing your interests to you. You never voted for it. You can't vote it out. You can't even see the principles by which it operates.
+      </p>
+      <p>
+        The platforms that dominate civic life weren't built for citizens. They were built for engagement metrics, for data extraction, for quarterly revenue. They're designed to capture attention, not enable understanding. To maximize time-on-site, not help you make informed decisions and move on.
+      </p>
+      <p class="font-medium text-slate-dark">
+        This isn't a technical problem. It's a power problem.
+      </p>
+      <p>
+        We've delegated not just lawmaking to representatives, but something more fundamental: the curation of our information environment. And unlike elected representatives, we never chose the systems that now mediate our political reality.
+      </p>
+    </div>
+  </Section>
+
+  <Section title="Tools vs. Platforms" background="gray">
+    <div class="max-w-2xl mb-10 space-y-4 text-slate-dark/80">
+      <p>
+        <strong class="text-slate-dark">Platforms mediate.</strong> They stand between you and information, making choices about what you see. They represent your interests to you—based on what keeps you engaged, not what helps you understand.
+      </p>
+      <p>
+        <strong class="text-slate-dark">Tools enable.</strong> They give you direct access to information and help you make sense of it yourself. They serve your agency rather than substituting for it.
+      </p>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full max-w-2xl text-sm">
+        <thead>
+          <tr class="border-b border-slate-dark/10">
+            <th class="text-left py-3 pr-4 font-medium text-slate-dark">Platforms</th>
+            <th class="text-left py-3 font-medium text-slate-dark">Tools</th>
+          </tr>
+        </thead>
+        <tbody>
+          {comparison.map(row => (
+            <tr class="border-b border-slate-dark/5">
+              <td class="py-3 pr-4 text-slate-dark/70">{row.platform}</td>
+              <td class="py-3 text-slate-dark/80">{row.tool}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-8 text-slate-dark/80 max-w-2xl">
+      The difference isn't just philosophy—it's architecture. And architecture is a choice.
+    </p>
+  </Section>
+
+  <Section title="Direct access">
+    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+      <p>
+        Rousseau believed freedom meant living under laws you've genuinely chosen for yourself. Not laws you've been manipulated into accepting. Not laws imposed by others. Laws that emerge from genuine understanding.
+      </p>
+      <p>
+        That kind of freedom requires infrastructure. In Rousseau's time: assemblies, pamphlets, public squares. In ours: civic technology designed for direct access rather than algorithmic mediation.
+      </p>
+      <p class="font-medium text-slate-dark">
+        What does direct access look like?
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mt-10">
+      {directAccessExamples.map(example => (
+        <div>
+          <h3 class="font-medium mb-2">{example.title}</h3>
+          <p class="text-slate-dark/80 text-sm">{example.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-10 text-slate-dark/80 max-w-2xl">
+      No intermediary deciding what you should see. Just direct access to the information you need to make your own decisions.
+    </p>
+  </Section>
+
+  <Section title="The chains are choices" background="gray">
+    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+      <p>
+        We've delegated more than we realize. But we can reclaim it.
+      </p>
+      <p>
+        Not by abandoning technology. By building technology that serves democratic agency rather than replacing it. Infrastructure that enhances your sovereignty rather than delegating it. Tools that help you understand both your interests and the common good—rather than just showing you whatever keeps you scrolling.
+      </p>
+      <p>
+        The chains are still there: algorithms, platforms, engagement metrics. But they're not inevitable. They're choices—choices about what we build and who we build it for.
+      </p>
+      <p class="font-medium text-slate-dark">
+        And choices can be changed.
+      </p>
+    </div>
+  </Section>
+
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Build with us</h2>
+      <p class="text-white/70 mb-8">
+        We're building civic tools that communities own, control, and shape. Not platforms that mediate. Infrastructure that enables.
+      </p>
+      <div class="flex gap-3">
+        <a
+          href="/get-involved"
+          class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+        >
+          Get Involved
+        </a>
+        <a
+          href="/about"
+          class="inline-flex items-center text-white/80 hover:text-white px-5 py-2.5 text-sm font-medium transition-colors"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+
+    <p class="mt-12 text-white/50 text-xs max-w-xl">
+      This page draws from <a href="https://medium.com/@commonwealthlabs" target="_blank" rel="noopener noreferrer" class="underline hover:text-white/70 transition-colors">Commonwealth Dialogues</a> — exploring how classical political philosophy illuminates our digital challenges.
+    </p>
+  </Section>
+</BaseLayout>

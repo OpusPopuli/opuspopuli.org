@@ -2,8 +2,9 @@
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
+  { href: '/why', label: 'Why' },
   { href: '/network', label: 'Network' },
-  { href: '/join', label: 'Join' },
+  { href: '/get-involved', label: 'Get Involved' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -34,16 +35,6 @@ const currentPath = Astro.url.pathname;
             </a>
           </li>
         ))}
-        <li>
-          <a
-            href="https://github.com/rodneygagnon/qckstrt"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-white/80 hover:text-white transition-colors"
-          >
-            GitHub
-          </a>
-        </li>
       </ul>
 
       <button
@@ -73,16 +64,6 @@ const currentPath = Astro.url.pathname;
             </a>
           </li>
         ))}
-        <li>
-          <a
-            href="https://github.com/rodneygagnon/qckstrt"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-white/80 hover:text-white transition-colors"
-          >
-            GitHub
-          </a>
-        </li>
       </ul>
     </div>
   </nav>

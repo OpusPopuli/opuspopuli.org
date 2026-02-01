@@ -6,28 +6,28 @@ import FeatureCard from '../components/FeatureCard.astro';
 
 const features = [
   {
-    title: 'Open Source',
-    description: 'Every line of code is open. Self-host with complete control over your data.',
+    title: 'Community-owned',
+    description: 'The tools belong to the people who use them. Not a platform you rent—infrastructure you own.',
   },
   {
-    title: 'AI-Powered',
-    description: 'Semantic search helps citizens understand complex legislative documents.',
+    title: 'Transparent by design',
+    description: 'Every decision visible. Every line of code open. Built to earn trust.',
   },
   {
-    title: 'Pluggable',
-    description: 'Swap providers for LLMs, databases, and auth without code changes.',
+    title: 'Privacy as a right',
+    description: 'Your civic research is no one\'s business. No tracking. No ads. No data harvesting.',
   },
   {
-    title: 'Privacy First',
-    description: 'No tracking, no ads. Complete data sovereignty for every deployment.',
+    title: 'Local control',
+    description: 'Your community. Your rules. Your data stays where you decide.',
   },
   {
-    title: 'Network Effect',
-    description: 'Improvements from any deployment benefit the entire network.',
+    title: 'Collective strength',
+    description: 'Improvements made anywhere benefit everyone. We grow stronger together.',
   },
   {
-    title: 'Self-Hosted',
-    description: 'Deploy on your own infrastructure. AWS, GCP, or Azure.',
+    title: 'No lock-in',
+    description: 'Leave anytime. Take everything with you. The code is yours.',
   },
 ];
 
@@ -42,20 +42,20 @@ const techStack = [
 ];
 ---
 
-<BaseLayout title="Civic Technology for Engaged Democracy">
+<BaseLayout title="Built by Citizens. For Citizens.">
   <Hero
-    title="Civic technology for engaged democracy"
-    subtitle="Open-source tools that help citizens understand legislation, engage with representatives, and participate in democracy."
-    ctaText="Join the Network"
-    ctaHref="/join"
-    secondaryCtaText="View on GitHub"
-    secondaryCtaHref="https://github.com/rodneygagnon/qckstrt"
+    title="Built by citizens. For citizens."
+    subtitle="Democracy works when people have the tools to participate. We're building civic technology that communities own, control, and shape—not platforms built by businesses to extract value from public life."
+    ctaText="Get Involved"
+    ctaHref="/get-involved"
+    secondaryCtaText="Why It Matters"
+    secondaryCtaHref="/why"
   />
 
   <Section
     id="features"
-    title="Built for civic organizations"
-    subtitle="A complete platform that jurisdictions can fork, customize, and deploy."
+    title="Built for communities"
+    subtitle="Civic infrastructure that belongs to the people it serves."
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {features.map(feature => (
@@ -72,18 +72,18 @@ const techStack = [
     <div class="grid md:grid-cols-3 gap-12">
       <div>
         <div class="text-sm font-medium text-slate-dark mb-3">01</div>
-        <h3 class="text-lg font-medium mb-2">Fork the platform</h3>
-        <p class="text-slate-dark/80 text-sm">Start with a complete, tested codebase. No building from scratch.</p>
+        <h3 class="text-lg font-medium mb-2">A community decides to take control</h3>
+        <p class="text-slate-dark/80 text-sm">Start with a complete, tested foundation. No building from scratch.</p>
       </div>
       <div>
         <div class="text-sm font-medium text-slate-dark mb-3">02</div>
-        <h3 class="text-lg font-medium mb-2">Add your data</h3>
-        <p class="text-slate-dark/80 text-sm">Create a region provider for your jurisdiction's data sources.</p>
+        <h3 class="text-lg font-medium mb-2">They adapt it to their needs</h3>
+        <p class="text-slate-dark/80 text-sm">Customize for your jurisdiction. Your data, your rules, your priorities.</p>
       </div>
       <div>
         <div class="text-sm font-medium text-slate-dark mb-3">03</div>
-        <h3 class="text-lg font-medium mb-2">Deploy and join</h3>
-        <p class="text-slate-dark/80 text-sm">Self-host on your infrastructure and join the network.</p>
+        <h3 class="text-lg font-medium mb-2">They join a network of communities</h3>
+        <p class="text-slate-dark/80 text-sm">Independent but connected. Improvements anywhere benefit everyone.</p>
       </div>
     </div>
   </Section>
@@ -109,24 +109,22 @@ const techStack = [
 
   <Section background="dark">
     <div class="max-w-xl">
-      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Ready to get started?</h2>
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Ready to build with us?</h2>
       <p class="text-white/70 mb-8">
-        Deploy civic technology for your jurisdiction and join a growing network of organizations.
+        Bring citizen-owned civic technology to your community. Join a growing network of people reclaiming democratic infrastructure.
       </p>
       <div class="flex gap-3">
         <a
-          href="/join"
+          href="/get-involved"
           class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
         >
-          Join the Network
+          Get Involved
         </a>
         <a
-          href="https://github.com/rodneygagnon/qckstrt"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/why"
           class="inline-flex items-center text-white/80 hover:text-white px-5 py-2.5 text-sm font-medium transition-colors"
         >
-          View on GitHub
+          Why It Matters
         </a>
       </div>
     </div>

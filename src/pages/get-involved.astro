@@ -4,17 +4,17 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 
 const requirements = [
-  { title: 'Eligible organization', description: 'Non-profit, government agency, or educational institution' },
-  { title: 'Open source commitment', description: 'Maintain AGPL-3.0 licensing for modifications' },
-  { title: 'Code of conduct', description: 'Support the civic mission of the network' },
-  { title: 'Technical capability', description: 'Ability to deploy and maintain on cloud infrastructure' },
+  { title: 'A community to serve', description: 'Whether you\'re a non-profit, civic group, or local government' },
+  { title: 'Commitment to openness', description: 'Keep modifications open under AGPL-3.0 so everyone benefits' },
+  { title: 'Shared values', description: 'Support the civic mission of empowering citizens' },
+  { title: 'Capacity to sustain', description: 'Ability to maintain and grow your deployment over time' },
 ];
 
 const steps = [
-  { step: '01', title: 'Fork the repository', code: 'git clone https://github.com/your-org/qckstrt.git' },
-  { step: '02', title: 'Create your region provider', code: 'mkdir -p packages/region-provider-yourstate' },
-  { step: '03', title: 'Deploy your instance', code: 'cd infra && terraform apply' },
-  { step: '04', title: 'Request membership', code: null },
+  { step: '01', title: 'Start the conversation', description: 'Tell us about your community and what you\'re trying to achieve.' },
+  { step: '02', title: 'Build your team', description: 'Identify who will steward this for your community.' },
+  { step: '03', title: 'Launch together', description: 'We\'ll help you deploy, customize, and go live.' },
+  { step: '04', title: 'Strengthen the network', description: 'Your learnings and improvements help other communities.' },
 ];
 
 const costs = [
@@ -24,19 +24,19 @@ const costs = [
 ];
 
 const faqs = [
-  { q: 'Do I need to join the network?', a: 'No. The platform is open source. The network provides optional benefits like subdomains and community support.' },
-  { q: 'Can I use my own domain?', a: 'Yes. The *.commonwealthlabs.io subdomain is optional.' },
-  { q: 'Is commercial support available?', a: 'Yes. See the Commercial Licensing options for dedicated support and SLAs.' },
+  { q: 'Do I need to join the network?', a: 'No. The code is open source—you can run it independently. The network offers optional benefits like shared infrastructure, community support, and collective improvements.' },
+  { q: 'Can I use my own domain?', a: 'Yes. The *.commonwealthlabs.io subdomain is optional. Your deployment, your identity.' },
+  { q: 'What if we need help?', a: 'We\'re here to help communities succeed. Contact us about support options that fit your needs.' },
 ];
 ---
 
-<BaseLayout title="Join" description="Learn how to deploy the Commonwealth Labs platform for your jurisdiction.">
+<BaseLayout title="Get Involved" description="Bring citizen-owned civic technology to your community.">
   <Hero
-    title="Join"
-    subtitle="Deploy civic technology for your jurisdiction and become part of a growing network."
+    title="Get involved"
+    subtitle="Every community deserves tools that serve them—not the other way around."
   />
 
-  <Section title="Requirements">
+  <Section title="Who this is for">
     <div class="grid md:grid-cols-2 gap-6">
       {requirements.map(req => (
         <div class="border-l-2 border-slate-dark/10 pl-6">
@@ -48,7 +48,7 @@ const faqs = [
   </Section>
 
   <Section
-    title="How to join"
+    title="How it works"
     background="gray"
   >
     <div class="space-y-10">
@@ -57,11 +57,7 @@ const faqs = [
           <div class="text-sm font-medium text-slate-dark w-8">{step.step}</div>
           <div class="flex-1">
             <h3 class="font-medium mb-2">{step.title}</h3>
-            {step.code && (
-              <code class="block text-xs text-slate-dark/80 bg-white px-4 py-3 rounded font-mono">
-                {step.code}
-              </code>
-            )}
+            <p class="text-slate-dark/80 text-sm">{step.description}</p>
           </div>
         </div>
       ))}
@@ -69,18 +65,16 @@ const faqs = [
 
     <div class="mt-12">
       <a
-        href="https://github.com/rodneygagnon/qckstrt/blob/main/docs/guides/region-provider.md"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="mailto:hello@commonwealthlabs.io?subject=Community%20Interest"
         class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
       >
-        Read the Full Guide
+        Start the Conversation
       </a>
     </div>
   </Section>
 
   <Section title="Infrastructure costs">
-    <p class="text-slate-dark/80 text-sm mb-8">Monthly estimates. Each member manages their own infrastructure.</p>
+    <p class="text-slate-dark/80 text-sm mb-8">Monthly estimates. Each community manages their own infrastructure.</p>
     <div class="space-y-3">
       {costs.map(cost => (
         <div class="flex justify-between py-3 border-b border-slate-dark/5 last:border-0">
@@ -96,17 +90,15 @@ const faqs = [
 
   <Section background="dark">
     <div class="max-w-xl">
-      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Request membership</h2>
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Ready to talk?</h2>
       <p class="text-white/70 mb-6">
-        Once deployed, open a GitHub issue with your organization name, jurisdiction, contact info, and desired subdomain.
+        We're preparing for launch. Tell us about your community, your jurisdiction, and how you'd like to use the platform.
       </p>
       <a
-        href="https://github.com/rodneygagnon/qckstrt/issues/new?labels=network-membership"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="mailto:hello@commonwealthlabs.io?subject=Community%20Interest"
         class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
       >
-        Request Membership
+        Contact Us
       </a>
     </div>
   </Section>

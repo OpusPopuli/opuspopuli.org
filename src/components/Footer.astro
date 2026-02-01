@@ -3,10 +3,10 @@ const currentYear = new Date().getFullYear();
 
 const links = [
   { href: '/about', label: 'About' },
+  { href: '/why', label: 'Why' },
   { href: '/network', label: 'Network' },
-  { href: '/join', label: 'Join' },
-  { href: 'https://github.com/rodneygagnon/qckstrt', label: 'GitHub', external: true },
-  { href: 'https://github.com/rodneygagnon/qckstrt/blob/main/docs/README.md', label: 'Docs', external: true },
+  { href: '/get-involved', label: 'Get Involved' },
+  { href: 'https://medium.com/@commonwealthlabs', label: 'Blog', external: true },
 ];
 ---
 
@@ -20,7 +20,7 @@ const links = [
           class="h-6 mb-3 opacity-70"
         />
         <p class="text-sm">
-          Open-source civic technology
+          Civic tools built by citizens
         </p>
       </div>
 
@@ -29,9 +29,9 @@ const links = [
           <li>
             <a
               href={link.href}
+              class="text-sm hover:text-white transition-colors"
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
-              class="text-sm hover:text-white transition-colors"
             >
               {link.label}
             </a>
