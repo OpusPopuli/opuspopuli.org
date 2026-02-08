@@ -118,6 +118,11 @@ resource "aws_cloudfront_function" "url_rewrite" {
   name    = "opuspopuli-url-rewrite-${var.environment}"
   runtime = "cloudfront-js-2.0"
   publish = true
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
   code    = <<-EOF
     function handler(event) {
       var request = event.request;
