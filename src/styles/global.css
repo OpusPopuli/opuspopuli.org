@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* Commonwealth Labs Brand Colors - per BRAND.md */
+/* Opus Populi Brand Colors */
 @theme {
-  --color-slate-dark: #2C3E50;
+  --color-slate-dark: #222222;
   --color-sage: #7F9C8E;
   --color-light-bg: #FAFAFA;
-  --color-dark-bg: #1E1E1E;
+  --color-dark-bg: #111111;
 }
 
 /* Base styles */

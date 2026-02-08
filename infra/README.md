@@ -1,6 +1,6 @@
 # Infrastructure
 
-Terraform configuration for the Commonwealth Labs landing page hosted on AWS S3 + CloudFront.
+Terraform configuration for the Opus Populi landing page hosted on AWS S3 + CloudFront.
 
 ## Architecture
 
@@ -8,14 +8,14 @@ Terraform configuration for the Commonwealth Labs landing page hosted on AWS S3 
 ┌─────────────────────────────────────────────────────────────┐
 │                        CloudFront                           │
 │                    (CDN + HTTPS)                            │
-│         commonwealthlabs.io / *.cloudfront.net              │
+│         opuspopuli.org / *.cloudfront.net                   │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                      S3 Bucket                              │
 │              (Static site hosting)                          │
-│         commonwealthlabs-landing-prod                       │
+│         opuspopuli-landing-prod                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -46,7 +46,7 @@ terraform apply
 |----------|-------------|---------|
 | `aws_region` | AWS region | `us-east-1` |
 | `environment` | Environment name | `prod` |
-| `domain_name` | Primary domain | `commonwealthlabs.io` |
+| `domain_name` | Primary domain | `opuspopuli.org` |
 | `enable_custom_domain` | Enable custom domain with SSL | `false` |
 
 ### Custom Domain Setup
@@ -62,7 +62,7 @@ Example terraform.tfvars:
 ```hcl
 aws_region           = "us-east-1"
 environment          = "prod"
-domain_name          = "commonwealthlabs.io"
+domain_name          = "opuspopuli.org"
 enable_custom_domain = true
 ```
 
@@ -77,7 +77,7 @@ Manual deployment:
 npm run build
 
 # Sync to S3
-aws s3 sync dist/ s3://commonwealthlabs-landing-prod --delete
+aws s3 sync dist/ s3://opuspopuli-landing-prod --delete
 
 # Invalidate CloudFront cache
 aws cloudfront create-invalidation \

@@ -10,11 +10,11 @@ terraform {
 
   # Uncomment to use S3 backend for state
   # backend "s3" {
-  #   bucket         = "commonwealthlabs-terraform-state"
+  #   bucket         = "opuspopuli-terraform-state"
   #   key            = "landing/terraform.tfstate"
   #   region         = "us-east-1"
   #   encrypt        = true
-  #   dynamodb_table = "commonwealthlabs-terraform-locks"
+  #   dynamodb_table = "opuspopuli-terraform-locks"
   # }
 }
 
@@ -23,7 +23,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project     = "commonwealthlabs-landing"
+      Project     = "opuspopuli-landing"
       Environment = var.environment
       ManagedBy   = "terraform"
     }
@@ -37,7 +37,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project     = "commonwealthlabs-landing"
+      Project     = "opuspopuli-landing"
       Environment = var.environment
       ManagedBy   = "terraform"
     }
@@ -46,7 +46,7 @@ provider "aws" {
 
 # S3 bucket for static site
 resource "aws_s3_bucket" "landing" {
-  bucket = "commonwealthlabs-landing-${var.environment}"
+  bucket = "opuspopuli-landing-${var.environment}"
 }
 
 resource "aws_s3_bucket_public_access_block" "landing" {
@@ -68,8 +68,8 @@ resource "aws_s3_bucket_versioning" "landing" {
 
 # CloudFront Origin Access Control
 resource "aws_cloudfront_origin_access_control" "landing" {
-  name                              = "commonwealthlabs-landing-${var.environment}"
-  description                       = "OAC for Commonwealth Labs landing page"
+  name                              = "opuspopuli-landing-${var.environment}"
+  description                       = "OAC for Opus Populi landing page"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
@@ -115,7 +115,7 @@ resource "aws_acm_certificate" "landing" {
 
 # CloudFront Function for URL rewriting (append index.html to directory requests)
 resource "aws_cloudfront_function" "url_rewrite" {
-  name    = "commonwealthlabs-url-rewrite-${var.environment}"
+  name    = "opuspopuli-url-rewrite-${var.environment}"
   runtime = "cloudfront-js-2.0"
   publish = true
   code    = <<-EOF
@@ -142,7 +142,7 @@ resource "aws_cloudfront_distribution" "landing" {
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
-  comment             = "Commonwealth Labs Landing Page - ${var.environment}"
+  comment             = "Opus Populi Landing Page - ${var.environment}"
   price_class         = "PriceClass_100"  # US, Canada, Europe
 
   aliases = var.enable_custom_domain ? concat([var.domain_name], var.subject_alternative_names) : []

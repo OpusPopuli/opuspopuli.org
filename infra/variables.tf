@@ -13,13 +13,13 @@ variable "environment" {
 variable "domain_name" {
   description = "Primary domain name for the landing page"
   type        = string
-  default     = "commonwealthlabs.io"
+  default     = "opuspopuli.org"
 }
 
 variable "subject_alternative_names" {
   description = "Additional domain names for the SSL certificate"
   type        = list(string)
-  default     = ["www.commonwealthlabs.io"]
+  default     = ["www.opuspopuli.org"]
 }
 
 variable "enable_custom_domain" {

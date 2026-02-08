@@ -1,6 +1,6 @@
-# Commonwealth Labs Landing Page
+# Opus Populi Landing Page
 
-The official landing page for [commonwealthlabs.io](https://commonwealthlabs.io) - open-source civic technology for engaged democracy.
+The official landing page for [opuspopuli.org](https://opuspopuli.org) - open-source civic technology for engaged democracy.
 
 ## Development
 
@@ -27,11 +27,11 @@ npm run preview
 ## Project Structure
 
 ```
-commonwealthlabs.io/
+opuspopuli.org/
 ├── src/
 │   ├── components/     # Reusable UI components
 │   ├── layouts/        # Page layouts
-│   ├── pages/          # Site pages (index, about, network, join)
+│   ├── pages/          # Site pages (index, about, why, network, get-involved)
 │   └── styles/         # Global styles
 ├── public/             # Static assets (logos, favicons)
 ├── infra/              # Terraform infrastructure (S3 + CloudFront)
@@ -61,17 +61,9 @@ See [infra/README.md](infra/README.md) for Terraform setup instructions.
 
 - **Home** (`/`) - Mission, features, calls to action
 - **About** (`/about`) - Mission, what we build, open source commitment
+- **Why** (`/why`) - Philosophy and why citizen-built civic tools matter
 - **Network** (`/network`) - How the network works, benefits, current members
-- **Join** (`/join`) - Requirements, steps to join, FAQ
-
-## Brand Assets
-
-Brand assets are duplicated from the [qckstrt](https://github.com/rodneygagnon/qckstrt) repository. If assets change, update them in `public/`.
-
-## Related Repositories
-
-- **[qckstrt](https://github.com/rodneygagnon/qckstrt)** - The QCKSTRT platform (forkable by jurisdictions)
-- This repo is for the Commonwealth Labs marketing site only
+- **Get Involved** (`/get-involved`) - Requirements, steps to join, FAQ
 
 ## License
 
