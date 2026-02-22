@@ -51,6 +51,7 @@ const pages = [
   { name: "Open Source", path: "/open-source" },
   { name: "Get Involved", path: "/get-involved" },
   { name: "Privacy", path: "/privacy" },
+  { name: "Press", path: "/press" },
 ];
 
 test.describe("Accessibility - All Pages", () => {

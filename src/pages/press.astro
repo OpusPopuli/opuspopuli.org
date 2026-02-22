@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+
+const logos = [
+  { name: 'Horizontal (dark)', svg: '/logos/svg/op-horizontal-dark.svg', png: '/logos/png/op-horizontal-dark.png' },
+  { name: 'Horizontal (light)', svg: '/logos/svg/op-horizontal-light.svg', png: '/logos/png/op-horizontal-light.png' },
+  { name: 'Mark (dark)', svg: '/logos/svg/op-mark-dark.svg', png: '/logos/png/op-mark-dark.png' },
+  { name: 'Mark (light)', svg: '/logos/svg/op-mark-light.svg', png: '/logos/png/op-mark-light.png' },
+];
+
+const banners = [
+  { name: 'Banner (dark)', svg: '/social/op-banner-dark.svg', png: '/social/op-banner-dark.png' },
+  { name: 'Banner (light)', svg: '/social/op-banner-light.svg', png: '/social/op-banner-light.png' },
+];
+
+const facts = [
+  { label: 'License', value: 'AGPL-3.0' },
+  { label: 'Status', value: 'Active development' },
+  { label: 'First pilot', value: 'California, 2026' },
+  { label: 'Architecture', value: 'Open-source monorepo' },
+  { label: 'AI approach', value: 'Local-only (Ollama)' },
+  { label: 'Stack', value: 'Next.js, NestJS, GraphQL, PostgreSQL' },
+];
+---
+
+<BaseLayout title="Press Kit" description="Media resources for Opus Populi. Download logos, banners, and find key facts about our open-source civic technology project.">
+  <Hero
+    title="Press kit"
+    subtitle="Resources for journalists, bloggers, and anyone writing about Opus Populi."
+  />
+
+  <Section title="About Opus Populi">
+    <div class="max-w-2xl space-y-4 text-slate-dark/80 text-sm leading-relaxed">
+      <p>
+        Opus Populi is an open-source civic technology platform that gives communities direct access to civic information — petitions, propositions, campaign finance, representative data, and legislative meetings. All AI processing runs locally on community-owned infrastructure. No data is sent to third-party services.
+      </p>
+      <p>
+        The project is licensed under AGPL-3.0. Every line of code is public. Communities deploy and manage their own instances, retaining full control over their data and infrastructure.
+      </p>
+    </div>
+  </Section>
+
+  <Section title="Key facts" background="gray">
+    <dl class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl">
+      {facts.map(f => (
+        <div>
+          <dt class="text-xs uppercase tracking-wide text-slate-dark/70 mb-1">{f.label}</dt>
+          <dd class="text-sm font-medium text-slate-dark">{f.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </Section>
+
+  <Section title="Logos" subtitle="Available in SVG and PNG formats. Use the dark version on light backgrounds and the light version on dark backgrounds.">
+    <div class="grid sm:grid-cols-2 gap-8 max-w-3xl">
+      {logos.map(logo => (
+        <div class="border border-slate-dark/10 rounded-lg p-6">
+          <div class="flex items-center justify-center h-20 mb-4">
+            <img src={logo.svg} alt={logo.name} class="max-h-full max-w-full" />
+          </div>
+          <p class="text-sm font-medium text-slate-dark mb-2">{logo.name}</p>
+          <div class="flex gap-3 text-xs">
+            <a href={logo.svg} download class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">SVG</a>
+            <a href={logo.png} download class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">PNG</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section title="Social banners" subtitle="For social media headers and sharing." background="gray">
+    <div class="grid sm:grid-cols-2 gap-8 max-w-3xl">
+      {banners.map(banner => (
+        <div class="border border-slate-dark/10 rounded-lg p-6 bg-white">
+          <div class="flex items-center justify-center h-24 mb-4">
+            <img src={banner.png} alt={banner.name} class="max-h-full max-w-full" />
+          </div>
+          <p class="text-sm font-medium text-slate-dark mb-2">{banner.name}</p>
+          <div class="flex gap-3 text-xs">
+            <a href={banner.svg} download class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">SVG</a>
+            <a href={banner.png} download class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">PNG</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section title="Brand colors">
+    <div class="grid sm:grid-cols-3 gap-6 max-w-2xl">
+      <div>
+        <div class="w-full h-16 rounded-lg bg-slate-dark mb-3"></div>
+        <p class="text-sm font-medium text-slate-dark">Slate Dark</p>
+        <p class="text-xs text-slate-dark/70">#1A2332</p>
+      </div>
+      <div>
+        <div class="w-full h-16 rounded-lg bg-sage mb-3"></div>
+        <p class="text-sm font-medium text-slate-dark">Sage</p>
+        <p class="text-xs text-slate-dark/70">#7F9C8E</p>
+      </div>
+      <div>
+        <div class="w-full h-16 rounded-lg bg-gray-50 border border-slate-dark/10 mb-3"></div>
+        <p class="text-sm font-medium text-slate-dark">Gray 50</p>
+        <p class="text-xs text-slate-dark/70">#F9FAFB</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Get in touch</h2>
+      <p class="text-white/70 mb-8">
+        For press inquiries, interviews, or additional assets, reach out through our GitHub repository.
+      </p>
+      <a
+        href="https://github.com/OpusPopuli/opuspopuli"
+        class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+      >
+        Contact via GitHub
+      </a>
+    </div>
+  </Section>
+</BaseLayout>

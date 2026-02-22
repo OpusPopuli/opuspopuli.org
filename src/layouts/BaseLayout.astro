@@ -6,9 +6,35 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
-const { title, description = 'Opus Populi - Open-source civic technology for engaged democracy' } = Astro.props;
+const {
+  title,
+  description = 'Opus Populi - Open-source civic technology for engaged democracy',
+  image = '/social/op-banner-light.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image, Astro.site);
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Opus Populi',
+  url: 'https://opuspopuli.org',
+  logo: 'https://opuspopuli.org/logos/png/op-horizontal-dark.png',
+  description: 'Open-source civic technology for engaged democracy',
+  sameAs: ['https://github.com/OpusPopuli/opuspopuli'],
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: canonicalURL.href,
+};
 ---
 
 <!DOCTYPE html>
@@ -17,6 +43,8 @@ const { title, description = 'Opus Populi - Open-source civic technology for eng
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#1A2332" />
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicons/favicon-32.svg" />
@@ -24,12 +52,24 @@ const { title, description = 'Opus Populi - Open-source civic technology for eng
     <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="512x512" href="/favicons/favicon-512.png" />
 
-    <!-- Open Graph / Social -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Opus Populi" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/social/twitter-header.png" />
+    <meta property="og:image" content={imageURL} />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
+
+    <!-- Structured Data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
 
     <title>{title} | Opus Populi</title>
   </head>
