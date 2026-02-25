@@ -18,9 +18,28 @@ const benefits = [
   { title: 'Mutual support', description: 'Learn from and help other communities doing the same work' },
   { title: 'Complete sovereignty', description: 'Full control over your data, infrastructure, and governance' },
 ];
+
+const trustMechanisms = [
+  {
+    title: 'Prompt lock',
+    description: 'Every node gets its analysis prompts from a central, private service. Nodes cannot modify, override, or inject their own prompts. This ensures identical analytical methodology across the entire network.',
+  },
+  {
+    title: 'Cryptographic verification',
+    description: 'Every prompt is hashed. Nodes can verify they received an authentic, unmodified prompt. Auditors can verify any analysis was produced with a certified prompt.',
+  },
+  {
+    title: 'Canary system',
+    description: 'We periodically send test documents through all nodes and compare outputs. If a node produces significantly different results, it\'s flagged for investigation.',
+  },
+  {
+    title: 'Node certification',
+    description: 'Nodes must meet technical and governance standards to join the network. Certification is periodic — not just at onboarding. Non-compliant nodes can be suspended.',
+  },
+];
 ---
 
-<BaseLayout title="Community Network" description="A network of communities, not platforms. Independent but connected.">
+<BaseLayout title="Community Network" description="A federated network of communities — independent but connected. See how prompt lock, cryptographic verification, and node certification keep the network honest.">
   <Hero
     title="Network"
     subtitle="A network of communities, not platforms. Each community runs their own instance—shaped by their needs, governed by their rules. But we're stronger together."
@@ -51,6 +70,44 @@ newyork.opuspopuli.org ────┘</pre>
           <p class="text-slate-dark/80 text-sm">{benefit.description}</p>
         </div>
       ))}
+    </div>
+  </Section>
+
+  <Section
+    title="How the network stays honest"
+    subtitle="A federated network is only as trustworthy as its weakest node. Here's how we solve the 'one bad apple' problem."
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
+      <p>
+        Regions control what facts are available — their local data sources, their civic records, their meeting schedules. But no region can control how facts are interpreted. The analysis methodology is uniform across every node in the network.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      {trustMechanisms.map(m => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="text-base font-medium text-slate-dark mb-2">{m.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{m.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    title="The trust equation"
+    background="gray"
+  >
+    <div class="max-w-2xl">
+      <div class="bg-white rounded-lg p-6 border border-slate-dark/10">
+        <p class="text-sm text-slate-dark/80 leading-relaxed">
+          <span class="font-medium text-slate-dark">Open source code</span> (verifiable) +
+          <span class="font-medium text-slate-dark"> Consistent prompts</span> (uniform) +
+          <span class="font-medium text-slate-dark"> Cryptographic attestation</span> (tamper-proof) =
+          <span class="font-medium text-slate-dark"> Trustworthy analysis at scale</span>
+        </p>
+      </div>
+      <p class="text-slate-dark/80 text-sm mt-6">
+        Network rules are published in NETWORK.md and NETWORK-TERMS.md. Member requirements, data ownership, and termination rights are all documented and enforceable.
+      </p>
     </div>
   </Section>
 

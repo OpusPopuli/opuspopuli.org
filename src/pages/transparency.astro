@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+
+const principles = [
+  {
+    title: 'AI assists, never decides',
+    description: 'The AI summarizes, extracts, and highlights. It never tells you what to think, how to vote, or which side is right. Every analysis presents information — the conclusions are yours.',
+  },
+  {
+    title: 'No editorial judgment',
+    description: 'Analysis presents all sides: beneficiaries and those potentially harmed, supporters and opponents, costs and benefits. The AI has no opinion and no agenda.',
+  },
+  {
+    title: 'Human-readable explanations',
+    description: 'Every analysis shows its sources, confidence level, and methodology. You can always see how the AI reached its output and verify it against the original documents.',
+  },
+  {
+    title: 'Pre-trained models only',
+    description: 'We use existing open models like Mistral and Llama. We never train on your documents, your queries, or your usage patterns. The AI learns nothing from you.',
+  },
+  {
+    title: 'Prompt integrity',
+    description: 'Analysis prompts are versioned, audited, and cryptographically verified. Every node in the network uses the same methodology — no one can tamper with how analysis works.',
+  },
+];
+
+const commitments = [
+  {
+    commitment: 'Never make voting recommendations',
+    why: 'Civic tech must empower, not influence',
+    control: 'No recommendation logic in any prompt template',
+  },
+  {
+    commitment: 'Never suppress or promote political positions',
+    why: 'Neutrality is non-negotiable',
+    control: 'Prompt neutrality enforced via charter; canary system detects bias',
+  },
+  {
+    commitment: 'Never train on user documents',
+    why: 'Users must trust their data isn\'t being harvested',
+    control: 'No fine-tuning pipeline exists; pre-trained models only',
+  },
+  {
+    commitment: 'Never sell or monetize user data',
+    why: 'Trust requires data integrity',
+    control: 'No data broker integrations; privacy policy enforcement',
+  },
+  {
+    commitment: 'Never share data between federated nodes',
+    why: 'Node isolation protects regional autonomy',
+    control: 'Database-level isolation; no cross-node data paths',
+  },
+  {
+    commitment: 'Never allow prompt tampering',
+    why: 'Analysis consistency across the network',
+    control: 'Cryptographic prompt hashing; prompt lock verification',
+  },
+];
+---
+
+<BaseLayout title="AI Transparency" description="How Opus Populi uses AI: concrete commitments, verifiable controls, and a trust model built on architecture — not promises.">
+  <Hero
+    title="How we use AI"
+    subtitle="Glass-box behavior, black-box implementation. You see what the AI does and how it reaches conclusions. Every claim on this page is backed by a verifiable technical control — not a policy document."
+    ctaText="See the Platform"
+    ctaHref="/platform"
+    secondaryCtaText="Read the Privacy Architecture"
+    secondaryCtaHref="/privacy"
+  />
+
+  <Section
+    title="Trust principles"
+    subtitle="The AI is a tool in your hands — not a voice in your ear."
+  >
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {principles.map(p => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="text-base font-medium text-slate-dark mb-2">{p.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{p.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    title="What this AI will never do"
+    subtitle="Every commitment is a promise with receipts — not just words, but verifiable technical architecture."
+    background="gray"
+  >
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-slate-dark/10">
+            <th class="text-left py-3 pr-4 font-medium text-slate-dark">Commitment</th>
+            <th class="text-left py-3 pr-4 font-medium text-slate-dark">Why it matters</th>
+            <th class="text-left py-3 font-medium text-slate-dark">Technical control</th>
+          </tr>
+        </thead>
+        <tbody>
+          {commitments.map(row => (
+            <tr class="border-b border-slate-dark/5">
+              <td class="py-3 pr-4 text-slate-dark font-medium">{row.commitment}</td>
+              <td class="py-3 pr-4 text-slate-dark/80">{row.why}</td>
+              <td class="py-3 text-slate-dark/70 text-xs">{row.control}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-8 text-slate-dark/80 text-sm max-w-2xl">
+      We built the system so that these things are technically impossible — not just policy violations. The architecture enforces the commitments, not a terms-of-service document.
+    </p>
+  </Section>
+
+  <Section
+    title="Why this matters for civic technology"
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+      <p>
+        Most AI-powered platforms ask you to trust them. We ask you to verify us. The entire codebase is open source under AGPL-3.0. The analysis methodology is published. The prompt integrity is cryptographically provable.
+      </p>
+      <p>
+        Civic technology carries a unique responsibility. When AI helps people understand ballot measures, campaign finance, or legislative meetings, even small biases can influence democratic outcomes. That's why our trust model is built on architecture — constraints the system can't violate — rather than policies someone could quietly change.
+      </p>
+      <p class="font-medium text-slate-dark">
+        Trust in civic AI should be earned through transparency, not demanded through terms of service.
+      </p>
+    </div>
+  </Section>
+
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-semibold mb-4 tracking-tight">Don't take our word for it</h2>
+      <p class="text-white/70 mb-8">
+        Every claim on this page is verifiable. Read the code. Audit the prompts. Deploy the platform yourself and see how it works.
+      </p>
+      <div class="flex gap-3">
+        <a
+          href="/open-source"
+          class="inline-flex items-center bg-slate-dark text-white border border-white px-5 py-2.5 rounded-md hover:bg-slate-dark/90 transition-colors text-sm font-medium"
+        >
+          Explore the Code
+        </a>
+        <a
+          href="https://github.com/OpusPopuli/opuspopuli"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center text-white/80 hover:text-white px-5 py-2.5 text-sm font-medium transition-colors"
+        >
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

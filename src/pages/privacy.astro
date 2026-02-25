@@ -41,6 +41,44 @@ const neverDo = [
   'Make decisions about what civic information to show you',
 ];
 
+const aiDataHandling = [
+  {
+    title: 'Your documents stay yours',
+    description: 'Uploaded documents are processed and stored only for your use. They are never shared, sold, or used for model training. Delete them anytime — they\'re gone permanently.',
+  },
+  {
+    title: 'Analysis is ephemeral',
+    description: 'OCR text and analysis results exist only to serve you. You control retention. When you delete a document, the analysis goes with it.',
+  },
+  {
+    title: 'No profiling',
+    description: 'We don\'t build user profiles, track political preferences, or analyze usage patterns. The AI treats every request independently — it has no memory of you.',
+  },
+  {
+    title: 'Node isolation',
+    description: 'In the federated model, your data stays on the node you used. No cross-node data sharing. A compromise of one node cannot expose another node\'s data.',
+  },
+];
+
+const aiFaq = [
+  {
+    question: 'Does the AI remember my documents?',
+    answer: 'No. We use pre-trained models with no fine-tuning on user data. The AI processes your document, returns the analysis, and retains nothing. It has no memory between sessions.',
+  },
+  {
+    question: 'Can the AI be biased by what I upload?',
+    answer: 'No. Analysis prompts are standardized across all users and all nodes. What you upload doesn\'t affect how the AI analyzes the next document — yours or anyone else\'s.',
+  },
+  {
+    question: 'Who sees my analysis results?',
+    answer: 'Only you, unless you choose to share them. Analysis results are tied to your account on your node. No administrator, no other user, and no other node can access them.',
+  },
+  {
+    question: 'What happens if a node is compromised?',
+    answer: 'Node isolation means only that node\'s data is affected. Other nodes in the network are unaffected. The compromised node\'s certification can be revoked, cutting it off from the network.',
+  },
+];
+
 const comparison = [
   { category: 'AI processing', opus: 'Runs on your infrastructure', typical: 'Sent to third-party APIs' },
   { category: 'Location data', opus: 'Imprecise, jurisdiction-level only', typical: 'Precise GPS coordinates stored' },
@@ -109,6 +147,34 @@ const comparison = [
       <p class="mt-8 text-slate-dark/80 text-sm">
         These aren't aspirational goals. They're architectural constraints. The system is built so that most of these things are technically impossible — not just against policy.
       </p>
+    </div>
+  </Section>
+
+  <Section
+    title="AI and your data"
+    subtitle="How your documents and analysis results are handled during AI processing."
+    background="gray"
+  >
+    <div class="grid md:grid-cols-2 gap-8">
+      {aiDataHandling.map(item => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="text-base font-medium text-slate-dark mb-2">{item.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    title="Common questions about AI privacy"
+  >
+    <div class="max-w-2xl space-y-8">
+      {aiFaq.map(item => (
+        <div>
+          <h3 class="text-base font-medium text-slate-dark mb-2">{item.question}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{item.answer}</p>
+        </div>
+      ))}
     </div>
   </Section>
 

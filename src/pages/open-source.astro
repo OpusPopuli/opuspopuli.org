@@ -50,7 +50,7 @@ const principles = [
 ];
 ---
 
-<BaseLayout title="Open Source Civic Technology" description="Opus Populi is open source under AGPL-3.0. Explore the architecture, contribute, and join the community building civic technology.">
+<BaseLayout title="Open Source Civic Technology" description="Opus Populi is open source under AGPL-3.0 — with private analysis prompts for network integrity. Explore the architecture, contribute, and understand why both matter.">
   <Hero
     title="Built in the open"
     subtitle="Opus Populi is open source under AGPL-3.0. Every line of code is public, every decision is transparent, and every contribution is a civic act."
@@ -152,6 +152,80 @@ const principles = [
           <p class="text-slate-dark/80 text-sm">{p.description}</p>
         </div>
       ))}
+    </div>
+  </Section>
+
+  <Section
+    title="Open code, private prompts"
+    subtitle="If you believe in transparency, why aren't the prompts open source too?"
+    background="gray"
+  >
+    <div class="grid md:grid-cols-2 gap-12 mb-12">
+      <div>
+        <h3 class="text-base font-medium text-slate-dark mb-4">What's open</h3>
+        <p class="text-slate-dark/80 text-sm mb-4">Open source code means anyone can verify:</p>
+        <ul class="space-y-2">
+          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
+            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+            What data the system collects
+          </li>
+          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
+            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+            How documents are processed
+          </li>
+          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
+            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+            What analysis results look like
+          </li>
+          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
+            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+            That no backdoors or data exfiltration exists
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-base font-medium text-slate-dark mb-4">What's private</h3>
+        <p class="text-slate-dark/80 text-sm mb-4">Private prompts ensure:</p>
+        <ul class="space-y-2">
+          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
+            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+            Consistent analysis quality across all nodes
+          </li>
+          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
+            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+            No one can game the system by studying prompt internals
+          </li>
+          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
+            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+            Continuous improvement without network disruption
+          </li>
+          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
+            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+            Every node in the network is equally trustworthy
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-2xl">
+      <h3 class="text-base font-medium text-slate-dark mb-4">What IS transparent about prompts</h3>
+      <div class="space-y-3 mb-8">
+        <div class="border-l-2 border-sage pl-6">
+          <p class="text-slate-dark/80 text-sm"><span class="font-medium text-slate-dark">Methodology</span> — what kinds of analysis are performed and what questions they answer</p>
+        </div>
+        <div class="border-l-2 border-sage pl-6">
+          <p class="text-slate-dark/80 text-sm"><span class="font-medium text-slate-dark">Design principles</span> — neutrality, completeness, source attribution, and balance</p>
+        </div>
+        <div class="border-l-2 border-sage pl-6">
+          <p class="text-slate-dark/80 text-sm"><span class="font-medium text-slate-dark">Version history</span> — when prompts changed, even if not exactly what changed</p>
+        </div>
+        <div class="border-l-2 border-sage pl-6">
+          <p class="text-slate-dark/80 text-sm"><span class="font-medium text-slate-dark">Integrity verification</span> — cryptographic hashing proves prompts aren't tampered with</p>
+        </div>
+      </div>
+      <p class="text-slate-dark/80 text-sm">
+        Think of it like a restaurant inspection system. The inspection criteria are public — what we look for. The training manual for inspectors is not — how we train them to look. Both serve the public interest. Open source alone isn't enough — a bad actor could fork the code and modify analysis. Private prompts alone isn't enough — users need to verify the system is honest. The combination gives users verifiable integrity with consistent quality.
+      </p>
     </div>
   </Section>
 
