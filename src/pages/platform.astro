@@ -85,6 +85,24 @@ const features = [
   },
 ];
 
+const scenarios = [
+  {
+    title: 'Election season',
+    description: 'A voter preparing for election day uses the Proposition Explorer to understand each ballot measure in plain language, checks Campaign Finance to see who\'s funding the "Yes" and "No" campaigns, and uploads the full ballot text to Document Q&A to ask specific questions about fiscal impact.',
+    tools: ['Proposition Explorer', 'Campaign Finance', 'Document Q&A'],
+  },
+  {
+    title: 'Community organizing',
+    description: 'A civic group concerned about local development uses Petition Scanner to analyze a circulating petition, tracks upcoming Planning Commission hearings through the Meeting Calendar, and uses the Representative Directory to contact their council member ahead of the vote.',
+    tools: ['Petition Scanner', 'Meeting Calendar', 'Representative Directory'],
+  },
+  {
+    title: 'Government transparency',
+    description: 'A journalist investigating campaign spending uses Campaign Finance to identify outside spending patterns on a contested ballot measure, then uploads related budget documents to Document Q&A to cross-reference financial claims — all without their research queries leaving the local server.',
+    tools: ['Campaign Finance', 'Document Q&A'],
+  },
+];
+
 const techStack = [
   {
     category: 'Frontend',
@@ -160,10 +178,30 @@ const techStack = [
   </Section>
 
   <Section
+    id="scenarios"
+    title="Real-world scenarios"
+    subtitle="See how the tools work together in practice."
+    background="gray"
+  >
+    <div class="space-y-10 max-w-2xl">
+      {scenarios.map(scenario => (
+        <div class="border-l-2 border-sage pl-6">
+          <h3 class="font-medium mb-2">{scenario.title}</h3>
+          <p class="text-slate-dark/80 text-sm mb-3">{scenario.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {scenario.tools.map(tool => (
+              <span class="text-xs font-medium bg-sage/10 text-slate-dark/70 px-2 py-0.5 rounded-full">{tool}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
     id="regions"
     title="Any jurisdiction, no code required"
     subtitle="Adding your region's data sources doesn't require writing code. Communities configure their own data connections through simple, declarative setup."
-    background="gray"
   >
     <div class="max-w-2xl space-y-6 text-slate-dark/80">
       <p>
@@ -190,13 +228,14 @@ const techStack = [
     id="local-ai"
     title="AI that never leaves your server"
     subtitle="All AI processing runs locally on your own infrastructure. Nothing is sent to external services."
+    background="gray"
   >
     <div class="max-w-2xl space-y-6 text-slate-dark/80">
       <p>
         Most AI-powered civic tools send your queries to third-party services. What legislation you're researching, what politicians you're looking up, what petitions you care about — all of it becomes someone else's data.
       </p>
       <p>
-        Opus Populi runs entirely on open-source AI models hosted on your own infrastructure. Your civic research stays on your server. Period.
+        Opus Populi runs entirely on open-source AI models hosted on your own infrastructure. Your civic research stays on your server. Period. See our <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI transparency commitments</a> and <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">privacy architecture</a> for the full picture.
       </p>
       <div class="grid sm:grid-cols-2 gap-4 mt-6">
         <div class="text-sm">

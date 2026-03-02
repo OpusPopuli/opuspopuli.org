@@ -43,6 +43,34 @@ const values = [
   { title: 'No lock-in', description: 'Leave anytime. Take everything with you.' },
 ];
 
+const audiences = [
+  {
+    title: 'Community organizations',
+    description: 'Non-profits, civic groups, and voter education organizations that want to give their communities direct access to civic information.',
+    href: '/get-involved',
+    linkText: 'Get Involved',
+  },
+  {
+    title: 'Developers',
+    description: 'Open source contributors and civic technologists who want to build tools that strengthen democracy.',
+    href: '/open-source',
+    linkText: 'Contribute',
+  },
+  {
+    title: 'Local governments',
+    description: 'Municipalities and agencies that want to increase transparency and citizen engagement with public data.',
+    href: '/about',
+    linkText: 'Learn More',
+  },
+];
+
+const milestones = [
+  { label: 'License', value: 'AGPL-3.0' },
+  { label: 'First pilot', value: 'California, 2026' },
+  { label: 'Civic tools', value: '6 and growing' },
+  { label: 'AI approach', value: '100% local' },
+];
+
 const techStack = [
   { name: 'Next.js', url: 'https://nextjs.org' },
   { name: 'NestJS', url: 'https://nestjs.com' },
@@ -57,7 +85,7 @@ const techStack = [
 <BaseLayout title="Built by Citizens. For Citizens." description="Open-source civic technology built by citizens. Petition scanning, proposition analysis, campaign finance tracking, and AI-powered document Q&A — all running locally.">
   <Hero
     title="Built by citizens. For citizens."
-    subtitle="Democracy works when people have the tools to participate. We're building civic technology that communities own, control, and shape—not platforms built by businesses to extract value from public life."
+    subtitle="Democracy works when people have the tools to participate. We're building civic technology that communities own, control, and shape — not platforms built by businesses to extract value from public life."
     ctaText="Get Involved"
     ctaHref="/get-involved"
     secondaryCtaText="See the Platform"
@@ -65,9 +93,27 @@ const techStack = [
   />
 
   <Section
+    id="problem"
+    title="The problem"
+  >
+    <div class="max-w-2xl space-y-4 text-slate-dark/80">
+      <p>
+        The information citizens need to participate in democracy is public. But it's scattered across dozens of government websites, buried in legal language, and nearly impossible to navigate without expertise.
+      </p>
+      <p>
+        The platforms that promise to help often profit from the confusion — tracking what legislation you research, profiling your political interests, and sending your queries to third-party AI services. Your civic engagement becomes someone else's data.
+      </p>
+      <p class="font-medium text-slate-dark">
+        We believe there's a better way: <a href="/why" class="underline underline-offset-2 hover:opacity-70 transition-opacity">tools that serve citizens</a>, not the other way around.
+      </p>
+    </div>
+  </Section>
+
+  <Section
     id="features"
     title="What we build"
     subtitle="Civic tools for every step of the democratic process."
+    background="gray"
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {tools.map(tool => (
@@ -81,7 +127,6 @@ const techStack = [
 
   <Section
     id="values"
-    background="gray"
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
       {values.map(v => (
@@ -96,6 +141,7 @@ const techStack = [
   <Section
     id="how-it-works"
     title="How it works"
+    background="gray"
   >
     <div class="grid md:grid-cols-3 gap-12">
       <div>
@@ -117,10 +163,41 @@ const techStack = [
   </Section>
 
   <Section
+    id="who-its-for"
+    title="Who it's for"
+    subtitle="Built for the people and organizations that make democracy work."
+  >
+    <div class="grid md:grid-cols-3 gap-8">
+      {audiences.map(a => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="font-medium mb-2">{a.title}</h3>
+          <p class="text-slate-dark/80 text-sm mb-4">{a.description}</p>
+          <a href={a.href} class="text-sm text-slate-dark/80 hover:text-slate-dark font-medium transition-colors">
+            {a.linkText} &rarr;
+          </a>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    id="milestones"
+    background="gray"
+  >
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+      {milestones.map(m => (
+        <div class="text-center">
+          <p class="text-lg font-semibold text-slate-dark mb-1">{m.value}</p>
+          <p class="text-xs uppercase tracking-wide text-slate-dark/60">{m.label}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
     id="technology"
     title="Technology"
     subtitle="Built entirely with open-source components."
-    background="gray"
   >
     <div class="flex flex-wrap gap-3">
       {techStack.map(tech => (

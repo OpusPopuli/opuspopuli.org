@@ -33,20 +33,34 @@ const costs = [
 ];
 
 const faqs = [
-  { q: 'Do I need to join the network?', a: 'No. The code is open source—you can run it independently. The network offers optional benefits like shared infrastructure, community support, and collective improvements.' },
+  { q: 'Do I need to join the network?', a: 'No. The code is open source — you can run it independently. The network offers optional benefits like shared infrastructure, community support, and collective improvements.' },
   { q: 'Can I use my own domain?', a: 'Yes. The *.opuspopuli.org subdomain is optional. Your deployment, your identity.' },
   { q: 'What license is the code under?', a: 'AGPL-3.0. This means you can use, modify, and deploy the code freely, but any modifications must also be open source. This ensures the civic commons stays open.' },
   { q: 'Does the AI send data to external services?', a: 'No. All AI processing runs locally on your own infrastructure using open-source models. Your civic research never leaves your network.' },
   { q: 'How is user privacy protected?', a: 'Privacy is built into the architecture — local AI processing, imprecise location matching, passwordless auth, short-lived sessions, and zero third-party trackers. See our privacy architecture for details.' },
   { q: 'How can developers contribute?', a: 'Fork the repo, pick an issue labeled "good first issue," and submit a PR. We review promptly. See our open source page for the full guide.' },
   { q: 'What if we need help?', a: 'We\'re here to help communities succeed. Contact us about support options that fit your needs.' },
+  { q: 'How much technical expertise does our community need?', a: 'Deployment is handled through Infrastructure as Code — you don\'t need to write application code. A team member comfortable with basic server administration and Docker can get a community instance running. We provide documentation and support throughout the process.' },
+  { q: 'Can we customize the platform for our region?', a: 'Yes. Region plugins let you connect your jurisdiction\'s data sources through declarative configuration — no coding required. You can also customize branding, feature toggles, and content to match your community\'s needs.' },
+  { q: 'What kind of ongoing maintenance is needed?', a: 'Primarily software updates from upstream (security patches and new features), periodic data source monitoring to ensure civic feeds remain connected, and community moderation if you enable user-facing features. Most updates can be applied with a single command.' },
+  { q: 'Is there a demo we can try?', a: 'We\'re preparing for our California pilot launch in 2026. Contact us to discuss early access or schedule a walkthrough of the platform.' },
 ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
+};
 ---
 
-<BaseLayout title="Get Involved" description="Bring citizen-owned civic technology to your community.">
+<BaseLayout title="Get Involved" description="Bring citizen-owned civic technology to your community." extraSchema={[faqSchema]}>
   <Hero
     title="Get involved"
-    subtitle="Every community deserves tools that serve them—not the other way around."
+    subtitle="Every community deserves tools that serve them — not the other way around."
   />
 
   <Section title="Who this is for">
@@ -149,13 +163,16 @@ const faqs = [
     </div>
   </Section>
 
-  <Section title="FAQ">
-    <div class="space-y-8 max-w-2xl">
+  <Section title="Frequently asked questions">
+    <div class="space-y-1 max-w-2xl">
       {faqs.map(faq => (
-        <div>
-          <h3 class="font-medium mb-2">{faq.q}</h3>
-          <p class="text-slate-dark/80 text-sm">{faq.a}</p>
-        </div>
+        <details class="group border-b border-slate-dark/5">
+          <summary class="flex items-center justify-between cursor-pointer py-4 font-medium text-slate-dark hover:text-slate-dark/80 transition-colors">
+            {faq.q}
+            <span class="text-slate-dark/40 group-open:rotate-45 transition-transform text-lg ml-4" aria-hidden="true">+</span>
+          </summary>
+          <p class="text-slate-dark/80 text-sm pb-4">{faq.a}</p>
+        </details>
       ))}
     </div>
   </Section>

@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+---
+
+<BaseLayout title="Terms of Service" description="Terms of Service for the Opus Populi open-source civic technology platform and community network.">
+  <Hero
+    title="Terms of Service"
+    subtitle="Clear terms for an open platform. Last updated March 2026."
+  />
+
+  <Section>
+    <div class="max-w-2xl space-y-10">
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">1. Acceptance of terms</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>
+            By accessing or using the Opus Populi platform, website, or any associated services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.
+          </p>
+          <p>
+            These terms apply to all visitors, users, and community operators who access or use the platform.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">2. The platform</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>
+            Opus Populi is an open-source civic technology platform that provides tools for accessing public civic information, including ballot propositions, campaign finance data, representative directories, meeting calendars, and AI-powered document analysis.
+          </p>
+          <p>
+            The platform is designed for communities to deploy and operate independently. Each community instance is managed by its own operators and is subject to these terms as well as any additional terms established by the community operator.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">3. Open-source license</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>
+            The Opus Populi source code is licensed under the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank" rel="noopener noreferrer" class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">GNU Affero General Public License v3.0 (AGPL-3.0)</a>. This means you are free to use, modify, and deploy the software, provided that any modifications are also made available under the same license.
+          </p>
+          <p>
+            The AGPL-3.0 license governs your use of the software itself. These Terms of Service govern your use of the opuspopuli.org website and any hosted services operated by Opus Populi.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">4. Community network membership</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>
+            Communities that join the Opus Populi network agree to the <a href="https://github.com/OpusPopuli/opuspopuli/blob/main/NETWORK-TERMS.md" target="_blank" rel="noopener noreferrer" class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">Network Terms</a>, which cover membership requirements, data ownership, shared infrastructure, and governance standards.
+          </p>
+          <p>
+            Network membership is optional. Communities may deploy and operate the platform independently without joining the network.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">5. Acceptable use</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>You agree not to:</p>
+          <ul class="space-y-2 ml-4">
+            <li class="flex items-start gap-2">
+              <span class="text-slate-dark/50 mt-1" aria-hidden="true">&bull;</span>
+              Use the platform to spread misinformation or manipulate civic discourse
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-slate-dark/50 mt-1" aria-hidden="true">&bull;</span>
+              Attempt to compromise the security or integrity of any community instance
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-slate-dark/50 mt-1" aria-hidden="true">&bull;</span>
+              Use the platform for commercial data harvesting or surveillance
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-slate-dark/50 mt-1" aria-hidden="true">&bull;</span>
+              Modify analysis prompts or AI behavior in ways that introduce political bias
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-slate-dark/50 mt-1" aria-hidden="true">&bull;</span>
+              Violate any applicable local, state, or federal laws
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">6. Data ownership</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>
+            Each community owns and controls its own data. Opus Populi does not access, collect, or retain data from community instances. Your documents, queries, analysis results, and user data remain on your infrastructure under your control.
+          </p>
+          <p>
+            Civic data sourced from government websites and public records retains its original public domain or government license status. The platform aggregates and presents this data but does not claim ownership over it.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">7. Disclaimer</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>
+            The platform provides civic information for educational and informational purposes only. It does not constitute legal advice, voting recommendations, or official government communications.
+          </p>
+          <p>
+            AI-generated analyses are summaries and should be verified against original source documents. While we strive for accuracy, the platform is provided "as is" without warranties of any kind, express or implied.
+          </p>
+          <p>
+            Always consult original government sources and qualified professionals for decisions with legal, financial, or civic consequences.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">8. Limitation of liability</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>
+            To the fullest extent permitted by law, Opus Populi and its contributors shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the platform, including but not limited to errors in civic data, AI analysis inaccuracies, or service interruptions.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">9. Modifications</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>
+            We may update these terms from time to time. Material changes will be announced on this page with an updated effective date. Your continued use of the platform after changes constitutes acceptance of the revised terms.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">10. Contact</h2>
+        <div class="space-y-3 text-slate-dark/80 text-sm">
+          <p>
+            Questions about these terms? Reach out at <a href="mailto:hello@opuspopuli.org" class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">hello@opuspopuli.org</a> or through our <a href="https://github.com/OpusPopuli/opuspopuli" target="_blank" rel="noopener noreferrer" class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">GitHub repository</a>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </Section>
+</BaseLayout>

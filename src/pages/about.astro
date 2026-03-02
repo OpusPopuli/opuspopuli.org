@@ -6,55 +6,63 @@ import Section from '../components/Section.astro';
 const tools = [
   {
     title: 'Petition Scanner',
-    description: 'Point your phone at any petition and get an instant, plain-language breakdown.',
+    description: 'Point your phone at any petition and get an instant, plain-language breakdown. A community organizer encounters a petition outside a grocery store — they scan it and share a clear analysis with their civic group in seconds.',
     href: '/platform#petition-scanner',
     badge: 'AI-Powered',
   },
   {
     title: 'Proposition Explorer',
-    description: 'Browse ballot measures with plain-language summaries and full text access.',
+    description: 'Browse ballot measures with plain-language summaries and full text access. Before an election, voters can read what each measure actually does — not just the campaign slogans — and understand the fiscal impact.',
     href: '/platform#proposition-explorer',
   },
   {
     title: 'Campaign Finance Tracker',
-    description: 'Follow the money behind any ballot measure or candidate.',
+    description: 'Follow the money behind any ballot measure or candidate. See which organizations are funding campaigns, how money is being spent, and who stands to benefit from the outcome.',
     href: '/platform#campaign-finance',
   },
   {
     title: 'Representative Directory',
-    description: 'Find who represents you at every level and contact them directly.',
+    description: 'Find who represents you at every level and contact them directly. When a community cares about a local issue, they can identify the right official and reach out — all from one place.',
     href: '/platform#representative-directory',
   },
   {
     title: 'Meeting Calendar',
-    description: 'Browse upcoming legislative meetings with agendas and video links.',
+    description: 'Browse upcoming legislative meetings with agendas and video links. A neighborhood association tracking a zoning change can find every relevant hearing and show up prepared.',
     href: '/platform#meeting-calendar',
   },
   {
     title: 'Document Q&A',
-    description: 'Upload any civic document and ask questions in plain language.',
+    description: 'Upload any civic document and ask questions in plain language. A journalist analyzing a 200-page budget document gets answers with citations pointing to exact passages — in minutes, not days.',
     href: '/platform#document-qa',
     badge: 'AI-Powered',
   },
   {
     title: 'Region Plugins',
-    description: 'Add any jurisdiction\'s data sources without writing code.',
+    description: 'Add any jurisdiction\'s data sources without writing code. Communities configure their own data connections through declarative setup, so civic data from any state or city can flow into the platform.',
     href: '/platform#regions',
   },
 ];
 
+const timeline = [
+  { year: '2024', event: 'Project founded', detail: 'Initial architecture design and core platform development begins.' },
+  { year: '2024', event: 'Open source under AGPL-3.0', detail: 'Entire codebase published on GitHub. Community contributions welcome from day one.' },
+  { year: '2025', event: 'Local AI commitment', detail: 'All AI processing runs on community infrastructure — no external API calls, no data leaving your network.' },
+  { year: '2025', event: 'Federation model designed', detail: 'Architecture for independent community instances that share improvements without sharing data.' },
+  { year: '2026', event: 'California pilot launch', detail: 'First community deployment with full civic data for California jurisdictions.' },
+];
+
 const roadmap = [
-  'California pilot launch — 2026',
   'Region Plugin Marketplace — community-contributed data sources',
   'Mobile application — native iOS and Android',
   'Multi-language support — starting with Spanish',
+  'Community governance framework — collective decision-making for the network',
 ];
 ---
 
 <BaseLayout title="About Opus Populi" description="Learn about Opus Populi and our mission to strengthen democracy through citizen-built civic technology.">
   <Hero
     title="About"
-    subtitle="Democracy is in trouble. Not because people stopped caring—but because the tools of civic life were built for institutions, not citizens."
+    subtitle="Democracy is in trouble. Not because people stopped caring — but because the tools of civic life were built for institutions, not citizens."
   />
 
   <Section>
@@ -70,35 +78,43 @@ const roadmap = [
       <div class="space-y-8">
         <div class="border-l-2 border-sage pl-6">
           <h3 class="font-medium mb-2">Civic information belongs to everyone</h3>
-          <p class="text-slate-dark/80 text-sm">Legislative text shouldn't require a law degree. We use AI to make it accessible to all.</p>
+          <p class="text-slate-dark/80 text-sm">Legislative text shouldn't require a law degree. We use <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI to make it accessible</a> to all.</p>
         </div>
         <div class="border-l-2 border-slate-dark/10 pl-6">
           <h3 class="font-medium mb-2">Citizens should control civic infrastructure</h3>
-          <p class="text-slate-dark/80 text-sm">The tools that power democracy must be transparent, auditable, and owned by communities.</p>
+          <p class="text-slate-dark/80 text-sm">The tools that power democracy must be transparent, auditable, and <a href="/open-source" class="underline underline-offset-2 hover:opacity-70 transition-opacity">owned by communities</a>.</p>
         </div>
         <div class="border-l-2 border-slate-dark/10 pl-6">
           <h3 class="font-medium mb-2">Privacy is a civic right</h3>
-          <p class="text-slate-dark/80 text-sm">Research your representatives, explore legislation, engage with your government—without being tracked or monetized.</p>
+          <p class="text-slate-dark/80 text-sm">Research your representatives, explore legislation, engage with your government — without being <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">tracked or monetized</a>.</p>
         </div>
       </div>
     </div>
   </Section>
 
-  <Section title="Who we are">
-    <div class="max-w-2xl text-slate-dark/80 space-y-4">
-      <p>
-        Opus Populi started with a simple observation: the information citizens need to participate in democracy is public, but it's scattered across dozens of government websites, buried in legal language, and nearly impossible to navigate without expertise.
+  <Section title="Our story" background="gray">
+    <div class="max-w-2xl">
+      <p class="text-slate-dark/80 mb-10">
+        Opus Populi started with a simple observation: the information citizens need to participate in democracy is public, but it's scattered across dozens of government websites, buried in legal language, and nearly impossible to navigate without expertise. We're building the infrastructure to change that — not a startup looking for an exit, not a platform looking to monetize civic engagement, but a collective effort to put democratic tools in the hands of the people they serve.
       </p>
-      <p>
-        We're building the infrastructure to change that — open-source civic tools that any community can deploy, own, and control. Not a startup looking for an exit. Not a platform looking to monetize civic engagement. A collective effort to put democratic tools in the hands of the people they serve.
-      </p>
+
+      <div class="space-y-6">
+        {timeline.map(item => (
+          <div class="flex gap-6">
+            <div class="text-sm font-medium text-slate-dark w-12 shrink-0">{item.year}</div>
+            <div class="flex-1 border-l-2 border-slate-dark/10 pl-6">
+              <h3 class="font-medium mb-1">{item.event}</h3>
+              <p class="text-slate-dark/80 text-sm">{item.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </Section>
 
   <Section
     title="What we build"
     subtitle="Seven tools that give communities direct access to civic information."
-    background="gray"
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {tools.map(tool => (
@@ -120,7 +136,7 @@ const roadmap = [
     </div>
   </Section>
 
-  <Section title="Roadmap">
+  <Section title="Roadmap" background="gray">
     <div class="max-w-2xl">
       <ul class="space-y-3">
         {roadmap.map(item => (
@@ -130,6 +146,9 @@ const roadmap = [
           </li>
         ))}
       </ul>
+      <p class="text-slate-dark/70 text-sm mt-8">
+        Interested in the <a href="/network" class="underline underline-offset-2 hover:opacity-70 transition-opacity">community network</a>? See how communities will connect and share improvements.
+      </p>
     </div>
   </Section>
 

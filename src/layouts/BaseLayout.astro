@@ -7,16 +7,19 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  extraSchema?: Record<string, unknown>[];
 }
 
 const {
   title,
   description = 'Opus Populi - Open-source civic technology for engaged democracy',
   image = '/social/op-banner-light.png',
+  extraSchema = [],
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);
+const isHomePage = Astro.url.pathname === '/';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -25,7 +28,28 @@ const organizationSchema = {
   url: 'https://opuspopuli.org',
   logo: 'https://opuspopuli.org/logos/png/op-horizontal-dark.png',
   description: 'Open-source civic technology for engaged democracy',
-  sameAs: ['https://github.com/OpusPopuli/opuspopuli'],
+  foundingDate: '2024',
+  sameAs: [
+    'https://github.com/OpusPopuli/opuspopuli',
+    'https://medium.com/@opuspopuli',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'hello@opuspopuli.org',
+    contactType: 'general',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'United States',
+  },
+  knowsAbout: [
+    'Civic technology',
+    'Open source software',
+    'Democracy',
+    'Government transparency',
+    'Campaign finance',
+    'Ballot propositions',
+  ],
 };
 
 const webPageSchema = {
@@ -34,6 +58,30 @@ const webPageSchema = {
   name: title,
   description,
   url: canonicalURL.href,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://opuspopuli.org/' },
+    ...(!isHomePage ? [{
+      '@type': 'ListItem',
+      position: 2,
+      name: title,
+      item: canonicalURL.href,
+    }] : []),
+  ],
+};
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Opus Populi',
+  applicationCategory: 'GovernmentApplication',
+  operatingSystem: 'Web',
+  license: 'https://www.gnu.org/licenses/agpl-3.0.en.html',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
 ---
 
@@ -70,6 +118,13 @@ const webPageSchema = {
     <!-- Structured Data -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    {isHomePage && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+    )}
+    {extraSchema.map(schema => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
 
     <title>{title} | Opus Populi</title>
   </head>
