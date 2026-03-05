@@ -84,19 +84,29 @@ const principles = [
     <div class="max-w-2xl">
       <pre class="bg-slate-dark text-white/80 text-sm p-6 rounded-lg overflow-x-auto font-mono leading-relaxed"><code>opuspopuli/
 ├── apps/
-│   ├── frontend/          # React application
-│   └── backend/           # NestJS microservices
+│   ├── frontend/               # Next.js application
+│   └── backend/                # NestJS microservices
 ├── packages/
-│   ├── relationaldb-provider/  # Database layer
-│   └── region-provider/        # Civic data plugins
+│   ├── relationaldb-provider/  # Database abstraction
+│   ├── region-provider/        # Civic data plugins
+│   ├── prompt-client/          # Prompt service integration
+│   ├── llm-provider/           # AI model abstraction
+│   ├── embedding-provider/     # Document embedding
+│   ├── vectordb-provider/      # Similarity search
+│   └── shared/                 # Common utilities
 ├── infra/
-│   └── cloudflare/        # Infrastructure as code
-├── docs/                  # Architecture and guides
-├── docker-compose.yml     # Local development
-└── docker-compose-prod.yml # Production deployment</code></pre>
+│   └── cloudflare/             # Infrastructure as code
+├── docs/                       # Architecture and guides
+└── docker-compose.yml          # Local development</code></pre>
       <p class="text-slate-dark/70 text-sm mt-4">
         The monorepo keeps everything in one place — frontend, backend, shared packages, infrastructure, and documentation.
       </p>
+      <div class="mt-8 border-l-2 border-sage pl-6">
+        <h3 class="text-base font-medium text-slate-dark mb-2">Pluggable by design</h3>
+        <p class="text-slate-dark/80 text-sm leading-relaxed">
+          Every external dependency — database, AI model, vector store, embedding engine — is abstracted behind a pluggable provider interface. Communities can swap implementations without changing application code. Run a different AI model, use a different database, or switch vector stores — all through configuration, not code changes.
+        </p>
+      </div>
     </div>
   </Section>
 

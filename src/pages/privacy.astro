@@ -10,7 +10,7 @@ const protections = [
   },
   {
     title: 'Location privacy',
-    description: 'We don\'t need your exact address. Jurisdiction matching uses imprecise location data — enough to connect you with the right civic information, nothing more.',
+    description: 'Location data is deliberately fuzzed — precise coordinates are never stored. The system only resolves to jurisdiction level, ensuring your physical location remains private while connecting you with the right civic information.',
   },
   {
     title: 'Data minimization',
@@ -23,6 +23,10 @@ const protections = [
   {
     title: 'Secure sessions',
     description: 'Short-lived sessions with automatic expiry. No persistent tracking across visits. When you close the browser, your session ends.',
+  },
+  {
+    title: 'PII masking in logs',
+    description: 'Server logs automatically redact personally identifiable information. Even system administrators can\'t accidentally see user details in diagnostic output.',
   },
   {
     title: 'Consent management',
@@ -58,6 +62,10 @@ const aiDataHandling = [
     title: 'Node isolation',
     description: 'In the federated model, your data stays on the node you used. No cross-node data sharing. A compromise of one node cannot expose another node\'s data.',
   },
+  {
+    title: 'Full data portability',
+    description: 'Export your documents, analysis results, and account data at any time. Your civic research belongs to you — take it wherever you go.',
+  },
 ];
 
 const aiFaq = [
@@ -87,6 +95,7 @@ const comparison = [
   { category: 'Data ownership', opus: 'You own and control everything', typical: 'Platform owns your data' },
   { category: 'Third-party sharing', opus: 'Zero third parties', typical: 'Shared with advertisers and partners' },
   { category: 'Source code', opus: 'Fully auditable (AGPL-3.0)', typical: 'Proprietary, closed source' },
+  { category: 'Logging', opus: 'PII automatically masked', typical: 'Full user data in server logs' },
 ];
 ---
 

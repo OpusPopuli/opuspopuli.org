@@ -25,6 +25,9 @@ const features = [
       'AI-generated plain-language analysis in seconds',
       'Understand what a measure would actually change',
       'Share analysis with your community',
+      'Real-time activity feed showing petition momentum across your jurisdiction',
+      'Map view showing petition activity with privacy-preserving locations',
+      'Community abuse reporting for misleading or fraudulent petitions',
     ],
   },
   {
@@ -56,7 +59,7 @@ const features = [
     capabilities: [
       'Searchable directory of elected officials',
       'Filter by chamber, party, or district',
-      'Contact representatives through built-in forms',
+      'Email your representative directly from the platform',
       'View committee assignments and roles',
     ],
   },
@@ -81,6 +84,8 @@ const features = [
       'Ask questions in plain language',
       'Get answers with source citations',
       'All AI processing happens locally on your infrastructure',
+      'Specialized analysis for contracts, budgets, regulations, and forms — not one-size-fits-all',
+      'Export your analysis and annotations',
     ],
   },
 ];
@@ -101,6 +106,15 @@ const scenarios = [
     description: 'A journalist investigating campaign spending uses Campaign Finance to identify outside spending patterns on a contested ballot measure, then uploads related budget documents to Document Q&A to cross-reference financial claims — all without their research queries leaving the local server.',
     tools: ['Campaign Finance', 'Document Q&A'],
   },
+];
+
+const platformExperience = [
+  { title: 'Works offline', description: 'Progressive web app. Save ballot measures, representative info, and documents for offline access.' },
+  { title: 'Multi-language', description: 'English and Spanish at launch, with community-contributed translations.' },
+  { title: 'Dark mode', description: 'Comfortable reading in any environment.' },
+  { title: 'Accessible', description: 'WCAG 2.2 AA compliant with keyboard navigation, screen reader support, and high contrast.' },
+  { title: 'Guided setup', description: 'Onboarding wizard walks new users through jurisdiction selection and feature discovery.' },
+  { title: 'Data portability', description: 'Export your data anytime. Your civic research belongs to you.' },
 ];
 
 const techStack = [
@@ -199,6 +213,40 @@ const techStack = [
   </Section>
 
   <Section
+    id="experience"
+    title="Built for real people"
+    subtitle="Every community instance comes with these capabilities out of the box."
+  >
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {platformExperience.map(item => (
+        <div>
+          <h3 class="font-medium mb-1">{item.title}</h3>
+          <p class="text-slate-dark/80 text-sm">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    id="data"
+    title="How civic data stays current"
+    subtitle="Government websites change. Your civic data shouldn't break when they do."
+    background="gray"
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+      <p>
+        Government websites publish civic data — petitions, propositions, campaign finance filings, meeting schedules — but they restructure constantly. A URL that worked yesterday returns a 404 today. A table that had five columns now has seven.
+      </p>
+      <p>
+        Our data pipeline automatically detects when government websites change format and adapts without manual intervention. Self-healing architecture means your community's civic data stays current even when the source websites are redesigned.
+      </p>
+      <p>
+        Every data source is validated against domain rules before entering the platform. If something doesn't look right, the system flags it for review rather than silently importing bad data.
+      </p>
+    </div>
+  </Section>
+
+  <Section
     id="regions"
     title="Any jurisdiction, no code required"
     subtitle="Adding your region's data sources doesn't require writing code. Communities configure their own data connections through simple, declarative setup."
@@ -262,7 +310,6 @@ const techStack = [
     id="tech-stack"
     title="Built on open source"
     subtitle="Every component is open source. No proprietary lock-in at any layer."
-    background="gray"
   >
     <div class="space-y-8">
       {techStack.map(cat => (

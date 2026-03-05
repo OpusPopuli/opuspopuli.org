@@ -22,7 +22,41 @@ const principles = [
   },
   {
     title: 'Prompt integrity',
-    description: 'Analysis prompts are versioned, audited, and cryptographically verified. Every node in the network uses the same methodology — no one can tamper with how analysis works.',
+    description: 'Analysis prompts are versioned, audited, and cryptographically verified. Every change is recorded in an immutable version history that can never be deleted. Multiple fallback layers ensure analysis is always available, even during service interruptions. Every node in the network uses the same methodology — no one can tamper with how analysis works.',
+  },
+];
+
+const transparencyHub = [
+  {
+    title: 'System Card',
+    description: 'How the AI works, what models are used, and what data flows where. Available to every user inside the platform.',
+  },
+  {
+    title: 'AI Commitments',
+    description: 'The promises on this page — viewable inside the app itself, not just on a marketing site.',
+  },
+  {
+    title: 'Prompt Charter',
+    description: 'The design principles governing how analysis prompts are written: neutrality, completeness, source attribution, and balance.',
+  },
+];
+
+const qualityAssurance = [
+  {
+    title: 'Continuous testing',
+    description: 'Analysis prompts are tested against reference documents to ensure consistent, high-quality output.',
+  },
+  {
+    title: 'Quality improvement',
+    description: 'Prompt variants are evaluated to ensure analysis quality improves over time — not just stays the same.',
+  },
+  {
+    title: 'Immutable history',
+    description: 'Every prompt change is recorded in a version history that can never be modified or deleted.',
+  },
+  {
+    title: 'Network-wide verification',
+    description: 'Any node can verify it\'s running the same prompt version as every other node in the network.',
   },
 ];
 
@@ -112,6 +146,38 @@ const commitments = [
     <p class="mt-8 text-slate-dark/80 text-sm max-w-2xl">
       We built the system so that these things are technically impossible — not just policy violations. The architecture enforces the commitments, not a terms-of-service document.
     </p>
+  </Section>
+
+  <Section
+    title="Transparency hub"
+    subtitle="Every user can access our AI transparency documentation directly inside the platform — not just on a marketing page."
+  >
+    <div class="grid md:grid-cols-3 gap-8">
+      {transparencyHub.map(item => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="text-base font-medium text-slate-dark mb-2">{item.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+    <p class="mt-8 text-slate-dark/80 text-sm max-w-2xl">
+      These documents are built into the application — accessible from any page, at any time. Transparency isn't a page you visit once. It's infrastructure you can rely on.
+    </p>
+  </Section>
+
+  <Section
+    title="Prompt quality assurance"
+    subtitle="Analysis quality isn't static. We actively measure and improve it."
+    background="gray"
+  >
+    <div class="grid md:grid-cols-2 gap-8">
+      {qualityAssurance.map(item => (
+        <div>
+          <h3 class="font-medium mb-1">{item.title}</h3>
+          <p class="text-slate-dark/80 text-sm">{item.description}</p>
+        </div>
+      ))}
+    </div>
   </Section>
 
   <Section

@@ -17,12 +17,21 @@ const steps = [
   { step: '04', title: 'Strengthen the network', description: 'Your learnings and improvements help other communities.' },
 ];
 
+const communityFeatures = [
+  { title: 'Works offline', description: 'Progressive web app for access without an internet connection' },
+  { title: 'Multi-language', description: 'English and Spanish at launch' },
+  { title: 'Accessible', description: 'WCAG 2.2 AA compliant out of the box' },
+  { title: 'Guided onboarding', description: 'New users are walked through setup step by step' },
+  { title: 'Abuse reporting', description: 'Community-driven moderation for misleading content' },
+  { title: 'Data export', description: 'Your community\'s civic research is always portable' },
+];
+
 const devAreas = [
   { title: 'Code', description: 'React frontend, NestJS backend, GraphQL APIs, and infrastructure tooling.' },
   { title: 'Region plugins', description: 'Add your jurisdiction\'s data sources so your community can access local civic information.' },
   { title: 'Documentation', description: 'Guides, API docs, tutorials, and onboarding materials for new contributors.' },
-  { title: 'Translations', description: 'Help make civic tools accessible in more languages, starting with Spanish.' },
-  { title: 'Accessibility', description: 'WCAG 2.2 AA compliance, keyboard navigation, and screen reader support.' },
+  { title: 'Translations', description: 'Help expand language support beyond English and Spanish.' },
+  { title: 'Accessibility', description: 'Maintain and extend WCAG 2.2 AA compliance — keyboard navigation, screen reader support, and high contrast.' },
   { title: 'Testing', description: 'Unit tests, integration tests, and end-to-end tests for civic infrastructure.' },
 ];
 
@@ -75,8 +84,22 @@ const faqSchema = {
   </Section>
 
   <Section
-    title="How it works"
+    title="What your community gets"
+    subtitle="Every deployment comes with these capabilities built in."
     background="gray"
+  >
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {communityFeatures.map(item => (
+        <div>
+          <h3 class="font-medium mb-1">{item.title}</h3>
+          <p class="text-slate-dark/80 text-sm">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    title="How it works"
   >
     <div class="space-y-10">
       {steps.map(step => (
