@@ -5,6 +5,9 @@
 @theme {
   --color-slate-dark: #222222;
   --color-sage: #7F9C8E;
+  --color-sage-dark: #5A7A6A;
+  --color-sage-darker: #4A6A5A;
+  --color-sage-light: #A3BEB0;
   --color-light-bg: #FAFAFA;
   --color-dark-bg: #111111;
 }
