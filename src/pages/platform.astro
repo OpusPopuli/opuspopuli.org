@@ -235,13 +235,13 @@ const techStack = [
   >
     <div class="max-w-2xl space-y-6 text-slate-dark/80">
       <p>
-        Government websites publish civic data — petitions, propositions, campaign finance filings, meeting schedules — but they restructure constantly. A URL that worked yesterday returns a 404 today. A table that had five columns now has seven.
+        Government websites publish civic data — propositions, campaign finance filings, meeting schedules, representative directories — but they restructure constantly. Traditional scrapers with hardcoded CSS selectors break whenever a site is redesigned.
       </p>
       <p>
-        Our data pipeline automatically detects when government websites change format and adapts without manual intervention. Self-healing architecture means your community's civic data stays current even when the source websites are redesigned.
+        Our pipeline uses a <strong>schema-on-read</strong> approach: AI analyzes website structure to generate versioned extraction rules (structural manifests), rather than relying on brittle selectors. When a site changes, the system detects the structural shift, re-analyzes, and adapts — no developer intervention needed.
       </p>
       <p>
-        Every data source is validated against domain rules before entering the platform. If something doesn't look right, the system flags it for review rather than silently importing bad data.
+        The pipeline handles three source types: HTML scraping with AI structural analysis, paginated REST APIs, and bulk file downloads (ZIP/CSV/TSV). Every extracted record is validated against domain rules before entering the platform.
       </p>
     </div>
   </Section>
@@ -255,19 +255,32 @@ const techStack = [
       <p>
         Every jurisdiction publishes civic data differently — different websites, different formats, different update schedules. The region plugin system handles this complexity so communities don't have to.
       </p>
+      <p>
+        Region configs are simple JSON files that describe <em>what</em> data to collect — URLs, data types, and natural language content goals. The AI-powered scraping pipeline figures out <em>how</em> to extract it. No scraper code required.
+      </p>
       <div class="space-y-3">
         <div class="border-l-2 border-sage pl-4">
-          <p class="text-sm font-medium text-slate-dark">Declarative data sources</p>
-          <p class="text-sm text-slate-dark/70">Define where your jurisdiction's data lives and how to access it</p>
+          <p class="text-sm font-medium text-slate-dark">JSON, not code</p>
+          <p class="text-sm text-slate-dark/70">Describe data sources with URLs and plain-language content goals — the AI handles extraction</p>
         </div>
         <div class="border-l-2 border-sage pl-4">
-          <p class="text-sm font-medium text-slate-dark">Automatic integration</p>
-          <p class="text-sm text-slate-dark/70">Data syncs on your schedule without manual intervention</p>
+          <p class="text-sm font-medium text-slate-dark">Schema-validated</p>
+          <p class="text-sm text-slate-dark/70">CI validates every config against a JSON Schema and checks URL connectivity before publishing</p>
         </div>
         <div class="border-l-2 border-sage pl-4">
           <p class="text-sm font-medium text-slate-dark">Community-contributed</p>
-          <p class="text-sm text-slate-dark/70">Region configurations are shared across the network so others can benefit</p>
+          <p class="text-sm text-slate-dark/70">Region configs live in a <a href="https://github.com/OpusPopuli/opuspopuli-regions" class="underline underline-offset-2 hover:opacity-70 transition-opacity">shared open repository</a> — add your jurisdiction with a pull request</p>
         </div>
+        <div class="border-l-2 border-sage pl-4">
+          <p class="text-sm font-medium text-slate-dark">Self-healing pipeline</p>
+          <p class="text-sm text-slate-dark/70">When government websites change format, the AI re-analyzes and adapts automatically</p>
+        </div>
+      </div>
+      <div class="bg-slate-dark/5 rounded-lg p-5 mt-4">
+        <p class="text-sm font-medium text-slate-dark mb-2">California launch example</p>
+        <p class="text-sm text-slate-dark/70">
+          7 data sources across the Secretary of State, Assembly, Senate, and CAL-ACCESS campaign finance database — all defined in a single JSON config file with no scraper code.
+        </p>
       </div>
     </div>
   </Section>

@@ -5,8 +5,8 @@ import Section from '../components/Section.astro';
 
 const contributionAreas = [
   {
-    title: 'Region Plugins',
-    description: 'Add your jurisdiction\'s data sources so your community can access local civic information.',
+    title: 'Region Configs',
+    description: 'Add your jurisdiction\'s data sources to the regions repo — JSON files with URLs and content goals, no code required. CI validates and publishes automatically.',
   },
   {
     title: 'Frontend',
@@ -72,7 +72,7 @@ const principles = [
         The frontend is a modern React application. The backend is a collection of focused microservices, each handling a specific domain: user management, document processing, civic data, and knowledge retrieval. AI runs as a local sidecar — never as an external dependency.
       </p>
       <p>
-        This modularity isn't accidental. It means a community in Texas can run a different set of region plugins than a community in California, while both contribute improvements back to the shared codebase.
+        This modularity is deliberate. Region-specific configuration lives in its own repository — a community in Texas can add their data sources without ever touching platform code, while both Texas and California benefit from shared pipeline improvements. The boundary is clean: open-source pipeline framework, declarative config per jurisdiction.
       </p>
     </div>
   </Section>
@@ -82,24 +82,33 @@ const principles = [
     background="gray"
   >
     <div class="max-w-2xl">
-      <pre class="bg-slate-dark text-white/80 text-sm p-6 rounded-lg overflow-x-auto font-mono leading-relaxed"><code>opuspopuli/
+      <pre class="bg-slate-dark text-white/80 text-sm p-6 rounded-lg overflow-x-auto font-mono leading-relaxed"><code>opuspopuli/                        # Core platform (monorepo)
 ├── apps/
-│   ├── frontend/               # Next.js application
-│   └── backend/                # NestJS microservices
+│   ├── frontend/                  # Next.js application
+│   └── backend/                   # NestJS microservices
 ├── packages/
-│   ├── relationaldb-provider/  # Database abstraction
-│   ├── region-provider/        # Civic data plugins
-│   ├── prompt-client/          # Prompt service integration
-│   ├── llm-provider/           # AI model abstraction
-│   ├── embedding-provider/     # Document embedding
-│   ├── vectordb-provider/      # Similarity search
-│   └── shared/                 # Common utilities
-├── infra/
-│   └── cloudflare/             # Infrastructure as code
-├── docs/                       # Architecture and guides
-└── docker-compose.yml          # Local development</code></pre>
+│   ├── region-provider/           # Declarative plugin loader
+│   ├── scraping-pipeline/         # AI-powered data extraction
+│   ├── prompt-client/             # Prompt service integration
+│   ├── llm-provider/              # AI model abstraction
+│   ├── extraction-provider/       # Content extraction
+│   ├── embeddings-provider/       # Document embedding
+│   ├── vectordb-provider/         # Similarity search
+│   ├── relationaldb-provider/     # Database abstraction
+│   ├── common/                    # Shared types and utilities
+│   └── ...                        # Auth, config, email, etc.
+├── docs/                          # Architecture and guides
+└── docker-compose.yml             # Local development
+
+opuspopuli-regions/                # Region configs (separate repo)
+├── regions/
+│   ├── california.json            # California civic data sources
+│   └── federal.json               # Federal campaign finance (FEC)
+├── schema/
+│   └── region-plugin.schema.json  # JSON Schema for validation
+└── __tests__/                     # Schema + connectivity tests</code></pre>
       <p class="text-slate-dark/70 text-sm mt-4">
-        The monorepo keeps everything in one place — frontend, backend, shared packages, infrastructure, and documentation.
+        The platform lives in a monorepo. Region configs live in a <a href="https://github.com/OpusPopuli/opuspopuli-regions" class="underline underline-offset-2 hover:opacity-70 transition-opacity">separate repository</a>, published as an npm package — so civic domain experts can add regions without touching platform code.
       </p>
       <div class="mt-8 border-l-2 border-sage pl-6">
         <h3 class="text-base font-medium text-slate-dark mb-2">Pluggable by design</h3>
