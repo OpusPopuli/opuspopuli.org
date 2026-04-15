@@ -8,7 +8,7 @@ const networkMembers = [
     name: 'California',
     subdomain: 'california.opuspopuli.org',
     status: 'development',
-    note: 'Coming 2026',
+    note: 'Pilot launching 2026 — 7 data sources across Secretary of State, Assembly, Senate, and CAL-ACCESS',
   },
 ];
 
@@ -22,19 +22,19 @@ const benefits = [
 const trustMechanisms = [
   {
     title: 'Prompt lock',
-    description: 'Every node gets its analysis prompts from a central, private service. Nodes cannot modify, override, or inject their own prompts. This ensures identical analytical methodology across the entire network.',
+    description: 'Every node receives analysis prompts from a dedicated prompt service with HMAC-authenticated requests. Nodes cannot modify, override, or inject their own prompts — ensuring identical analytical methodology across the entire network.',
   },
   {
     title: 'Cryptographic verification',
-    description: 'Every prompt is hashed. Nodes can verify they received an authentic, unmodified prompt. Auditors can verify any analysis was produced with a certified prompt.',
+    description: 'Every prompt is hashed at the source. Nodes verify authenticity on receipt. Auditors can verify any analysis was produced with a certified, unmodified prompt. Replay protection with timestamp tolerance prevents request manipulation.',
   },
   {
-    title: 'Canary system',
-    description: 'We periodically send test documents through all nodes and compare outputs. If a node produces significantly different results, it\'s flagged for investigation.',
+    title: 'Canary documents',
+    description: 'Reference civic documents with known-correct baselines are processed through all nodes on a regular schedule. Output is compared for drift, bias, and manipulation. Divergent nodes are quarantined for investigation.',
   },
   {
     title: 'Node certification',
-    description: 'Nodes apply, get certified, and maintain certification through ongoing compliance. Certification isn\'t a one-time gate — it\'s a continuous relationship. Non-compliant nodes can be suspended and re-certified after remediation.',
+    description: 'Nodes register, receive expiring credentials, and maintain certification through ongoing compliance. The prompt service tracks node status, supports key rotation, and maintains a complete audit log. Non-compliant nodes can be suspended and re-certified after remediation.',
   },
 ];
 ---
@@ -79,7 +79,7 @@ newyork.opuspopuli.org ────┘</pre>
   >
     <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
       <p>
-        Regions control what facts are available — their local data sources, their civic records, their meeting schedules. But no region can control how facts are interpreted. The analysis methodology is uniform across every node in the network. We continuously test analysis quality across the network — if a node's output diverges from the expected baseline, it's flagged for investigation. Learn more about our <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI trust commitments</a> and how <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">privacy is built into the architecture</a>.
+        Regions control what facts are available — their local data sources, their civic records, their meeting schedules. But no region can control how facts are interpreted. The analysis methodology is uniform across every node in the network. We continuously test analysis quality across the network — if a node's output diverges from the expected baseline, it's flagged for investigation. See the full <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">trust architecture</a> for how each layer works, or read about how <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">privacy is built into the architecture</a>.
       </p>
     </div>
     <div class="grid md:grid-cols-2 gap-8">

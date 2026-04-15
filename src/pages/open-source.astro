@@ -18,7 +18,7 @@ const contributionAreas = [
   },
   {
     title: 'AI / ML',
-    description: 'Analysis pipelines, document processing, and open-source model integration.',
+    description: 'RAG pipeline tuning, document chunking strategies, embedding model evaluation, and LLM prompt optimization.',
   },
   {
     title: 'Infrastructure',
@@ -66,10 +66,10 @@ const principles = [
   >
     <div class="max-w-2xl space-y-6 text-slate-dark/80">
       <p>
-        Opus Populi is built as a set of independent, loosely coupled services. Each community can deploy the full stack or just the parts they need. Services communicate through a federated API layer, and every component can be swapped or extended.
+        Opus Populi is built as a set of independent, loosely coupled services behind a GraphQL Federation gateway. The backend runs four domain microservices — users, documents, knowledge (RAG), and regions (civic data) — each with its own schema, deployed independently. 16 pluggable provider packages abstract every external dependency behind swappable interfaces.
       </p>
       <p>
-        The frontend is a modern React application. The backend is a collection of focused microservices, each handling a specific domain: user management, document processing, civic data, and knowledge retrieval. AI runs as a local sidecar — never as an external dependency.
+        The frontend is a React 19 + Next.js 16 application with Apollo Client for state management, passkey authentication, and offline support as a progressive web app. AI runs entirely locally — Transformers.js for embeddings, pgvector for similarity search, and Ollama for LLM inference. Never as an external dependency.
       </p>
       <p>
         This modularity is deliberate. Region-specific configuration lives in its own repository — a community in Texas can add their data sources without ever touching platform code, while both Texas and California benefit from shared pipeline improvements. The boundary is clean: open-source pipeline framework, declarative config per jurisdiction.
@@ -84,21 +84,28 @@ const principles = [
     <div class="max-w-2xl">
       <pre class="bg-slate-dark text-white/80 text-sm p-6 rounded-lg overflow-x-auto font-mono leading-relaxed"><code>opuspopuli/                        # Core platform (monorepo)
 ├── apps/
-│   ├── frontend/                  # Next.js application
-│   └── backend/                   # NestJS microservices
-├── packages/
-│   ├── region-provider/           # Declarative plugin loader
-│   ├── scraping-pipeline/         # AI-powered data extraction
-│   ├── prompt-client/             # Prompt service integration
-│   ├── llm-provider/              # AI model abstraction
-│   ├── extraction-provider/       # Content extraction
-│   ├── embeddings-provider/       # Document embedding
-│   ├── vectordb-provider/         # Similarity search
-│   ├── relationaldb-provider/     # Database abstraction
-│   ├── common/                    # Shared types and utilities
-│   └── ...                        # Auth, config, email, etc.
+│   ├── frontend/                  # React 19 + Next.js 16
+│   └── backend/                   # NestJS microservices (4 services + gateway)
+├── packages/                      # 16 pluggable provider packages
+│   ├── region-provider/           # Declarative civic data plugin loader
+│   ├── scraping-pipeline/         # AI-powered schema-on-read extraction
+│   ├── prompt-client/             # Prompt service (circuit breaker + HMAC)
+│   ├── llm-provider/              # Ollama LLM abstraction
+│   ├── embeddings-provider/       # Transformers.js vector embeddings
+│   ├── vectordb-provider/         # pgvector similarity search
+│   ├── relationaldb-provider/     # Prisma database layer
+│   ├── ocr-provider/              # Tesseract.js OCR processing
+│   ├── auth-provider/             # Supabase Auth (passkeys + magic links)
+│   ├── storage-provider/          # File storage abstraction
+│   ├── email-provider/            # Transactional email
+│   ├── logging-provider/          # Audit logging with PII masking
+│   ├── extraction-provider/       # URL + PDF content extraction
+│   ├── secrets-provider/          # Vault integration
+│   ├── config-provider/           # Runtime configuration
+│   └── common/                    # Shared types and HTTP pooling
 ├── docs/                          # Architecture and guides
-└── docker-compose.yml             # Local development
+├── observability/                 # Prometheus, Grafana, Loki configs
+└── docker-compose.yml             # Local development (one command)
 
 opuspopuli-regions/                # Region configs (separate repo)
 ├── regions/
@@ -113,7 +120,7 @@ opuspopuli-regions/                # Region configs (separate repo)
       <div class="mt-8 border-l-2 border-sage pl-6">
         <h3 class="text-base font-medium text-slate-dark mb-2">Pluggable by design</h3>
         <p class="text-slate-dark/80 text-sm leading-relaxed">
-          Every external dependency — database, AI model, vector store, embedding engine — is abstracted behind a pluggable provider interface. Communities can swap implementations without changing application code. Run a different AI model, use a different database, or switch vector stores — all through configuration, not code changes.
+          Every external dependency — database, AI model, vector store, embedding engine, auth, email, storage — is abstracted behind a pluggable provider interface. 16 provider packages mean communities can swap implementations without changing application code. Run a different LLM, use a different database, or switch vector stores — all through configuration, not code changes.
         </p>
       </div>
     </div>

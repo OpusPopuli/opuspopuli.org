@@ -19,73 +19,74 @@ const features = [
     id: 'petition-scanner',
     title: 'Petition Scanner',
     badge: 'AI-Powered',
-    description: 'Point your phone at any petition and get an instant, plain-language breakdown of what it means and who it affects. No legal background required.',
+    description: 'Point your phone at a petition. OCR extracts the text, AI generates a plain-language breakdown, and the system automatically matches it to related ballot measures — all in seconds.',
     capabilities: [
-      'Scan petitions directly with your phone camera',
-      'AI-generated plain-language analysis in seconds',
-      'Understand what a measure would actually change',
-      'Share analysis with your community',
-      'Real-time activity feed showing petition momentum across your jurisdiction',
-      'Map view showing petition activity with privacy-preserving locations',
+      'Camera-based capture with Tesseract.js OCR processing',
+      'AI-generated plain-language analysis with automatic ballot measure matching',
+      'Real-time activity feed showing petition momentum with hourly trends',
+      'Map view with privacy-preserving geo-fuzzed locations',
       'Community abuse reporting for misleading or fraudulent petitions',
+      'Geolocation tagging for civic district context',
     ],
   },
   {
     id: 'proposition-explorer',
     title: 'Proposition Explorer',
-    description: 'Browse every ballot measure in your jurisdiction. Filter by status, read plain-language summaries, and access the full text when you need the details.',
+    description: '47 pages of legal text become a 5-minute read. Browse every ballot measure with AI-extracted summaries, fiscal impact analysis, and arguments for and against — with full source text always one click away.',
     capabilities: [
       'Browse measures by status: pending, passed, failed, withdrawn',
-      'Plain-language summaries for every proposition',
-      'Full text access for those who want to read the source',
+      'AI-powered content extraction with plain-language summaries',
+      'Fiscal impact breakdowns and arguments for and against',
+      'Full text and PDF access for primary source verification',
       'Track outcomes across election cycles',
     ],
   },
   {
     id: 'campaign-finance',
     title: 'Campaign Finance Tracker',
-    description: 'See who is funding what. Follow the money behind any ballot measure or candidate to understand who stands to benefit from the outcome.',
+    description: 'Follow the money behind any ballot measure. See who contributed, how the money was spent, and what outside groups are involved — aggregated from state finance databases into a single view.',
     capabilities: [
-      'Track contributions to campaigns and committees',
-      'See how campaign money is being spent',
-      'Follow outside spending on ballot measures',
-      'Transparent view of political money flows',
+      'Committee-level contribution tracking with donor details',
+      'Expenditure breakdowns by category and recipient',
+      'Independent expenditure tracking for outside spending',
+      'Aggregated from multiple state databases (e.g., CAL-ACCESS for California)',
     ],
   },
   {
     id: 'representative-directory',
     title: 'Representative Directory',
-    description: 'Find who represents you at every level of government. Search by location, filter by chamber or party, and contact them directly.',
+    description: 'Enter your address and see every elected official who represents you — from city council to Congress. View their bios, committee assignments, and contact them directly from the platform.',
     capabilities: [
-      'Searchable directory of elected officials',
-      'Filter by chamber, party, or district',
-      'Email your representative directly from the platform',
-      'View committee assignments and roles',
+      'Address-based lookup with geocoded civic district resolution',
+      '"My Representatives" section showing all levels of government',
+      'Detail pages with photos, bios, party, and committee assignments',
+      'Built-in contact forms to email representatives directly',
+      'Filter by chamber, party, or district across the full directory',
     ],
   },
   {
     id: 'meeting-calendar',
     title: 'Meeting Calendar',
-    description: 'Never miss a hearing that matters to you. Browse upcoming legislative meetings with agendas and video links for public sessions.',
+    description: 'Every public legislative meeting in your jurisdiction, searchable by body — with agendas, minutes, and video links for recorded sessions.',
     capabilities: [
       'Upcoming and past legislative meeting schedules',
-      'Meeting agendas when available',
+      'Meeting agendas and minutes when available',
       'Video links for recorded sessions',
-      'Filter by legislative body',
+      'Filter by legislative body (Assembly, Senate, committees)',
     ],
   },
   {
     id: 'document-qa',
     title: 'Document Q&A',
     badge: 'AI-Powered',
-    description: 'Upload any civic document — a bill, a budget, a regulation — and ask questions about it in plain language. Get answers with citations pointing to the exact passages.',
+    description: 'Upload any civic document — a bill, a budget, a regulation — and ask questions in plain English. The RAG pipeline chunks the document, generates vector embeddings, and retrieves relevant passages to answer your question with citations.',
     capabilities: [
-      'Upload and index any civic document',
-      'Ask questions in plain language',
-      'Get answers with source citations',
-      'All AI processing happens locally on your infrastructure',
-      'Specialized analysis for contracts, budgets, regulations, and forms — not one-size-fits-all',
-      'Export your analysis and annotations',
+      'Upload and index documents with automatic chunking (1,000-character segments with overlap)',
+      'Semantic search via 384-dimension vector embeddings (Transformers.js)',
+      'Retrieval-augmented generation with local Ollama LLM inference',
+      'Answers include source citations pointing to exact passages',
+      'Specialized analysis modes for contracts, budgets, regulations, and forms',
+      'All processing runs locally — nothing leaves your infrastructure',
     ],
   },
 ];
@@ -121,8 +122,8 @@ const techStack = [
   {
     category: 'Frontend',
     items: [
-      { name: 'Next.js', url: 'https://nextjs.org' },
-      { name: 'React', url: 'https://react.dev' },
+      { name: 'Next.js 16', url: 'https://nextjs.org' },
+      { name: 'React 19', url: 'https://react.dev' },
       { name: 'Tailwind CSS', url: 'https://tailwindcss.com' },
       { name: 'Apollo Client', url: 'https://apollographql.com' },
     ],
@@ -131,39 +132,50 @@ const techStack = [
     category: 'Backend',
     items: [
       { name: 'NestJS', url: 'https://nestjs.com' },
-      { name: 'GraphQL', url: 'https://graphql.org' },
+      { name: 'GraphQL Federation', url: 'https://graphql.org' },
       { name: 'Prisma', url: 'https://prisma.io' },
     ],
   },
   {
     category: 'Data',
     items: [
-      { name: 'PostgreSQL', url: 'https://postgresql.org' },
+      { name: 'PostgreSQL + pgvector', url: 'https://postgresql.org' },
       { name: 'Redis', url: 'https://redis.io' },
       { name: 'Supabase', url: 'https://supabase.com' },
     ],
   },
   {
-    category: 'AI',
+    category: 'AI / ML',
     items: [
       { name: 'Ollama', url: 'https://ollama.com' },
+      { name: 'Transformers.js', url: 'https://huggingface.co/docs/transformers.js' },
+      { name: 'Tesseract.js', url: 'https://tesseract.projectnaptha.com' },
     ],
   },
   {
     category: 'Infrastructure',
     items: [
-      { name: 'Terraform', url: 'https://terraform.io' },
       { name: 'Docker', url: 'https://docker.com' },
-      { name: 'Kubernetes', url: 'https://kubernetes.io' },
+      { name: 'Terraform', url: 'https://terraform.io' },
+      { name: 'Cloudflare', url: 'https://cloudflare.com' },
+    ],
+  },
+  {
+    category: 'Observability',
+    items: [
+      { name: 'Prometheus', url: 'https://prometheus.io' },
+      { name: 'Grafana', url: 'https://grafana.com' },
+      { name: 'Loki', url: 'https://grafana.com/oss/loki/' },
+      { name: 'OpenTelemetry', url: 'https://opentelemetry.io' },
     ],
   },
 ];
 ---
 
-<BaseLayout title="Civic Tools Platform" description="See what Opus Populi builds: petition scanning, proposition analysis, campaign finance tracking, representative lookup, and AI-powered document Q&A.">
+<BaseLayout title="Civic Tools Platform" description="See what Opus Populi has built: petition scanning with OCR, AI-powered proposition analysis, campaign finance tracking, geocoded representative lookup, and RAG-powered document Q&A — all running locally.">
   <Hero
-    title="See what we build"
-    subtitle="Civic tools for every step of the democratic process — from the moment a petition is signed to the meeting where decisions are made. Open source, locally hosted, and built for communities."
+    title="See what's built"
+    subtitle="Six civic tools covering the full democratic process — from petition to public meeting. Four microservices, 16 pluggable provider packages, and a fully local AI stack. Open source under AGPL-3.0."
     ctaText="Get Involved"
     ctaHref="/get-involved"
     secondaryCtaText="View Source"
@@ -296,7 +308,10 @@ const techStack = [
         Most AI-powered civic tools send your queries to third-party services. What legislation you're researching, what politicians you're looking up, what petitions you care about — all of it becomes someone else's data.
       </p>
       <p>
-        Opus Populi runs entirely on open-source AI models hosted on your own infrastructure. Your civic research stays on your server. Period. See our <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI transparency commitments</a> and <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">privacy architecture</a> for the full picture.
+        Opus Populi runs entirely on open-source AI models hosted on your own infrastructure. Embeddings are generated in-process with Transformers.js (all-MiniLM-L6-v2, 384 dimensions). Vector similarity search runs on pgvector in PostgreSQL. LLM inference runs locally through Ollama with configurable models — Qwen 3.5 by default, with support for Mistral, Llama 3.1, and others.
+      </p>
+      <p>
+        Your civic research stays on your server. Period. See our <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI transparency commitments</a> and <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">privacy architecture</a> for the full picture.
       </p>
       <div class="grid sm:grid-cols-2 gap-4 mt-6">
         <div class="text-sm">
