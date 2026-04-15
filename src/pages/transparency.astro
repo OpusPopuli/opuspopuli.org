@@ -3,6 +3,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 
+const threatModel = [
+  {
+    threat: 'Biased analysis',
+    description: 'An AI that subtly favors one political position over another could influence thousands of voters without anyone noticing.',
+    defense: 'Prompt lock, canary documents, prompt charter',
+  },
+  {
+    threat: 'Prompt tampering',
+    description: 'A bad actor running a node could modify analysis prompts to produce misleading summaries of ballot measures or campaign finance data.',
+    defense: 'HMAC-authenticated prompt delivery, cryptographic hashing, node certification',
+  },
+  {
+    threat: 'Corrupted civic data',
+    description: 'A compromised region config could feed false data — wrong representative info, fabricated campaign finance records, altered proposition text.',
+    defense: 'JSON Schema validation, CI connectivity checks, npm provenance signing (planned)',
+  },
+  {
+    threat: 'Surveillance of civic research',
+    description: 'Tracking what legislation people research, what representatives they contact, or what petitions they care about creates a political profile.',
+    defense: 'Local AI processing, no external API calls, PII masking, geo-fuzzing',
+  },
+  {
+    threat: 'Node compromise',
+    description: 'If one community\'s node is compromised, the entire network\'s credibility could be questioned.',
+    defense: 'Node isolation, certification lifecycle, canary system, audit logging',
+  },
+];
+
 const principles = [
   {
     title: 'AI assists, never decides',
@@ -18,45 +46,90 @@ const principles = [
   },
   {
     title: 'Pre-trained models only',
-    description: 'We use existing open models like Mistral and Llama. We never train on your documents, your queries, or your usage patterns. The AI learns nothing from you.',
-  },
-  {
-    title: 'Prompt integrity',
-    description: 'Analysis prompts are versioned, audited, and cryptographically verified. Every change is recorded in an immutable version history that can never be deleted. Multiple fallback layers ensure analysis is always available, even during service interruptions. Every node in the network uses the same methodology — no one can tamper with how analysis works.',
+    description: 'We use open-source models like Qwen 3.5, Mistral, and Llama 3.1 through Ollama. We never train on your documents, your queries, or your usage patterns. The AI learns nothing from you.',
   },
 ];
 
-const transparencyHub = [
+const promptServiceLayers = [
   {
-    title: 'System Card',
-    description: 'How the AI works, what models are used, and what data flows where. Available to every user inside the platform.',
+    title: 'HMAC-authenticated delivery',
+    description: 'Nodes receive prompts through HMAC-SHA256 signed requests. The API key never travels over the wire — only the signature does. Constant-time comparison prevents timing attacks. Replay protection rejects requests outside a 5-minute timestamp window.',
   },
   {
-    title: 'AI Commitments',
-    description: 'The promises on this page — viewable inside the app itself, not just on a marketing site.',
+    title: 'Cryptographic hashing',
+    description: 'Every prompt template is SHA-256 hashed at the source. Nodes verify authenticity on receipt. Auditors can verify any analysis was produced with a certified, unmodified prompt by comparing hashes against the version history.',
   },
   {
-    title: 'Prompt Charter',
-    description: 'The design principles governing how analysis prompts are written: neutrality, completeness, source attribution, and balance.',
+    title: 'Node certification lifecycle',
+    description: 'Nodes register, receive 256-bit API keys stored in an encrypted vault, and must be certified before accessing prompts. Certification expires and must be renewed. Non-compliant nodes can be decertified instantly — revoking access to all analysis prompts. Key rotation is supported without downtime.',
+  },
+  {
+    title: 'Immutable version history',
+    description: 'Every prompt change is recorded in an append-only version history with template hashes. Changes are never deleted. Any node can verify it\'s running the same prompt version as every other node in the network.',
+  },
+  {
+    title: 'A/B experimentation',
+    description: 'Prompt improvements are evaluated through controlled experiments. Deterministic traffic bucketing ensures the same node always gets the same variant for a given experiment — enabling measurable comparison without inconsistent user experiences.',
+  },
+  {
+    title: 'Circuit breaker with cache fallback',
+    description: 'If the prompt service is unreachable, nodes fall back to database-cached prompts warmed from previous successful fetches. Analysis continues uninterrupted. The circuit breaker prevents cascading failures across the network.',
   },
 ];
 
-const qualityAssurance = [
+const canaryDetails = [
   {
-    title: 'Continuous testing',
-    description: 'Analysis prompts are tested against reference documents to ensure consistent, high-quality output.',
+    title: 'Reference documents with known outputs',
+    description: 'Curated civic documents — ballot measures, campaign finance filings, meeting agendas — with pre-established baseline analyses. These serve as ground truth for what correct, unbiased output looks like.',
   },
   {
-    title: 'Quality improvement',
-    description: 'Prompt variants are evaluated to ensure analysis quality improves over time — not just stays the same.',
+    title: 'Periodic injection across all nodes',
+    description: 'Canary documents are sent through every node\'s analysis pipeline on a regular schedule. Each node processes them alongside normal traffic — it cannot distinguish canary documents from real ones.',
   },
   {
-    title: 'Immutable history',
-    description: 'Every prompt change is recorded in a version history that can never be modified or deleted.',
+    title: 'Output comparison and drift detection',
+    description: 'Results from every node are compared against the baseline and against each other. Statistical thresholds flag nodes whose output diverges significantly — whether from prompt tampering, model drift, infrastructure issues, or intentional manipulation.',
   },
   {
-    title: 'Network-wide verification',
-    description: 'Any node can verify it\'s running the same prompt version as every other node in the network.',
+    title: 'Bias-specific test cases',
+    description: 'Some canary documents are specifically designed to test for political bias — presenting balanced issues where any lean in the analysis would indicate a problem. These test for both sins of commission (adding bias) and omission (suppressing one side).',
+  },
+  {
+    title: 'Investigation and remediation',
+    description: 'Flagged nodes are quarantined from the network pending investigation. Root cause is determined — was it a model issue, a configuration problem, or intentional tampering? Nodes can be re-certified after remediation, with the full incident recorded in the audit log.',
+  },
+];
+
+const regionIntegrityLayers = [
+  {
+    title: 'JSON Schema validation',
+    status: 'Built',
+    description: 'Every region config is validated against a strict JSON Schema before it can be published. Required fields, URL format validation, semantic version checks, and empty field rejection ensure structural correctness.',
+  },
+  {
+    title: 'CI connectivity checks',
+    status: 'Built',
+    description: 'Before a region config is published, CI verifies that every data source URL is reachable. This catches stale URLs, typos, and broken government endpoints before they reach any node.',
+  },
+  {
+    title: 'Runtime schema validation',
+    status: 'Built',
+    description: 'When a node loads a region config at startup, it re-validates the JSON Schema. Configs that fail validation are rejected and the node falls back to a safe default — it never serves unvalidated data.',
+  },
+  {
+    title: 'Pipeline extraction validation',
+    status: 'Built',
+    description: 'The scraping pipeline validates every extraction against domain rules: required field coverage (error if >50% of items miss a required field), item count drift detection (error if count drops below 50% of previous), and warning thresholds. Failed extractions trigger self-healing — AI re-analyzes the source and generates new extraction rules.',
+  },
+  {
+    title: 'NPM provenance signing',
+    status: 'Planned',
+    description: 'Region config packages will be published with npm provenance attestations via Sigstore, creating a verifiable chain from source code to published package. Nodes will verify provenance before loading — ensuring configs haven\'t been tampered with between CI and deployment.',
+  },
+  {
+    title: 'Cryptographic integrity at load time',
+    status: 'Planned',
+    description: 'Beyond provenance, we\'re implementing checksum verification at the package level. When a node installs or updates a region config, it will verify the package checksum against a signed manifest — detecting any corruption in transit or at rest.',
   },
 ];
 
@@ -69,7 +142,7 @@ const commitments = [
   {
     commitment: 'Never suppress or promote political positions',
     why: 'Neutrality is non-negotiable',
-    control: 'Prompt neutrality enforced via charter; canary system detects bias',
+    control: 'Prompt neutrality enforced via charter; canary documents designed to detect bias',
   },
   {
     commitment: 'Never train on user documents',
@@ -89,15 +162,54 @@ const commitments = [
   {
     commitment: 'Never allow prompt tampering',
     why: 'Analysis consistency across the network',
-    control: 'Cryptographic prompt hashing; prompt lock verification',
+    control: 'HMAC authentication; cryptographic hashing; prompt lock',
+  },
+  {
+    commitment: 'Never serve unvalidated civic data',
+    why: 'Bad data undermines democratic decision-making',
+    control: 'Schema validation; extraction validation; self-healing pipeline',
+  },
+];
+
+const transparencyHub = [
+  {
+    title: 'System Card',
+    description: 'How the AI works, what models are used, and what data flows where. Available to every user inside the platform.',
+  },
+  {
+    title: 'AI Commitments',
+    description: 'The promises on this page — viewable inside the app itself, not just on a marketing site.',
+  },
+  {
+    title: 'Prompt Charter',
+    description: 'The design principles governing how analysis prompts are written: neutrality, completeness, source attribution, and balance.',
+  },
+];
+
+const auditTrails = [
+  {
+    title: 'Node audit log',
+    description: 'Every node lifecycle event — registration, certification, decertification, key rotation — is recorded with the admin who performed it and the reason why. Immutable and queryable.',
+  },
+  {
+    title: 'Prompt request log',
+    description: 'Every prompt served is logged with endpoint, version, region, and experiment variant (if applicable). API key prefixes enable abuse detection without exposing credentials.',
+  },
+  {
+    title: 'Prompt version history',
+    description: 'Every template change is recorded with SHA-256 hashes in an append-only history. Auditors can reconstruct exactly which prompt version produced any analysis.',
+  },
+  {
+    title: 'Platform audit log',
+    description: 'Application-level audit logging with automatic PII masking, client IP and user-agent forwarding, and configurable retention policies.',
   },
 ];
 ---
 
-<BaseLayout title="AI Transparency" description="How Opus Populi uses AI: concrete commitments, verifiable controls, and a trust model built on architecture — not promises.">
+<BaseLayout title="Trust Architecture" description="How Opus Populi defends against bias, tampering, and surveillance: the prompt service, canary documents, region config integrity, and audit trails — with honest labels for what's built vs. planned.">
   <Hero
-    title="How we use AI"
-    subtitle="Glass-box behavior, black-box implementation. You see what the AI does and how it reaches conclusions. Every claim on this page is backed by a verifiable technical control — not a policy document."
+    title="Trust architecture"
+    subtitle="Civic AI carries a unique responsibility. When software helps people understand ballot measures, campaign finance, or legislative meetings, even small biases can influence democratic outcomes. Our trust model is built on architectural constraints — not policies someone could quietly change."
     ctaText="See the Platform"
     ctaHref="/platform"
     secondaryCtaText="Read the Privacy Architecture"
@@ -105,10 +217,39 @@ const commitments = [
   />
 
   <Section
+    title="What we're defending against"
+    subtitle="Trust begins with naming the threats. These are the specific risks we architect against."
+  >
+    <div class="max-w-3xl">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-dark/10">
+              <th class="text-left py-3 pr-4 font-medium text-slate-dark">Threat</th>
+              <th class="text-left py-3 pr-4 font-medium text-slate-dark">Risk</th>
+              <th class="text-left py-3 font-medium text-slate-dark">Defense layers</th>
+            </tr>
+          </thead>
+          <tbody>
+            {threatModel.map(row => (
+              <tr class="border-b border-slate-dark/5">
+                <td class="py-3 pr-4 text-slate-dark font-medium align-top">{row.threat}</td>
+                <td class="py-3 pr-4 text-slate-dark/80 align-top">{row.description}</td>
+                <td class="py-3 text-slate-dark/70 text-xs align-top">{row.defense}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </Section>
+
+  <Section
     title="Trust principles"
     subtitle="The AI is a tool in your hands — not a voice in your ear."
+    background="gray"
   >
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 gap-8">
       {principles.map(p => (
         <div class="border-l-2 border-sage pl-6 py-2">
           <h3 class="text-base font-medium text-slate-dark mb-2">{p.title}</h3>
@@ -119,8 +260,104 @@ const commitments = [
   </Section>
 
   <Section
+    id="prompt-service"
+    title="The prompt service"
+    subtitle="Why analysis prompts are private — and how the architecture makes that safe."
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
+      <p>
+        Every node in the network uses the same analysis prompts — the instructions that tell the AI how to summarize a ballot measure, extract campaign finance data, or analyze a civic document. These prompts are private. Not because we have something to hide, but because making them public would let bad actors game the system.
+      </p>
+      <p>
+        If you know exactly how the AI evaluates a document, you can craft documents designed to produce specific outputs. A campaign could write ballot measure text optimized for favorable AI summaries. An advocacy group could structure arguments to exploit known patterns in the analysis. Private prompts eliminate this attack surface.
+      </p>
+      <p>
+        But private prompts create a trust problem: how do you know we're not biasing the analysis ourselves? The answer is six architectural layers that make the prompt service verifiable without making it visible.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      {promptServiceLayers.map(layer => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="text-base font-medium text-slate-dark mb-2">{layer.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{layer.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-slate-dark/5 rounded-lg p-6 mt-10 max-w-2xl">
+      <p class="text-sm text-slate-dark/80 leading-relaxed">
+        <span class="font-medium text-slate-dark">The net result:</span> every node gets identical prompts, delivered securely, with a cryptographic receipt proving authenticity. No node can modify its prompts. No one can intercept them in transit. And if we change them, every node in the network knows — because the hashes change. We can improve analysis quality over time through controlled experiments, but we can never tamper with it silently.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    id="canary-system"
+    title="Canary documents"
+    subtitle="How the network detects bias, drift, and manipulation across all nodes."
+    background="gray"
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
+      <p>
+        Prompt lock ensures every node uses the same instructions. But that's not enough. A compromised model, a misconfigured server, or subtle infrastructure differences could produce biased output even with identical prompts. The canary document system is designed to catch what prompt lock cannot.
+      </p>
+      <p class="text-sm bg-white rounded-lg border border-slate-dark/10 p-4">
+        <span class="font-medium text-slate-dark">Status:</span> The canary document system is designed and specified. Implementation is scheduled alongside the multi-region federation rollout — when it becomes operationally necessary to verify consistency across independently operated nodes.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      {canaryDetails.map(detail => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="text-base font-medium text-slate-dark mb-2">{detail.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{detail.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-slate-dark/5 rounded-lg p-6 mt-10 max-w-2xl">
+      <p class="text-sm text-slate-dark/80 leading-relaxed">
+        <span class="font-medium text-slate-dark">Why this matters for bias:</span> Bias in civic AI is insidious because it's invisible to users. A voter reading a ballot measure summary has no way to know if the AI subtly emphasized fiscal costs over benefits, or presented one side's arguments more favorably. Canary documents with known-correct baselines make invisible bias detectable — and they do it continuously, not just during audits.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    id="region-integrity"
+    title="Region config integrity"
+    subtitle="How civic data sources are validated, published, and verified — from JSON file to running node."
+  >
+    <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
+      <p>
+        Every jurisdiction's civic data — where to find propositions, how to access campaign finance records, which URLs serve representative directories — is defined in a JSON config file. A corrupted or malicious config could feed false data to an entire community. The integrity pipeline has four built layers and two planned layers.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      {regionIntegrityLayers.map(layer => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-base font-medium text-slate-dark">{layer.title}</h3>
+            <span class={`text-xs px-2 py-0.5 rounded-full font-medium ${layer.status === 'Built' ? 'bg-sage/15 text-sage-dark' : 'bg-slate-dark/10 text-slate-dark/60'}`}>
+              {layer.status}
+            </span>
+          </div>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{layer.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-slate-dark/5 rounded-lg p-6 mt-10 max-w-2xl">
+      <p class="text-sm text-slate-dark/80 leading-relaxed">
+        <span class="font-medium text-slate-dark">The self-healing dimension:</span> Even with validated configs, government websites change constantly. The scraping pipeline uses AI structural analysis to generate versioned extraction rules. When it detects a structural change (via SHA-256 hashing of page structure), it re-analyzes and generates new rules automatically. If extraction quality degrades — missing fields, item count drops — the pipeline triggers self-healing before bad data reaches users.
+      </p>
+    </div>
+  </Section>
+
+  <Section
     title="What this AI will never do"
-    subtitle="Every commitment is a promise with receipts — not just words, but verifiable technical architecture."
+    subtitle="Every commitment is backed by a verifiable technical control — not just words."
     background="gray"
   >
     <div class="overflow-x-auto">
@@ -149,8 +386,24 @@ const commitments = [
   </Section>
 
   <Section
+    id="audit-trails"
+    title="Audit trails"
+    subtitle="Every security-relevant action is logged, timestamped, and queryable."
+  >
+    <div class="grid md:grid-cols-2 gap-8">
+      {auditTrails.map(trail => (
+        <div class="border-l-2 border-sage pl-6 py-2">
+          <h3 class="text-base font-medium text-slate-dark mb-2">{trail.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{trail.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
     title="Transparency hub"
-    subtitle="Every user can access our AI transparency documentation directly inside the platform — not just on a marketing page."
+    subtitle="Every user can access AI transparency documentation directly inside the platform — not just on a marketing page."
+    background="gray"
   >
     <div class="grid md:grid-cols-3 gap-8">
       {transparencyHub.map(item => (
@@ -166,32 +419,20 @@ const commitments = [
   </Section>
 
   <Section
-    title="Prompt quality assurance"
-    subtitle="Analysis quality isn't static. We actively measure and improve it."
-    background="gray"
-  >
-    <div class="grid md:grid-cols-2 gap-8">
-      {qualityAssurance.map(item => (
-        <div>
-          <h3 class="font-medium mb-1">{item.title}</h3>
-          <p class="text-slate-dark/80 text-sm">{item.description}</p>
-        </div>
-      ))}
-    </div>
-  </Section>
-
-  <Section
-    title="Why this matters for civic technology"
+    title="Why this matters"
   >
     <div class="max-w-2xl space-y-6 text-slate-dark/80">
       <p>
-        Most AI-powered platforms ask you to trust them. We ask you to verify us. The entire codebase is open source under AGPL-3.0. The analysis methodology is published. The prompt integrity is cryptographically provable.
+        Most AI-powered platforms ask you to trust them. We ask you to verify us. The entire codebase is open source under AGPL-3.0. The analysis methodology is published. The prompt integrity is cryptographically provable. The audit trails are immutable.
       </p>
       <p>
-        Civic technology carries a unique responsibility. When AI helps people understand ballot measures, campaign finance, or legislative meetings, even small biases can influence democratic outcomes. That's why our trust model is built on architecture — constraints the system can't violate — rather than policies someone could quietly change.
+        Civic technology carries a unique responsibility. When AI helps people understand ballot measures, campaign finance, or legislative meetings, even small biases can influence democratic outcomes. A ballot summary that subtly emphasizes costs over benefits. A campaign finance view that buries outside spending. A representative directory that quietly omits contact information. These failures don't crash the system — they corrupt democracy.
+      </p>
+      <p>
+        That's why our trust model has multiple independent layers. Prompt lock prevents divergent analysis. Canary documents detect invisible bias. Region config validation prevents corrupted data. Audit trails make every action accountable. And open source code means anyone can verify all of it.
       </p>
       <p class="font-medium text-slate-dark">
-        Trust in civic AI should be earned through transparency, not demanded through terms of service.
+        Trust in civic AI should be earned through architecture, not demanded through terms of service.
       </p>
     </div>
   </Section>
@@ -200,7 +441,7 @@ const commitments = [
     <div class="max-w-xl">
       <h2 class="text-2xl font-semibold mb-4 tracking-tight">Don't take our word for it</h2>
       <p class="text-white/70 mb-8">
-        Every claim on this page is verifiable. Read the code. Audit the prompts. Deploy the platform yourself and see how it works.
+        Every claim on this page is verifiable. Read the code. Audit the architecture. Deploy the platform yourself and see how it works.
       </p>
       <div class="flex gap-3">
         <a

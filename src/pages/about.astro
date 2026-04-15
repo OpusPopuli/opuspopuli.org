@@ -44,22 +44,22 @@ const tools = [
 ];
 
 const timeline = [
-  { year: '2024', event: 'Project founded', detail: 'Initial architecture design and core platform development begins.' },
+  { year: '2024', event: 'Project founded', detail: 'Architecture design begins. Monorepo structure, provider pattern, and microservices architecture established.' },
   { year: '2024', event: 'Open source under AGPL-3.0', detail: 'Entire codebase published on GitHub. Community contributions welcome from day one.' },
-  { year: '2025', event: 'Local AI commitment', detail: 'All AI processing runs on community infrastructure — no external API calls, no data leaving your network.' },
-  { year: '2025', event: 'Federation model designed', detail: 'Architecture for independent community instances that share improvements without sharing data.' },
-  { year: '2025', event: 'Self-healing data pipeline', detail: 'Data acquisition automatically detects and adapts when government websites change format — no manual intervention required.' },
-  { year: '2025', event: 'Prompt quality assurance', detail: 'Continuous testing of analysis prompts with immutable version history ensures quality improves over time.' },
-  { year: '2026', event: 'California pilot launch', detail: 'First community deployment with full civic data for California jurisdictions.' },
+  { year: '2025', event: 'Local AI stack operational', detail: 'Full RAG pipeline running locally — Transformers.js embeddings, pgvector search, Ollama LLM inference. No external API calls.' },
+  { year: '2025', event: 'Self-healing data pipeline', detail: 'AI-powered schema-on-read extraction with structural manifests. Pipeline adapts automatically when government websites change.' },
+  { year: '2025', event: 'Federation architecture built', detail: 'Prompt service with HMAC authentication, cryptographic verification, A/B testing, and node certification. Independent instances that share improvements.' },
+  { year: '2025', event: 'Observability stack', detail: 'Production monitoring with Prometheus metrics, Grafana dashboards, Loki log aggregation, and OpenTelemetry tracing.' },
+  { year: '2026', event: 'Civic features completed', detail: 'Petition scanner with OCR, proposition explorer, campaign finance tracker, geocoded representative lookup with contact forms, meeting calendar, and document Q&A.' },
+  { year: '2026', event: 'California pilot launch', detail: 'First community deployment with civic data from the Secretary of State, Assembly, Senate, and CAL-ACCESS campaign finance database.' },
 ];
 
 const roadmap = [
-  'Region Plugin Marketplace — community-contributed data sources',
-  'Mobile application — native iOS and Android',
-  'Petition activity feeds — real-time civic engagement visibility',
-  'Self-healing data pipelines — automatic adaptation to government website changes',
-  'In-app transparency hub — System Card, AI Commitments, and Prompt Charter',
-  'Community governance framework — collective decision-making for the network',
+  'Region Plugin Marketplace — discover and install community-contributed data sources',
+  'Mobile application — native iOS and Android with offline civic data access',
+  'Multi-region federation — connect independently operated community instances into a shared network',
+  'Community governance framework — collective decision-making for network policies and standards',
+  'Expanded language support — community-contributed translations beyond English and Spanish',
 ];
 ---
 
@@ -117,7 +117,7 @@ const roadmap = [
   </Section>
 
   <Section
-    title="What we build"
+    title="What's built"
     subtitle="Seven tools that give communities direct access to civic information."
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

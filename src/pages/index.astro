@@ -5,60 +5,62 @@ import Section from '../components/Section.astro';
 
 const tools = [
   {
-    title: 'Scan Petitions',
-    description: 'Point your phone at any petition and get an instant, plain-language breakdown of what it means.',
+    title: 'Petition Scanner',
+    description: 'Point your phone at a petition. Get an instant plain-language breakdown with automatic ballot measure matching.',
+    badge: 'AI-Powered',
     href: '/platform#petition-scanner',
   },
   {
-    title: 'Explore Propositions',
-    description: 'Browse every ballot measure in your jurisdiction with plain-language summaries and full text.',
+    title: 'Proposition Explorer',
+    description: '47 pages of legal text become a 5-minute interactive summary — with fiscal impact, arguments for and against, and full source text.',
     href: '/platform#proposition-explorer',
   },
   {
-    title: 'Follow the Money',
-    description: 'See who\'s funding what. Track contributions, expenditures, and outside spending on any measure.',
+    title: 'Campaign Finance Tracker',
+    description: 'See exactly who funded what initiative. Contributions, expenditures, and outside spending — in plain English.',
     href: '/platform#campaign-finance',
   },
   {
-    title: 'Find Representatives',
-    description: 'Look up who represents you at every level of government and contact them directly.',
+    title: 'Representative Directory',
+    description: 'Enter your address. See every representative from city council to Congress — with bios, committees, and built-in contact forms.',
     href: '/platform#representative-directory',
   },
   {
-    title: 'Attend Meetings',
-    description: 'Never miss a hearing that matters. Browse upcoming meetings with agendas and video links.',
+    title: 'Meeting Calendar',
+    description: 'Every public legislative meeting, searchable by body — with agendas, minutes, and video links.',
     href: '/platform#meeting-calendar',
   },
   {
-    title: 'Ask Documents',
-    description: 'Upload any civic document and ask questions in plain language. Get answers with citations.',
+    title: 'Document Q&A',
+    description: 'Upload any civic document. Ask questions in plain English. Get answers with citations — processed entirely on your infrastructure.',
+    badge: 'AI-Powered',
     href: '/platform#document-qa',
   },
 ];
 
 const values = [
-  { title: 'Community-owned', description: 'Infrastructure you own, not a platform you rent.' },
-  { title: 'Privacy by design', description: 'All AI runs locally. Location data is geo-fuzzed. Logs mask PII automatically.' },
-  { title: 'Transparent', description: 'Every line of code is open source under AGPL-3.0.' },
-  { title: 'Accessible to all', description: 'WCAG 2.2 AA. Works offline. English and Spanish.' },
+  { title: 'Community-owned', description: 'Infrastructure you own, not a platform you rent. Every line of code is open source under AGPL-3.0.' },
+  { title: 'Privacy by design', description: 'All AI runs locally on your hardware. No data leaves your infrastructure. Location data is geo-fuzzed. Logs mask PII automatically.' },
+  { title: 'Built to last', description: 'Four microservices, 16 pluggable provider packages, 1,000+ automated tests, and production deployment configs.' },
+  { title: 'Accessible to all', description: 'WCAG 2.2 AA compliant. Works offline as a progressive web app. English and Spanish.' },
 ];
 
 const audiences = [
   {
     title: 'Community organizations',
-    description: 'Non-profits, civic groups, and voter education organizations that want to give their communities direct access to civic information.',
+    description: 'A neighborhood association preparing voters for a local bond measure. A civic group tracking campaign spending on a ballot initiative. Direct access to the information your community needs.',
     href: '/get-involved',
     linkText: 'Get Involved',
   },
   {
     title: 'Developers',
-    description: 'Open source contributors and civic technologists who want to build tools that strengthen democracy.',
+    description: 'Add your jurisdiction in a weekend with JSON configs — no scraper code required. The AI-powered pipeline figures out how to extract data from government websites automatically.',
     href: '/open-source',
     linkText: 'Contribute',
   },
   {
     title: 'Local governments',
-    description: 'Municipalities and agencies that want to increase transparency and citizen engagement with public data.',
+    description: 'Make council meeting records searchable. Give residents plain-language access to municipal codes and ballot measures. Increase transparency without building custom software.',
     href: '/about',
     linkText: 'Learn More',
   },
@@ -67,61 +69,66 @@ const audiences = [
 const milestones = [
   { label: 'License', value: 'AGPL-3.0' },
   { label: 'First pilot', value: 'California, 2026' },
-  { label: 'Languages', value: 'EN + ES' },
+  { label: 'Architecture', value: '4 microservices' },
   { label: 'AI approach', value: '100% local' },
 ];
 
 const techStack = [
   { name: 'Next.js', url: 'https://nextjs.org' },
   { name: 'NestJS', url: 'https://nestjs.com' },
-  { name: 'GraphQL', url: 'https://graphql.org' },
-  { name: 'PostgreSQL', url: 'https://postgresql.org' },
-  { name: 'Terraform', url: 'https://terraform.io' },
+  { name: 'GraphQL Federation', url: 'https://graphql.org' },
+  { name: 'PostgreSQL + pgvector', url: 'https://postgresql.org' },
   { name: 'Ollama', url: 'https://ollama.com' },
   { name: 'Prisma', url: 'https://prisma.io' },
   { name: 'Supabase', url: 'https://supabase.com' },
   { name: 'Docker', url: 'https://docker.com' },
-  { name: 'Kubernetes', url: 'https://kubernetes.io' },
+  { name: 'Terraform', url: 'https://terraform.io' },
+  { name: 'Cloudflare', url: 'https://cloudflare.com' },
 ];
 ---
 
-<BaseLayout title="Built by Citizens. For Citizens." description="Open-source civic technology built by citizens. Petition scanning, proposition analysis, campaign finance tracking, and AI-powered document Q&A — all running locally.">
+<BaseLayout title="Civic Information, Made Usable" description="Open-source civic technology that turns scattered government data into tools citizens actually use. Petition scanning, ballot analysis, campaign finance tracking, and AI-powered document Q&A — all running locally on your infrastructure.">
   <Hero
-    title="Built by citizens. For citizens."
-    subtitle="Democracy works when people have the tools to participate. We're building civic technology that communities own, control, and shape — not platforms built by businesses to extract value from public life."
-    ctaText="Get Involved"
-    ctaHref="/get-involved"
-    secondaryCtaText="See the Platform"
-    secondaryCtaHref="/platform"
+    title="Your ballot. Your representatives. Your data. Understood in minutes."
+    subtitle="We built an open-source platform that turns scattered government data into civic tools communities own and control. AI-powered analysis runs entirely on your infrastructure — no data leaves, no third parties involved."
+    ctaText="Explore the Platform"
+    ctaHref="/platform"
+    secondaryCtaText="View Source on GitHub"
+    secondaryCtaHref="https://github.com/OpusPopuli/opuspopuli"
   />
 
   <Section
     id="problem"
-    title="The problem"
+    title="The problem is access, not information"
   >
     <div class="max-w-2xl space-y-4 text-slate-dark/80">
       <p>
-        The information citizens need to participate in democracy is public. But it's scattered across dozens of government websites, buried in legal language, and nearly impossible to navigate without expertise.
+        A California ballot proposition is 47 pages of legal text. A city council meeting agenda references a dozen municipal codes. Campaign finance data is spread across multiple state databases in formats designed for compliance, not comprehension.
       </p>
       <p>
-        The platforms that promise to help often profit from the confusion — tracking what legislation you research, profiling your political interests, and sending your queries to third-party AI services. Your civic engagement becomes someone else's data.
+        The information is public. But the platforms that promise to make it accessible track what legislation you research, profile your political interests, and route your queries through third-party AI services. Your civic engagement becomes someone else's data product.
       </p>
       <p class="font-medium text-slate-dark">
-        We believe there's a better way: <a href="/why" class="underline underline-offset-2 hover:opacity-70 transition-opacity">tools that serve citizens</a>, not the other way around.
+        We built the alternative: <a href="/why" class="underline underline-offset-2 hover:opacity-70 transition-opacity">tools that serve citizens</a>, not the other way around.
       </p>
     </div>
   </Section>
 
   <Section
     id="features"
-    title="What we build"
-    subtitle="Civic tools for every step of the democratic process."
+    title="What's built"
+    subtitle="Six civic tools covering the full democratic process — from petition to public meeting."
     background="gray"
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {tools.map(tool => (
         <a href={tool.href} class="text-slate-dark border-l-2 border-slate-dark/10 pl-6 py-2 hover:border-sage transition-colors">
-          <h3 class="font-medium mb-1">{tool.title}</h3>
+          <div class="flex items-center gap-2 mb-1">
+            <h3 class="font-medium">{tool.title}</h3>
+            {tool.badge && (
+              <span class="text-xs bg-sage/15 text-sage-dark px-2 py-0.5 rounded-full font-medium">{tool.badge}</span>
+            )}
+          </div>
           <p class="text-slate-dark/80 text-sm">{tool.description}</p>
         </a>
       ))}
@@ -142,25 +149,49 @@ const techStack = [
   </Section>
 
   <Section
+    id="why-now"
+    title="Why this works now"
+    subtitle="Three technical shifts made community-owned civic intelligence possible."
+    background="gray"
+  >
+    <div class="grid md:grid-cols-3 gap-12">
+      <div>
+        <div class="text-sm font-medium text-sage-dark mb-3">01</div>
+        <h3 class="text-lg font-medium mb-2">LLMs parse legal text</h3>
+        <p class="text-slate-dark/80 text-sm">Open-source language models can now read legislation, extract fiscal impacts, and generate plain-language summaries that rival expert analysis. We run Ollama locally with models like Qwen and Mistral — no API calls, no per-query costs.</p>
+      </div>
+      <div>
+        <div class="text-sm font-medium text-sage-dark mb-3">02</div>
+        <h3 class="text-lg font-medium mb-2">Vector search enables civic RAG</h3>
+        <p class="text-slate-dark/80 text-sm">Upload a 200-page budget document and ask questions in plain English. Embeddings generated locally with Transformers.js, stored in pgvector, and retrieved with semantic search — the entire pipeline runs on your hardware.</p>
+      </div>
+      <div>
+        <div class="text-sm font-medium text-sage-dark mb-3">03</div>
+        <h3 class="text-lg font-medium mb-2">AI scraping self-heals</h3>
+        <p class="text-slate-dark/80 text-sm">Government websites change layouts constantly. Our schema-on-read pipeline uses AI structural analysis to generate extraction rules automatically. When a site changes, the pipeline adapts — no developer intervention required.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section
     id="how-it-works"
     title="How it works"
-    background="gray"
   >
     <div class="grid md:grid-cols-3 gap-12">
       <div>
         <div class="text-sm font-medium text-slate-dark mb-3">01</div>
         <h3 class="text-lg font-medium mb-2">Choose your jurisdiction</h3>
-        <p class="text-slate-dark/80 text-sm">Pick your state, county, or city. The platform loads your local civic data automatically.</p>
+        <p class="text-slate-dark/80 text-sm">Pick your state, county, or city. The platform loads your local civic data automatically through region plugins — JSON configurations that tell the AI what to collect.</p>
       </div>
       <div>
         <div class="text-sm font-medium text-slate-dark mb-3">02</div>
         <h3 class="text-lg font-medium mb-2">Explore what matters</h3>
-        <p class="text-slate-dark/80 text-sm">Scan petitions, read propositions, follow campaign money, find your representatives.</p>
+        <p class="text-slate-dark/80 text-sm">Scan petitions with your camera, read propositions in plain language, follow campaign money, look up your representatives by address.</p>
       </div>
       <div>
         <div class="text-sm font-medium text-slate-dark mb-3">03</div>
         <h3 class="text-lg font-medium mb-2">Take action</h3>
-        <p class="text-slate-dark/80 text-sm">Contact representatives, attend meetings, share what you learn with your community.</p>
+        <p class="text-slate-dark/80 text-sm">Email your representatives directly from the platform, attend public meetings, share analysis with your community. Everything works offline.</p>
       </div>
     </div>
   </Section>
@@ -169,6 +200,7 @@ const techStack = [
     id="who-its-for"
     title="Who it's for"
     subtitle="Built for the people and organizations that make democracy work."
+    background="gray"
   >
     <div class="grid md:grid-cols-3 gap-8">
       {audiences.map(a => (
@@ -185,7 +217,6 @@ const techStack = [
 
   <Section
     id="milestones"
-    background="gray"
   >
     <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
       {milestones.map(m => (
@@ -200,7 +231,8 @@ const techStack = [
   <Section
     id="technology"
     title="Technology"
-    subtitle="Built entirely with open-source components."
+    subtitle="Built entirely with open-source components. No proprietary dependencies."
+    background="gray"
   >
     <div class="flex flex-wrap gap-3">
       {techStack.map(tech => (
@@ -220,7 +252,7 @@ const techStack = [
     <div class="max-w-xl">
       <h2 class="text-2xl font-semibold mb-4 tracking-tight">Ready to build with us?</h2>
       <p class="text-white/70 mb-8">
-        Bring citizen-owned civic technology to your community. Join a growing network of people reclaiming democratic infrastructure.
+        Bring citizen-owned civic technology to your community. Deploy the full stack on your own infrastructure, or contribute to the platform that a growing network of communities depends on.
       </p>
       <div class="flex gap-3">
         <a
