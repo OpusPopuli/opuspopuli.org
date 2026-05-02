@@ -12,12 +12,12 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="bg-slate-dark text-white">
+<header class="bg-white border-b border-slate-dark/10">
   <nav class="container mx-auto px-6 py-5 max-w-5xl">
     <div class="flex items-center justify-between">
       <a href="/" class="flex items-center">
         <img
-          src="/logos/svg/op-horizontal-dark.svg"
+          src="/logos/svg/op-horizontal-light.svg"
           alt="Opus Populi"
           class="h-8"
         />
@@ -29,8 +29,8 @@ const currentPath = Astro.url.pathname;
             <a
               href={link.href}
               class:list={[
-                'text-sm text-white/80 hover:text-white transition-colors',
-                { 'text-white': currentPath === link.href }
+                'text-sm text-slate-dark/70 hover:text-slate-dark transition-colors',
+                { 'text-slate-dark font-medium': currentPath === link.href }
               ]}
             >
               {link.label}
@@ -41,7 +41,7 @@ const currentPath = Astro.url.pathname;
 
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 text-white/80"
+        class="md:hidden p-2 text-slate-dark/70"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
@@ -51,15 +51,15 @@ const currentPath = Astro.url.pathname;
       </button>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-white/10 pt-6">
+    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-slate-dark/10 pt-6">
       <ul class="flex flex-col gap-4">
         {navLinks.map(link => (
           <li>
             <a
               href={link.href}
               class:list={[
-                'block text-sm text-white/80 hover:text-white transition-colors',
-                { 'text-white': currentPath === link.href }
+                'block text-sm text-slate-dark/70 hover:text-slate-dark transition-colors',
+                { 'text-slate-dark font-medium': currentPath === link.href }
               ]}
             >
               {link.label}
