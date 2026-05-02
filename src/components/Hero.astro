@@ -21,7 +21,7 @@ const {
 <section class="bg-slate-dark text-white py-24 md:py-32">
   <div class="container mx-auto px-6">
     <div class="max-w-2xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
         {title}
       </h1>
       {subtitle && (
@@ -34,7 +34,7 @@ const {
           {ctaText && ctaHref && (
             <a
               href={ctaHref}
-              class="inline-flex items-center justify-center bg-slate-dark text-white border border-white px-6 py-3 rounded-md hover:bg-slate-dark/90 transition-colors font-medium"
+              class="inline-flex items-center justify-center bg-sage-dark text-white font-semibold px-8 py-3 rounded-lg hover:bg-sage-darker transition-colors"
             >
               {ctaText}
             </a>
@@ -42,7 +42,7 @@ const {
           {secondaryCtaText && secondaryCtaHref && (
             <a
               href={secondaryCtaHref}
-              class="inline-flex items-center justify-center text-white/80 px-6 py-3 rounded-md hover:text-white transition-colors font-medium"
+              class="inline-flex items-center justify-center text-white/80 px-6 py-3 hover:text-white transition-colors font-medium"
             >
               {secondaryCtaText}
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
