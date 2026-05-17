@@ -29,10 +29,29 @@ code, pre {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   line-height: 1.3;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', Georgia, serif;
   letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h4, h5, h6 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+}
+
+/* Apply to h3 in editorial/section contexts via .font-display utility */
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 /* Links - only style unstyled content links in main area, not header/footer */
