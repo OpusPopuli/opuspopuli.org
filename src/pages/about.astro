@@ -96,7 +96,40 @@ const roadmap = [
     </div>
   </Section>
 
-  <Section title="Our story" background="gray">
+  <Section title="How we're built to last" background="gray">
+    <p class="text-slate-dark/80 mb-12 max-w-2xl">
+      Civic infrastructure deserves to outlive the people who built it. Four structural commitments make that possible — and each is verifiable, not just asserted.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+      <div>
+        <h3 class="font-medium mb-2">A nonprofit foundation paired with a corporation</h3>
+        <p class="text-slate-dark/80 text-sm leading-relaxed">
+          Opus Populi is being established as a 501(c)(3) foundation paired with a corporation. The foundation safeguards the civic mission; the corporation funds it through commercial-tier licensing. Neither can quietly capture the other, so mission drift is structurally constrained rather than promised.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-medium mb-2">AGPL-3.0 with a dual commercial license</h3>
+        <p class="text-slate-dark/80 text-sm leading-relaxed">
+          Modifications stay open. The commercial license funds the foundation. Closing the source — the standard move for a venture-backed civic platform under investor pressure — would forfeit the entire open source ecosystem the platform depends on. Verifiable evidence of alignment, not a policy that could quietly be revised.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-medium mb-2">Public-domain civic data only</h3>
+        <p class="text-slate-dark/80 text-sm leading-relaxed">
+          Every primary data source — the Federal Election Commission, Congress.gov, California's Cal-Access — is public domain. No commercially-restricted vendor to negotiate with, no downstream license to disclose, no provenance chain that breaks when terms change. Anyone can audit it.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-medium mb-2">Citizens are not the product</h3>
+        <p class="text-slate-dark/80 text-sm leading-relaxed">
+          Citizens always access the platform for free. Revenue comes from institutional users of public data — commercial API licensing, journalism partnerships, institutional subscriptions — not from surveilling the citizens the platform serves. Individual users are not the product, never have been, and structurally cannot be.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section title="Our story">
     <div class="max-w-2xl">
       <p class="text-slate-dark/80 mb-10">
         Opus Populi started with a simple observation: the information citizens need to participate in democracy is public, but it's scattered across dozens of government websites, buried in legal language, and nearly impossible to navigate without expertise. We're building the infrastructure to change that — not a startup looking for an exit, not a platform looking to monetize civic engagement, but a collective effort to put democratic tools in the hands of the people they serve.
@@ -119,6 +152,7 @@ const roadmap = [
   <Section
     title="What's built"
     subtitle="Seven tools that give communities direct access to civic information."
+    background="gray"
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {tools.map(tool => (
@@ -140,7 +174,7 @@ const roadmap = [
     </div>
   </Section>
 
-  <Section title="Roadmap" background="gray">
+  <Section title="Roadmap">
     <div class="max-w-2xl">
       <ul class="space-y-3">
         {roadmap.map(item => (

@@ -14,19 +14,58 @@ const workflowSteps = [
   { label: 'Meetings', description: 'Decisions are debated in public' },
 ];
 
-const features = [
+const layers = [
   {
-    id: 'petition-scanner',
-    title: 'Petition Scanner',
-    badge: 'AI-Powered',
-    description: 'Point your phone at a petition. OCR extracts the text, AI generates a plain-language breakdown, and the system automatically matches it to related ballot measures — all in seconds.',
+    number: '01',
+    title: 'The Influence Graph',
+    status: 'Components built · integrated view in development',
+    summary: 'Representative → donors → votes, with conflict-of-interest arcs surfaced algorithmically when donor industry and bill topic alignment exceeds threshold. The public-facing front door of the platform.',
+  },
+  {
+    number: '02',
+    title: 'Civic Advocacy Engine',
+    status: 'In development',
+    summary: 'Compose correspondence to your representatives with platform documents — vote records, campaign finance data, meeting minutes, ballot measure texts — cited inline. Lobbyist-grade communication, for citizens.',
+  },
+  {
+    number: '03',
+    title: 'Publisher Network',
+    status: 'In development',
+    summary: 'Embeddable civic data widgets that surface conflict-of-interest summaries, vote trackers, and donor maps directly inside regional journalism — building institutional credibility for the platform and a content flywheel for partner newsrooms.',
+  },
+  {
+    number: '04',
+    title: 'Regional Node Network',
+    status: 'Federation architecture built',
+    summary: "The platform's infrastructure and civic-expansion mechanism. Each certified node is a deployment of Opus Populi serving a specific jurisdiction, operated under a license that aligns commercial incentives with the civic mission.",
+  },
+];
+
+const influenceGraphFeatures = [
+  {
+    id: 'campaign-finance',
+    title: 'Campaign Finance Tracker',
+    badge: 'Graph core',
+    description: 'Follow the money behind any ballot measure, committee, or campaign. Contributions, expenditures, and outside spending — aggregated from public-domain state and federal databases into a single coherent view.',
     capabilities: [
-      'Camera-based capture with Tesseract.js OCR processing',
-      'AI-generated plain-language analysis with automatic ballot measure matching',
-      'Real-time activity feed showing petition momentum with hourly trends',
-      'Map view with privacy-preserving geo-fuzzed locations',
-      'Community abuse reporting for misleading or fraudulent petitions',
-      'Geolocation tagging for civic district context',
+      'Committee-level contribution tracking with donor details',
+      'Expenditure breakdowns by category and recipient',
+      'Independent expenditure tracking for outside spending',
+      'Aggregated from public-domain databases (FEC, Cal-Access)',
+      'Donor industry classification for downstream conflict-arc matching',
+    ],
+  },
+  {
+    id: 'representative-directory',
+    title: 'Representative Directory',
+    description: 'Enter your address and see every elected official who represents you — from city council to Congress. Bios, committee assignments, and contact paths in one place.',
+    capabilities: [
+      'Address-based lookup with geocoded civic district resolution',
+      '"My Representatives" section spanning every level of government',
+      'Detail pages with photos, bios, party, and committee assignments',
+      'Built-in contact forms to email representatives directly',
+      'Filter by chamber, party, or district across the full directory',
+      'Effectiveness scoring from peer-reviewed academic sources (in development)',
     ],
   },
   {
@@ -42,29 +81,6 @@ const features = [
     ],
   },
   {
-    id: 'campaign-finance',
-    title: 'Campaign Finance Tracker',
-    description: 'Follow the money behind any ballot measure. See who contributed, how the money was spent, and what outside groups are involved — aggregated from state finance databases into a single view.',
-    capabilities: [
-      'Committee-level contribution tracking with donor details',
-      'Expenditure breakdowns by category and recipient',
-      'Independent expenditure tracking for outside spending',
-      'Aggregated from multiple state databases (e.g., CAL-ACCESS for California)',
-    ],
-  },
-  {
-    id: 'representative-directory',
-    title: 'Representative Directory',
-    description: 'Enter your address and see every elected official who represents you — from city council to Congress. View their bios, committee assignments, and contact them directly from the platform.',
-    capabilities: [
-      'Address-based lookup with geocoded civic district resolution',
-      '"My Representatives" section showing all levels of government',
-      'Detail pages with photos, bios, party, and committee assignments',
-      'Built-in contact forms to email representatives directly',
-      'Filter by chamber, party, or district across the full directory',
-    ],
-  },
-  {
     id: 'meeting-calendar',
     title: 'Meeting Calendar',
     description: 'Every public legislative meeting in your jurisdiction, searchable by body — with agendas, minutes, and video links for recorded sessions.',
@@ -76,17 +92,31 @@ const features = [
     ],
   },
   {
+    id: 'petition-scanner',
+    title: 'Petition Scanner',
+    badge: 'AI-Powered',
+    description: 'Point your phone at a petition. OCR extracts the text, AI generates a plain-language breakdown, and the system automatically matches it to related ballot measures — all in seconds.',
+    capabilities: [
+      'Camera-based capture with Tesseract.js OCR processing',
+      'AI-generated plain-language analysis with automatic ballot measure matching',
+      'Real-time activity feed showing petition momentum with hourly trends',
+      'Map view with privacy-preserving geo-fuzzed locations',
+      'Community abuse reporting for misleading or fraudulent petitions',
+      'Geolocation tagging for civic district context',
+    ],
+  },
+  {
     id: 'document-qa',
     title: 'Document Q&A',
     badge: 'AI-Powered',
-    description: 'Upload any civic document — a bill, a budget, a regulation — and ask questions in plain English. The RAG pipeline chunks the document, generates vector embeddings, and retrieves relevant passages to answer your question with citations.',
+    description: 'Upload any civic document — a bill, a budget, a regulation — and ask questions in plain English. The RAG pipeline chunks the document, generates vector embeddings, and retrieves relevant passages to answer with citations.',
     capabilities: [
-      'Upload and index documents with automatic chunking (1,000-character segments with overlap)',
+      'Upload and index documents with automatic chunking',
       'Semantic search via 384-dimension vector embeddings (Transformers.js)',
       'Retrieval-augmented generation with local Ollama LLM inference',
       'Answers include source citations pointing to exact passages',
       'Specialized analysis modes for contracts, budgets, regulations, and forms',
-      'All processing runs locally — nothing leaves your infrastructure',
+      'Processing runs on the node serving your community — not third-party AI services',
     ],
   },
 ];
@@ -103,8 +133,8 @@ const scenarios = [
     tools: ['Petition Scanner', 'Meeting Calendar', 'Representative Directory'],
   },
   {
-    title: 'Government transparency',
-    description: 'A journalist investigating campaign spending uses Campaign Finance to identify outside spending patterns on a contested ballot measure, then uploads related budget documents to Document Q&A to cross-reference financial claims — all without their research queries leaving the local server.',
+    title: 'Investigative reporting',
+    description: 'A journalist investigating campaign spending uses Campaign Finance to identify outside spending patterns on a contested ballot measure, then uploads related budget documents to Document Q&A to cross-reference financial claims — all without their research queries leaving the node serving the newsroom.',
     tools: ['Campaign Finance', 'Document Q&A'],
   },
 ];
@@ -172,10 +202,10 @@ const techStack = [
 ];
 ---
 
-<BaseLayout title="Civic Tools Platform" description="See what Opus Populi has built: petition scanning with OCR, AI-powered proposition analysis, campaign finance tracking, geocoded representative lookup, and RAG-powered document Q&A — all running locally.">
+<BaseLayout title="The Platform" description="Opus Populi is built in four product layers — the Influence Graph, the Civic Advocacy Engine, the Publisher Network, and the Regional Node Network. See what's built, what's in development, and how the layers compose.">
   <Hero
-    title="See what's built"
-    subtitle="Six civic tools covering the full democratic process — from petition to public meeting. Four microservices, 16 pluggable provider packages, and a fully local AI stack. Open source under AGPL-3.0."
+    title="Four layers. One civic infrastructure."
+    subtitle="The Influence Graph maps the relationships. The Civic Advocacy Engine acts on them. The Publisher Network distributes them. The Regional Node Network hosts all of it — federally, statewide, county by county. Open source under AGPL-3.0."
     ctaText="Get Involved"
     ctaHref="/get-involved"
     secondaryCtaText="View Source"
@@ -185,22 +215,100 @@ const techStack = [
   <Section
     id="workflow"
     title="The civic workflow"
-    subtitle="A petition becomes a ballot measure becomes law. We give citizens tools for every step."
+    subtitle="A petition becomes a ballot measure becomes law. We give citizens tools for every step — and a single lens that reveals the money behind it all."
     background="gray"
   >
     <WorkflowDiagram steps={workflowSteps} />
   </Section>
 
   <Section
-    id="features"
-    title="What the platform does"
-    subtitle="Six tools that give communities direct access to civic information."
+    id="layers"
+    title="The four layers"
+    subtitle="Each layer produces value independently. Together they compose a civic intelligence flywheel."
   >
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+      {layers.map(layer => (
+        <div>
+          <div class="flex items-baseline gap-3 mb-1">
+            <span class="text-xs font-semibold text-sage-dark tracking-wider">{layer.number}</span>
+            <h3 class="text-lg font-medium text-slate-dark">{layer.title}</h3>
+          </div>
+          <p class="text-xs uppercase tracking-wide text-slate-dark/50 mb-3">{layer.status}</p>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{layer.summary}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    id="influence-graph"
+    title="Layer 1 — The Influence Graph"
+    subtitle="The platform's flagship view: an interactive map of who funds whom, who votes how, and where alignment between donor industry and legislative outcome crosses from coincidence into pattern."
+    background="gray"
+  >
+    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed mb-12">
+      <p>
+        The Influence Graph is the interface through which citizens first encounter the underlying data. Donors and PACs visualized by contribution size and industry. Voting records cross-referenced against donor industry through semantic matching on bill content. Conflict-of-interest arcs surfaced algorithmically when alignment exceeds threshold.
+      </p>
+      <p>
+        The integrated graph view is in active development. The six tools beneath it are built, work standalone, and feed the graph.
+      </p>
+    </div>
+
     <div class="space-y-12">
-      {features.map(feature => (
+      {influenceGraphFeatures.map(feature => (
         <FeatureBlock {...feature} />
       ))}
     </div>
+  </Section>
+
+  <Section
+    id="civic-advocacy"
+    title="Layer 2 — Civic Advocacy Engine"
+    subtitle="In development. Compose correspondence to your representatives with public records cited inline."
+  >
+    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed">
+      <p>
+        Lobbyists communicate with elected officials by citing the public record. Ordinary citizens, lacking the same research apparatus, send messages institutional staff are trained to treat as noise. The Civic Advocacy Engine closes that gap.
+      </p>
+      <p>
+        Citizens compose correspondence with platform documents — vote records, campaign finance data, meeting minutes, ballot measure texts — embedded as inline citations linking back to primary sources. Correspondence flows through a routing proxy designed to preserve correspondent privacy while preserving the integrity of the message.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    id="publisher-network"
+    title="Layer 3 — Publisher Network"
+    subtitle="In development. Embeddable civic data widgets inside regional journalism."
+    background="gray"
+  >
+    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed">
+      <p>
+        Regional journalism partners embed Opus Populi civic data widgets — conflict-of-interest summaries, vote trackers, donor maps — directly within news coverage. The platform gains institutional credibility; partner newsrooms gain a content flywheel built on certified public-domain data.
+      </p>
+      <p>
+        The Publisher Network is non-exclusive and preserves editorial independence. A regional node with two or three journalism partners embedded generates widget traffic and credibility that accelerates adoption across that region.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    id="regional-nodes"
+    title="Layer 4 — Regional Node Network"
+    subtitle="A federated network whose architecture mirrors American democratic governance — federal, state, county, municipal."
+  >
+    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed mb-8">
+      <p>
+        Each certified regional node is a deployment of Opus Populi serving a specific jurisdiction. A shared federal layer ingests Congress.gov and FEC data once. State nodes own state legislative and campaign finance corpora. County and municipal operators progressively take over local jurisdictions as they come online.
+      </p>
+      <p>
+        Cross-jurisdictional pattern intelligence — donor networks spanning states, model legislation spreading simultaneously, astroturfing patterns invisible from any single county — emerges from the federated network itself. No centralized scraper can replicate it.
+      </p>
+    </div>
+    <a href="/network" class="text-sm text-slate-dark/80 hover:text-slate-dark font-medium transition-colors">
+      How the network works &rarr;
+    </a>
   </Section>
 
   <Section
@@ -261,14 +369,14 @@ const techStack = [
   <Section
     id="regions"
     title="Any jurisdiction, no code required"
-    subtitle="Adding your region's data sources doesn't require writing code. Communities configure their own data connections through simple, declarative setup."
+    subtitle="Adding your region's data sources doesn't require writing code. Communities configure their own data connections through declarative setup."
   >
     <div class="max-w-2xl space-y-6 text-slate-dark/80">
       <p>
         Every jurisdiction publishes civic data differently — different websites, different formats, different update schedules. The region plugin system handles this complexity so communities don't have to.
       </p>
       <p>
-        Region configs are simple JSON files that describe <em>what</em> data to collect — URLs, data types, and natural language content goals. The AI-powered scraping pipeline figures out <em>how</em> to extract it. No scraper code required.
+        Region configs are simple JSON files that describe <em>what</em> data to collect — URLs, data types, and natural-language content goals. The AI-powered scraping pipeline figures out <em>how</em> to extract it. No scraper code required.
       </p>
       <div class="space-y-3">
         <div class="border-l-2 border-sage pl-4">
@@ -288,19 +396,13 @@ const techStack = [
           <p class="text-sm text-slate-dark/70">When government websites change format, the AI re-analyzes and adapts automatically</p>
         </div>
       </div>
-      <div class="bg-slate-dark/5 rounded-lg p-5 mt-4">
-        <p class="text-sm font-medium text-slate-dark mb-2">California launch example</p>
-        <p class="text-sm text-slate-dark/70">
-          7 data sources across the Secretary of State, Assembly, Senate, and CAL-ACCESS campaign finance database — all defined in a single JSON config file with no scraper code.
-        </p>
-      </div>
     </div>
   </Section>
 
   <Section
     id="local-ai"
-    title="AI that never leaves your server"
-    subtitle="All AI processing runs locally on your own infrastructure. Nothing is sent to external services."
+    title="AI that runs where your community runs"
+    subtitle="Inference, embedding, and document analysis run on the node serving your community — not on third-party AI services."
     background="gray"
   >
     <div class="max-w-2xl space-y-6 text-slate-dark/80">
@@ -308,15 +410,12 @@ const techStack = [
         Most AI-powered civic tools send your queries to third-party services. What legislation you're researching, what politicians you're looking up, what petitions you care about — all of it becomes someone else's data.
       </p>
       <p>
-        Opus Populi runs entirely on open-source AI models hosted on your own infrastructure. Embeddings are generated in-process with Transformers.js (all-MiniLM-L6-v2, 384 dimensions). Vector similarity search runs on pgvector in PostgreSQL. LLM inference runs locally through Ollama with configurable models — Qwen 3.5 by default, with support for Mistral, Llama 3.1, and others.
-      </p>
-      <p>
-        Your civic research stays on your server. Period. See our <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI transparency commitments</a> and <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">privacy architecture</a> for the full picture.
+        Opus Populi runs entirely on open-source AI models hosted on the node serving your community. Embeddings are generated in-process with Transformers.js. Vector similarity search runs on pgvector in PostgreSQL. LLM inference runs through Ollama with configurable open-source models. Analysis prompts are delivered to nodes through a cryptographically signed service that ensures every node uses the same methodology — see the <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">trust architecture</a> for the full picture.
       </p>
       <div class="grid sm:grid-cols-2 gap-4 mt-6">
         <div class="text-sm">
-          <p class="font-medium text-slate-dark mb-1">No external API calls</p>
-          <p class="text-slate-dark/70">AI processing never leaves your network</p>
+          <p class="font-medium text-slate-dark mb-1">No third-party AI services</p>
+          <p class="text-slate-dark/70">Inference runs on the node serving your community</p>
         </div>
         <div class="text-sm">
           <p class="font-medium text-slate-dark mb-1">No per-query costs</p>

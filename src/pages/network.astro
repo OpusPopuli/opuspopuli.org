@@ -3,12 +3,76 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 
+const tiers = [
+  {
+    tier: 'Federal edge',
+    operator: 'Shared infrastructure',
+    scope: 'FEC, Congress.gov',
+    note: 'A single shared layer no one owns. One ingestion job, one auditable source of truth, fifty redundant pipelines eliminated.',
+  },
+  {
+    tier: 'State node',
+    operator: 'State operator',
+    scope: 'State legislature, state campaign finance (e.g., Cal-Access)',
+    note: "Owns the state's legislative and campaign finance corpus. Scrapes county data until a county operator delegates.",
+  },
+  {
+    tier: 'County node',
+    operator: 'County operator',
+    scope: 'County supervisors, ordinances, local committees',
+    note: 'Registers with the parent state node, receives certification, and progressively takes over county data ingestion.',
+  },
+  {
+    tier: 'Municipal node',
+    operator: 'Municipal operator',
+    scope: 'City council, city codes, local meetings',
+    note: 'Optional fourth tier for high-density cities. Lowest entry cost; highest local-market specificity.',
+  },
+];
+
+const phases = [
+  {
+    label: 'Phase 1',
+    title: 'State node bootstraps',
+    description: 'The state operator scrapes all state legislative, campaign finance, and county data. Every county in the state is covered from day one — no county operator required.',
+  },
+  {
+    label: 'Phase 2',
+    title: 'County operator onboards',
+    description: 'A county operator registers with the parent state node, completes certification, and receives a delegation handshake. The state node maintains a warm cache for graceful fallback.',
+  },
+  {
+    label: 'Phase 3',
+    title: 'State node delegates',
+    description: "The state node stops actively scraping that county's data and routes county FIPS queries to the new county node. User experience is uninterrupted — degraded county coverage shows stale cached data, not errors.",
+  },
+];
+
+const networkEffects = [
+  {
+    title: 'Jurisdictional coverage',
+    description: 'More certified operators means more of the country covered, which makes the platform more useful to more people. Each new node adds local document ingestion, local RAG context, and geographic resilience.',
+  },
+  {
+    title: 'Civic intelligence compounding',
+    description: 'Every petition, ordinance, ballot measure, and legislative record added to a regional node improves the analysis layer for all users of that node — without any individual being tracked. A pure public-goods network effect.',
+  },
+  {
+    title: 'Operator reputation',
+    description: 'Cryptographic provenance, certified-only subdomains, and signed node registration create a reputation network where trust is earned at the operator level — not surveilled at the user level. Certification becomes a meaningful civic credential as the network grows.',
+  },
+  {
+    title: 'Cross-jurisdictional pattern intelligence',
+    description: 'With sufficient geographic coverage, the network can identify when model legislation appears in multiple states simultaneously, when a petition campaign follows known astroturfing patterns, or when donor networks span jurisdictions in ways invisible to local observers. This intelligence only exists at scale — and no centralized competitor can replicate it.',
+  },
+];
+
 const networkMembers = [
   {
     name: 'California',
     subdomain: 'california.opuspopuli.org',
     status: 'development',
-    note: 'Pilot launching 2026 — 7 data sources across Secretary of State, Assembly, Senate, and CAL-ACCESS',
+    note: 'Proof-of-concept state node — 7 data sources across Secretary of State, Assembly, Senate, and Cal-Access',
   },
 ];
 
@@ -26,7 +90,7 @@ const trustMechanisms = [
   },
   {
     title: 'Cryptographic verification',
-    description: 'Every prompt is hashed at the source. Nodes verify authenticity on receipt. Auditors can verify any analysis was produced with a certified, unmodified prompt. Replay protection with timestamp tolerance prevents request manipulation.',
+    description: 'Every prompt is hashed at the source. Nodes verify authenticity on receipt. Auditors can verify any analysis was produced with a certified, unmodified prompt. Replay protection prevents request manipulation.',
   },
   {
     title: 'Canary documents',
@@ -39,30 +103,78 @@ const trustMechanisms = [
 ];
 ---
 
-<BaseLayout title="Community Network" description="A federated network of communities — independent but connected. See how prompt lock, cryptographic verification, and node certification keep the network honest.">
+<BaseLayout title="The Network" description="Opus Populi is a federated network whose architecture mirrors American democratic governance — federal, state, county, municipal. The data lives where the governance lives.">
   <Hero
-    title="Network"
-    subtitle="A network of communities, not platforms. Each community runs their own instance—shaped by their needs, governed by their rules. But we're stronger together."
+    title="A digital twin of American governance"
+    subtitle="A federated network whose architecture mirrors the hierarchical structure of American democratic governance — federal, state, county, municipal. The data lives where the governance lives."
   />
 
   <Section
-    title="How it works"
-    subtitle="Each community is independent but connected. Improvements made by one flow to all."
+    title="Structural isomorphism, not a design choice"
   >
-    <div class="bg-gray-50 rounded-lg p-6 font-mono text-xs text-slate-dark/80 overflow-x-auto">
-      <pre>
-california.opuspopuli.org ─┐
-                                ├─── Shared Platform (upstream repo)
-texas.opuspopuli.org ──────┤
-                                │
-newyork.opuspopuli.org ────┘</pre>
+    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed">
+      <p>
+        Centralized civic platforms try to model fifty states, three thousand counties, and tens of thousands of municipalities from a single remote team. The data heterogeneity defeats them. Local civic records are not standardized across jurisdictions — ordinances, council minutes, local filings, and ballot measure records vary in format, schedule, and publication discipline.
+      </p>
+      <p>
+        Maintaining quality coverage without local operators is the same problem that defeated centralized encyclopedias before Wikipedia. Opus Populi's answer is structural: the architecture mirrors the governance. Local knowledge does not need to scale through a remote team — it scales through the operators who already live in the jurisdictions they serve.
+      </p>
     </div>
   </Section>
 
-  <Section
-    title="Benefits"
-    background="gray"
-  >
+  <Section title="The four-tier hierarchy" background="gray">
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+      {tiers.map(row => (
+        <div>
+          <h3 class="text-base font-medium text-slate-dark mb-1">{row.tier}</h3>
+          <p class="text-xs uppercase tracking-wide text-slate-dark/50 mb-3">{row.operator}</p>
+          <p class="text-sm text-slate-dark/80 mb-2">{row.scope}</p>
+          <p class="text-sm text-slate-dark/70 leading-relaxed">{row.note}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-12 text-slate-dark/80 max-w-2xl text-sm leading-relaxed">
+      The federal edge cache is not a node anyone owns. A single shared infrastructure layer ingests Congress.gov and FEC data, and all state nodes draw from it — eliminating fifty redundant federal pipelines and creating a single auditable source of truth for federal data.
+    </p>
+  </Section>
+
+  <Section title="Progressive decentralization">
+    <p class="max-w-2xl text-slate-dark/80 leading-relaxed mb-12">
+      The architecture is designed to start centralized and decentralize progressively — solving the cold-start problem that defeats most federated network designs. Every node is useful from day one because it has access to federal and state data regardless of whether any lower-tier nodes exist. Network effects are additive, not prerequisite.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-x-10 gap-y-10">
+      {phases.map(phase => (
+        <div>
+          <p class="text-xs uppercase tracking-wide text-sage-dark font-semibold mb-2">{phase.label}</p>
+          <h3 class="text-base font-medium text-slate-dark mb-2">{phase.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{phase.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-12 text-slate-dark/80 max-w-2xl text-sm leading-relaxed">
+      FIPS-aware routing at the state node detects each user's county and routes accordingly. If no county node exists for a given FIPS code, the state node serves county data from its warm cache. The handoff is invisible to the user.
+    </p>
+  </Section>
+
+  <Section title="Network effects that align with the mission" background="gray">
+    <p class="max-w-2xl text-slate-dark/80 leading-relaxed mb-12">
+      Most platforms build network effects through surveillance capitalism. The civic mission rules that out. Opus Populi's network effects are stronger because they align with the mission: collective action produces public goods that benefit everyone, including newcomers.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+      {networkEffects.map(effect => (
+        <div>
+          <h3 class="text-base font-medium text-slate-dark mb-2">{effect.title}</h3>
+          <p class="text-slate-dark/80 text-sm leading-relaxed">{effect.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section title="Benefits for operators">
     <div class="grid md:grid-cols-2 gap-8">
       {benefits.map(benefit => (
         <div>
@@ -76,10 +188,11 @@ newyork.opuspopuli.org ────┘</pre>
   <Section
     title="How the network stays honest"
     subtitle="A federated network is only as trustworthy as its weakest node. Here's how we solve the 'one bad apple' problem."
+    background="gray"
   >
     <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
       <p>
-        Regions control what facts are available — their local data sources, their civic records, their meeting schedules. But no region can control how facts are interpreted. The analysis methodology is uniform across every node in the network. We continuously test analysis quality across the network — if a node's output diverges from the expected baseline, it's flagged for investigation. See the full <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">trust architecture</a> for how each layer works, or read about how <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">privacy is built into the architecture</a>.
+        Regions control which facts are available — their local data sources, their civic records, their meeting schedules. But no region can control how facts are interpreted. The analysis methodology is uniform across every node in the network. We continuously test analysis quality across the network — if a node's output diverges from the expected baseline, it's flagged for investigation. See the full <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">trust architecture</a> for how each layer works, or read about how <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">privacy is built into the architecture</a>.
       </p>
     </div>
     <div class="grid md:grid-cols-2 gap-8">
@@ -92,16 +205,14 @@ newyork.opuspopuli.org ────┘</pre>
     </div>
   </Section>
 
-  <Section
-    title="The trust equation"
-    background="gray"
-  >
+  <Section title="The trust equation">
     <div class="max-w-2xl">
       <div class="bg-white rounded-lg p-6 border border-slate-dark/10">
         <p class="text-sm text-slate-dark/80 leading-relaxed">
           <span class="font-medium text-slate-dark">Open source code</span> (verifiable) +
           <span class="font-medium text-slate-dark"> Consistent prompts</span> (uniform) +
-          <span class="font-medium text-slate-dark"> Cryptographic attestation</span> (tamper-proof) =
+          <span class="font-medium text-slate-dark"> Cryptographic attestation</span> (tamper-proof) +
+          <span class="font-medium text-slate-dark"> Public-domain data</span> (auditable) =
           <span class="font-medium text-slate-dark"> Trustworthy analysis at scale</span>
         </p>
       </div>
@@ -111,7 +222,7 @@ newyork.opuspopuli.org ────┘</pre>
     </div>
   </Section>
 
-  <Section title="Members">
+  <Section title="Nodes" background="gray">
     {networkMembers.map(member => (
       <div class="flex items-center justify-between py-4 border-b border-slate-dark/5 last:border-0">
         <div>
@@ -127,7 +238,7 @@ newyork.opuspopuli.org ────┘</pre>
         href="/get-involved"
         class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
       >
-        Get Involved
+        Operate a Node
       </a>
     </div>
   </Section>
@@ -136,7 +247,7 @@ newyork.opuspopuli.org ────┘</pre>
     <div class="max-w-2xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Community sovereignty</h2>
       <p class="text-white/70 mb-10">
-        Being part of the network means gaining support—not giving up control.
+        Being part of the network means gaining support — not giving up control.
       </p>
 
       <div class="grid sm:grid-cols-2 gap-8">
