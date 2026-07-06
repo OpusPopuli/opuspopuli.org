@@ -27,17 +27,21 @@ const facts = [
 
 <BaseLayout title="Press Kit" description="Media resources for Opus Populi. Download logos, banners, and find key facts about our open-source civic technology project.">
   <Hero
-    title="Press kit"
-    subtitle="Resources for journalists, bloggers, and anyone writing about Opus Populi."
+    eyebrow="Brand & Media Kit"
+    title="Press"
+    titleEm="kit."
+    subtitle="Resources for journalists, bloggers, and anyone writing about Opus Populi. For the full mark system, motion states, and rules, see the brand system."
+    ctaText="View the Brand System"
+    ctaHref="/brand"
   />
 
   <Section title="About Opus Populi">
-    <div class="max-w-2xl space-y-4 text-slate-dark/80 text-sm leading-relaxed">
+    <div class="max-w-2xl space-y-4 text-ink/80 text-sm leading-relaxed">
       <p>
         Opus Populi is an open-source civic technology platform that gives communities direct access to civic information — petitions, propositions, campaign finance, representative data, and legislative meetings. All AI processing runs locally on community-owned infrastructure. No data is sent to third-party services.
       </p>
       <p>
-        The project is licensed under AGPL-3.0. Every line of code is public. Communities deploy and manage their own instances, retaining full control over their data and infrastructure. Learn more about <a href="/about" class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">our mission</a>, <a href="/platform" class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">what we build</a>, and <a href="/why" class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">why it matters</a>.
+        The project is licensed under AGPL-3.0. Every line of code is public. Communities deploy and manage their own instances, retaining full control over their data and infrastructure. Learn more about <a href="/about" class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">our mission</a>, <a href="/platform" class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">what we build</a>, and <a href="/why" class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">why it matters</a>.
       </p>
     </div>
   </Section>
@@ -46,8 +50,8 @@ const facts = [
     <dl class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl">
       {facts.map(f => (
         <div>
-          <dt class="text-xs uppercase tracking-wide text-slate-dark/70 mb-1">{f.label}</dt>
-          <dd class="text-sm font-medium text-slate-dark">{f.value}</dd>
+          <dt class="text-xs uppercase tracking-wide text-ink/70 mb-1">{f.label}</dt>
+          <dd class="text-sm font-medium text-ink">{f.value}</dd>
         </div>
       ))}
     </dl>
@@ -56,14 +60,14 @@ const facts = [
   <Section title="Logos" subtitle="Available in SVG and PNG formats. Use the dark version on light backgrounds and the light version on dark backgrounds.">
     <div class="grid sm:grid-cols-2 gap-8 max-w-3xl">
       {logos.map(logo => (
-        <div class="border border-slate-dark/10 rounded-lg p-6">
+        <div class="border border-ink/10 rounded-lg p-6">
           <div class="flex items-center justify-center h-20 mb-4">
             <img src={logo.svg} alt={logo.name} class="max-h-full max-w-full" />
           </div>
-          <p class="text-sm font-medium text-slate-dark mb-2">{logo.name}</p>
+          <p class="text-sm font-medium text-ink mb-2">{logo.name}</p>
           <div class="flex gap-3 text-xs">
-            <a href={logo.svg} download class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">SVG</a>
-            <a href={logo.png} download class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">PNG</a>
+            <a href={logo.svg} download class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">SVG</a>
+            <a href={logo.png} download class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">PNG</a>
           </div>
         </div>
       ))}
@@ -73,36 +77,51 @@ const facts = [
   <Section title="Social banners" subtitle="For social media headers and sharing." background="gray">
     <div class="grid sm:grid-cols-2 gap-8 max-w-3xl">
       {banners.map(banner => (
-        <div class="border border-slate-dark/10 rounded-lg p-6 bg-white">
+        <div class="border border-ink/10 rounded-lg p-6 bg-paper">
           <div class="flex items-center justify-center h-24 mb-4">
             <img src={banner.png} alt={banner.name} class="max-h-full max-w-full" />
           </div>
-          <p class="text-sm font-medium text-slate-dark mb-2">{banner.name}</p>
+          <p class="text-sm font-medium text-ink mb-2">{banner.name}</p>
           <div class="flex gap-3 text-xs">
-            <a href={banner.svg} download class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">SVG</a>
-            <a href={banner.png} download class="text-slate-dark underline underline-offset-2 hover:opacity-70 transition-opacity">PNG</a>
+            <a href={banner.svg} download class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">SVG</a>
+            <a href={banner.png} download class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">PNG</a>
           </div>
         </div>
       ))}
     </div>
   </Section>
 
-  <Section title="Brand colors">
-    <div class="grid sm:grid-cols-3 gap-6 max-w-2xl">
+  <Section title="Brand colors" subtitle="Ink and paper carry the system. Gold is earned, never decorative — only ever a filled shape, a ≥3px accent, or text on ink. Never gold text on a light background.">
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-3xl">
       <div>
-        <div class="w-full h-16 rounded-lg bg-slate-dark mb-3"></div>
-        <p class="text-sm font-medium text-slate-dark">Slate Dark</p>
-        <p class="text-xs text-slate-dark/70">#1A2332</p>
+        <div class="w-full h-16 rounded-lg bg-ink mb-3"></div>
+        <p class="text-sm font-medium text-ink">Ink</p>
+        <p class="text-xs text-dim">#1A1714</p>
       </div>
       <div>
-        <div class="w-full h-16 rounded-lg bg-sage mb-3"></div>
-        <p class="text-sm font-medium text-slate-dark">Sage</p>
-        <p class="text-xs text-slate-dark/70">#7F9C8E</p>
+        <div class="w-full h-16 rounded-lg bg-gold mb-3"></div>
+        <p class="text-sm font-medium text-ink">Gold — earned</p>
+        <p class="text-xs text-dim">#E8C000</p>
       </div>
       <div>
-        <div class="w-full h-16 rounded-lg bg-gray-50 border border-slate-dark/10 mb-3"></div>
-        <p class="text-sm font-medium text-slate-dark">Gray 50</p>
-        <p class="text-xs text-slate-dark/70">#F9FAFB</p>
+        <div class="w-full h-16 rounded-lg bg-paper border border-border mb-3"></div>
+        <p class="text-sm font-medium text-ink">Paper</p>
+        <p class="text-xs text-dim">#FAFAF8</p>
+      </div>
+      <div>
+        <div class="w-full h-16 rounded-lg bg-off border border-border mb-3"></div>
+        <p class="text-sm font-medium text-ink">Off-white</p>
+        <p class="text-xs text-dim">#F4F2EC</p>
+      </div>
+      <div>
+        <div class="w-full h-16 rounded-lg bg-dim mb-3"></div>
+        <p class="text-sm font-medium text-ink">Dim <span class="text-dim font-normal">· AA-tuned</span></p>
+        <p class="text-xs text-dim">#726E66</p>
+      </div>
+      <div>
+        <div class="w-full h-16 rounded-lg bg-border mb-3"></div>
+        <p class="text-sm font-medium text-ink">Border</p>
+        <p class="text-xs text-dim">#E0DDD8</p>
       </div>
     </div>
   </Section>
@@ -110,12 +129,12 @@ const facts = [
   <Section background="dark">
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Get in touch</h2>
-      <p class="text-white/70 mb-8">
+      <p class="text-paper/70 mb-8">
         For press inquiries, interviews, or additional assets, reach out through our GitHub repository.
       </p>
       <a
         href="https://github.com/OpusPopuli/opuspopuli"
-        class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+        class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
       >
         Contact via GitHub
       </a>

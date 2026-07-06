@@ -1,4 +1,6 @@
 ---
+import Sunflower from './Sunflower.astro';
+
 const currentYear = new Date().getFullYear();
 
 const links = [
@@ -18,15 +20,14 @@ const links = [
 ];
 ---
 
-<footer class="bg-white border-t border-slate-dark/10 text-slate-dark/70">
+<footer class="bg-paper border-t border-border text-dim">
   <div class="container mx-auto px-6 py-12 max-w-5xl">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
       <div>
-        <img
-          src="/logos/svg/op-horizontal-light.svg"
-          alt="Opus Populi"
-          class="h-6 mb-3 opacity-70"
-        />
+        <div class="flex items-center gap-2.5 mb-3">
+          <Sunflower state="idle" size={28} />
+          <span class="text-sm font-semibold tracking-[0.18em] uppercase text-ink">Opus Populi</span>
+        </div>
         <p class="text-sm">
           Civic tools built by citizens
         </p>
@@ -37,7 +38,7 @@ const links = [
           <li>
             <a
               href={link.href}
-              class="text-sm hover:text-slate-dark transition-colors"
+              class="text-sm hover:text-ink transition-colors"
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
             >
@@ -48,10 +49,11 @@ const links = [
       </ul>
     </div>
 
-    <div class="border-t border-slate-dark/10 mt-10 pt-6">
+    <div class="border-t border-border mt-10 pt-6 flex items-center justify-between gap-4 flex-wrap">
       <p class="text-xs">
         &copy; {currentYear} Opus Populi
       </p>
+      <p class="text-xs font-display italic">The work of the people.</p>
     </div>
   </div>
 </footer>

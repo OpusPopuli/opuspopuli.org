@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Sunflower from '../components/Sunflower.astro';
+import Seed from '../components/Seed.astro';
+import Sprout from '../components/Sprout.astro';
+import Field from '../components/Field.astro';
+
+const markStates = [
+  { state: 'idle', label: 'Idle — sway', on: 'paper' },
+  { state: 'loading', label: 'Loading — pinwheel', on: 'off' },
+  { state: 'success', label: 'Success — bloom', on: 'paper' },
+  { state: 'idle', label: 'On ink', on: 'ink' },
+] as const;
+
+const rules = [
+  { label: 'One line', body: 'Every glyph is a single continuous stroke. It may cross itself — proof the hand moved without hesitation. It never closes completely; nothing here is finished. Round caps, always.' },
+  { label: 'One colour', body: '#E8C000 — and it always means something: the sun in the flower, activation in the seed. Never decorative. Earned. It is only ever a filled shape, a ≥3px accent, or text on ink.' },
+  { label: 'One pivot', body: 'The stem never moves — it’s planted. All rotation happens at the disc center: transform-origin 50px 40px. The head turns on the sun. Both line-ends hide beneath the disc, so the line reads whole at every angle.' },
+  { label: 'The white space', body: 'Petals are implied, not drawn. The eye completes the flower. What’s not drawn is as deliberate as what is — the unseen that needs to be seen.' },
+];
+---
+
+<BaseLayout title="Brand System" description="The Opus Populi brand system — the sunflower mark, its motion states, the seed and field language, and the rules that never change.">
+  <Hero
+    eyebrow="Brand System · Complete"
+    title="The mark is the"
+    titleEm="argument."
+    subtitle="One continuous line from root to last petal — the junction hidden beneath the disc. The stem never moves; it’s planted. The head rotates on the sun. Yellow #E8C000 is the only colour, ever, and it is always earned."
+    declaration="Democracy is messy — a line that crosses itself, doubles back, never quite closes. But when it works, it’s beautiful."
+  />
+
+  <Section eyebrow="01 — The Flower" title="The movement" subtitle="The mark carries three states. Idle sways like a flower in wind; loading spins like a pinwheel; success blooms. All motion respects prefers-reduced-motion.">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border rounded overflow-hidden">
+      {markStates.map(m => (
+        <div class:list={['flex flex-col items-center gap-4 p-9', m.on === 'ink' ? 'bg-ink' : m.on === 'off' ? 'bg-off' : 'bg-paper']}>
+          <Sunflower state={m.state} size={76} on={m.on === 'ink' ? 'ink' : 'paper'} />
+          <div class:list={['text-[10px] uppercase tracking-[0.18em] text-center', m.on === 'ink' ? 'text-paper/70' : 'text-dim']}>{m.label}</div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section eyebrow="02 — The Seed" title="The citizen" subtitle="One small unbroken teardrop, open at the top — potential, not completion. A dormant seed is line only; when a citizen acts, it fills. The colour is earned, never decorative." background="gray">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-px bg-border border border-border rounded overflow-hidden">
+      <div class="flex flex-col items-center gap-4 p-9 bg-paper text-center">
+        <Seed size={72} />
+        <div class="text-sm text-ink/70">Dormant. Potential, not yet planted.</div>
+      </div>
+      <div class="flex flex-col items-center gap-4 p-9 bg-paper text-center">
+        <Seed activated size={72} />
+        <div class="text-sm text-ink/70">Activated. A citizen has planted themselves — gold within.</div>
+      </div>
+      <div class="flex flex-col items-center justify-center gap-4 p-9 bg-paper text-center">
+        <Sprout size={72} />
+        <div class="text-sm text-ink/70">Sprout. First actions — the line is rising.</div>
+      </div>
+    </div>
+  </Section>
+
+  <Section eyebrow="04 — The Field" title="Democracy made beautiful" subtitle="Every civic action plants a flower. Over time, participation becomes a field — thousands of independent citizens, one shared orientation. This is the language of cultivation, not compliance.">
+    <Field count={30} region="Sonoma County" current={4218} total={26000} />
+  </Section>
+
+  <Section eyebrow="The Rules" title="What never changes" background="gray">
+    <div class="grid md:grid-cols-2 gap-px bg-border border border-border rounded overflow-hidden">
+      {rules.map((r, i) => (
+        <div class:list={['p-8', i % 2 === 1 ? 'bg-off' : 'bg-paper']}>
+          <div class="text-xs uppercase tracking-[0.18em] text-dim mb-3">{r.label}</div>
+          <p class="text-sm text-ink/75 leading-relaxed">{r.body}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section background="dark">
+    <div class="max-w-xl text-center mx-auto flex flex-col items-center">
+      <Sunflower state="idle" size={72} on="ink" class="mb-6" />
+      <h2 class="font-display text-2xl md:text-3xl font-bold mb-2">The work of the people.</h2>
+      <p class="text-[10px] tracking-[0.24em] uppercase text-paper/50">Opus Populi · California · Founded July IV MMXXVI</p>
+    </div>
+  </Section>
+</BaseLayout>

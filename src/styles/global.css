@@ -1,15 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
 @import "tailwindcss";
 
-/* Opus Populi Brand Colors */
+/* ═══════════════════════════════════════════════════════════
+   Opus Populi — Sunflower brand system
+   Gold is earned, never decorative. It is only ever a filled
+   shape, a ≥3px accent, or text on ink — never text on paper
+   (fails WCAG AA at ~1.6:1). Structure uses neutral tokens.
+   ═══════════════════════════════════════════════════════════ */
 @theme {
-  --color-slate-dark: #222222;
-  --color-sage: #7F9C8E;
-  --color-sage-dark: #5A7A6A;
-  --color-sage-darker: #4A6A5A;
-  --color-sage-light: #A3BEB0;
-  --color-light-bg: #FAFAFA;
-  --color-dark-bg: #111111;
+  --color-ink: #1A1714;
+  --color-gold: #E8C000;
+  --color-paper: #FAFAF8;
+  --color-off: #F4F2EC;
+  /* Brand "dim" is #8A8880, but that is only ~3.4:1 on paper (fails AA for
+     body text). Darkened to a warm mid-gray that clears 4.5:1 on paper/off.
+     Keep this value — do not "correct" it back to #8A8880. */
+  --color-dim: #726E66;
+  --color-border: #E0DDD8;
 }
 
 /* Base styles */
@@ -19,12 +26,14 @@ html {
 }
 
 body {
-  @apply bg-white text-slate-dark;
+  background: var(--color-paper);
+  color: var(--color-ink);
   line-height: 1.7;
 }
 
+/* Genuine code blocks only — mono is no longer part of the brand ramp */
 code, pre {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
 }
 
 /* Typography */
@@ -49,30 +58,122 @@ h4, h5, h6 {
   font-weight: 600;
 }
 
-/* Apply to h3 in editorial/section contexts via .font-display utility */
 .font-display {
   font-family: 'Playfair Display', Georgia, serif;
 }
 
-/* Links - only style unstyled content links in main area, not header/footer */
+/* ── Editorial helpers (from the brand system) ── */
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-dim);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--color-ink);
+}
+/* Eyebrow on ink surfaces */
+.on-ink .eyebrow { color: rgba(255, 255, 255, 0.4); }
+.on-ink .eyebrow::before { background: var(--color-gold); }
+
+.stitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Gold left-border pull-quote — gold as a ≥3px accent, never text */
+.declaration {
+  border-left: 3px solid var(--color-gold);
+  padding: 8px 0 8px 28px;
+}
+
+.philosophy {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+/* ── Animation system ──
+   Every glyph rotates on the sun (the disc center), never the stem. */
+.op-head {
+  transform-origin: 50px 40px;
+  transform-box: view-box;
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-9deg); }
+  50%      { transform: rotate(9deg); }
+}
+@keyframes pinwheel {
+  from { transform: rotate(0); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes bloom {
+  0%   { transform: scale(0.4); opacity: 0; }
+  70%  { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes seedfill {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.s-idle .op-head    { animation: sway 8s ease-in-out infinite; }
+.s-loading .op-head { animation: pinwheel 6s linear infinite; }
+.s-success .op-head { animation: bloom 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+/* Field flowers each sway on their own phase, like wind */
+.field-flower {
+  transform-origin: 50px 40px;
+  transform-box: view-box;
+  animation: sway ease-in-out infinite;
+}
+
+.seed-fill {
+  animation: seedfill 0.5s ease both;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .op-head,
+  .field-flower,
+  .seed-fill {
+    animation: none !important;
+    opacity: 1;
+  }
+}
+
+/* Links — ink with underline; never gold text on paper */
 @layer base {
   main a:not([class*="bg-"]):not([class*="text-"]) {
-    color: var(--color-sage);
-    transition: color 0.15s ease;
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--color-border);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.15s ease;
   }
   @media (hover: hover) {
     main a:not([class*="bg-"]):not([class*="text-"]):hover {
-      color: color-mix(in oklab, var(--color-sage) 80%, transparent);
+      text-decoration-color: var(--color-gold);
     }
   }
 }
 
-/* Focus styles for accessibility */
+/* Focus styles for accessibility — gold ring reads on both surfaces at 2px+ */
 :focus-visible {
-  @apply outline-2 outline-offset-2 outline-sage;
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
 }
 
 /* Selection */
 ::selection {
-  @apply bg-sage/10;
+  background: color-mix(in oklab, var(--color-gold) 25%, transparent);
 }

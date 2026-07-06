@@ -230,11 +230,11 @@ const techStack = [
       {layers.map(layer => (
         <div>
           <div class="flex items-baseline gap-3 mb-1">
-            <span class="text-xs font-semibold text-sage-dark tracking-wider">{layer.number}</span>
-            <h3 class="text-lg font-medium text-slate-dark">{layer.title}</h3>
+            <span class="text-xs font-semibold text-dim tracking-wider">{layer.number}</span>
+            <h3 class="text-lg font-medium text-ink">{layer.title}</h3>
           </div>
-          <p class="text-xs uppercase tracking-wide text-slate-dark/50 mb-3">{layer.status}</p>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{layer.summary}</p>
+          <p class="text-xs uppercase tracking-wide text-dim mb-3">{layer.status}</p>
+          <p class="text-ink/80 text-sm leading-relaxed">{layer.summary}</p>
         </div>
       ))}
     </div>
@@ -246,7 +246,7 @@ const techStack = [
     subtitle="The platform's flagship view: an interactive map of who funds whom, who votes how, and where alignment between donor industry and legislative outcome crosses from coincidence into pattern."
     background="gray"
   >
-    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed mb-12">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed mb-12">
       <p>
         The Influence Graph is the interface through which citizens first encounter the underlying data. Donors and PACs visualized by contribution size and industry. Voting records cross-referenced against donor industry through semantic matching on bill content. Conflict-of-interest arcs surfaced algorithmically when alignment exceeds threshold.
       </p>
@@ -267,7 +267,7 @@ const techStack = [
     title="Layer 2 — Civic Advocacy Engine"
     subtitle="In development. Compose correspondence to your representatives with public records cited inline."
   >
-    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
       <p>
         Lobbyists communicate with elected officials by citing the public record. Ordinary citizens, lacking the same research apparatus, send messages institutional staff are trained to treat as noise. The Civic Advocacy Engine closes that gap.
       </p>
@@ -283,7 +283,7 @@ const techStack = [
     subtitle="In development. Embeddable civic data widgets inside regional journalism."
     background="gray"
   >
-    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
       <p>
         Regional journalism partners embed Opus Populi civic data widgets — conflict-of-interest summaries, vote trackers, donor maps — directly within news coverage. The platform gains institutional credibility; partner newsrooms gain a content flywheel built on certified public-domain data.
       </p>
@@ -298,7 +298,7 @@ const techStack = [
     title="Layer 4 — Regional Node Network"
     subtitle="A federated network whose architecture mirrors American democratic governance — federal, state, county, municipal."
   >
-    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed mb-8">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed mb-8">
       <p>
         Each certified regional node is a deployment of Opus Populi serving a specific jurisdiction. A shared federal layer ingests Congress.gov and FEC data once. State nodes own state legislative and campaign finance corpora. County and municipal operators progressively take over local jurisdictions as they come online.
       </p>
@@ -306,7 +306,7 @@ const techStack = [
         Cross-jurisdictional pattern intelligence — donor networks spanning states, model legislation spreading simultaneously, astroturfing patterns invisible from any single county — emerges from the federated network itself. No centralized scraper can replicate it.
       </p>
     </div>
-    <a href="/network" class="text-sm text-slate-dark/80 hover:text-slate-dark font-medium transition-colors">
+    <a href="/network" class="text-sm text-ink/80 hover:text-ink font-medium transition-colors">
       How the network works &rarr;
     </a>
   </Section>
@@ -319,12 +319,12 @@ const techStack = [
   >
     <div class="space-y-10 max-w-2xl">
       {scenarios.map(scenario => (
-        <div class="border-l-2 border-sage pl-6">
+        <div class="border-l-2 border-border pl-6">
           <h3 class="font-medium mb-2">{scenario.title}</h3>
-          <p class="text-slate-dark/80 text-sm mb-3">{scenario.description}</p>
+          <p class="text-ink/80 text-sm mb-3">{scenario.description}</p>
           <div class="flex flex-wrap gap-2">
             {scenario.tools.map(tool => (
-              <span class="text-xs font-medium bg-sage/10 text-slate-dark/70 px-2 py-0.5 rounded-full">{tool}</span>
+              <span class="text-xs font-medium bg-off text-dim px-2 py-0.5 rounded-full">{tool}</span>
             ))}
           </div>
         </div>
@@ -341,7 +341,7 @@ const techStack = [
       {platformExperience.map(item => (
         <div>
           <h3 class="font-medium mb-1">{item.title}</h3>
-          <p class="text-slate-dark/80 text-sm">{item.description}</p>
+          <p class="text-ink/80 text-sm">{item.description}</p>
         </div>
       ))}
     </div>
@@ -353,7 +353,7 @@ const techStack = [
     subtitle="Government websites change. Your civic data shouldn't break when they do."
     background="gray"
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+    <div class="max-w-2xl space-y-6 text-ink/80">
       <p>
         Government websites publish civic data — propositions, campaign finance filings, meeting schedules, representative directories — but they restructure constantly. Traditional scrapers with hardcoded CSS selectors break whenever a site is redesigned.
       </p>
@@ -371,7 +371,7 @@ const techStack = [
     title="Any jurisdiction, no code required"
     subtitle="Adding your region's data sources doesn't require writing code. Communities configure their own data connections through declarative setup."
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+    <div class="max-w-2xl space-y-6 text-ink/80">
       <p>
         Every jurisdiction publishes civic data differently — different websites, different formats, different update schedules. The region plugin system handles this complexity so communities don't have to.
       </p>
@@ -379,21 +379,21 @@ const techStack = [
         Region configs are simple JSON files that describe <em>what</em> data to collect — URLs, data types, and natural-language content goals. The AI-powered scraping pipeline figures out <em>how</em> to extract it. No scraper code required.
       </p>
       <div class="space-y-3">
-        <div class="border-l-2 border-sage pl-4">
-          <p class="text-sm font-medium text-slate-dark">JSON, not code</p>
-          <p class="text-sm text-slate-dark/70">Describe data sources with URLs and plain-language content goals — the AI handles extraction</p>
+        <div class="border-l-2 border-border pl-4">
+          <p class="text-sm font-medium text-ink">JSON, not code</p>
+          <p class="text-sm text-ink/70">Describe data sources with URLs and plain-language content goals — the AI handles extraction</p>
         </div>
-        <div class="border-l-2 border-sage pl-4">
-          <p class="text-sm font-medium text-slate-dark">Schema-validated</p>
-          <p class="text-sm text-slate-dark/70">CI validates every config against a JSON Schema and checks URL connectivity before publishing</p>
+        <div class="border-l-2 border-border pl-4">
+          <p class="text-sm font-medium text-ink">Schema-validated</p>
+          <p class="text-sm text-ink/70">CI validates every config against a JSON Schema and checks URL connectivity before publishing</p>
         </div>
-        <div class="border-l-2 border-sage pl-4">
-          <p class="text-sm font-medium text-slate-dark">Community-contributed</p>
-          <p class="text-sm text-slate-dark/70">Region configs live in a <a href="https://github.com/OpusPopuli/opuspopuli-regions" class="underline underline-offset-2 hover:opacity-70 transition-opacity">shared open repository</a> — add your jurisdiction with a pull request</p>
+        <div class="border-l-2 border-border pl-4">
+          <p class="text-sm font-medium text-ink">Community-contributed</p>
+          <p class="text-sm text-ink/70">Region configs live in a <a href="https://github.com/OpusPopuli/opuspopuli-regions" class="underline underline-offset-2 hover:opacity-70 transition-opacity">shared open repository</a> — add your jurisdiction with a pull request</p>
         </div>
-        <div class="border-l-2 border-sage pl-4">
-          <p class="text-sm font-medium text-slate-dark">Self-healing pipeline</p>
-          <p class="text-sm text-slate-dark/70">When government websites change format, the AI re-analyzes and adapts automatically</p>
+        <div class="border-l-2 border-border pl-4">
+          <p class="text-sm font-medium text-ink">Self-healing pipeline</p>
+          <p class="text-sm text-ink/70">When government websites change format, the AI re-analyzes and adapts automatically</p>
         </div>
       </div>
     </div>
@@ -405,7 +405,7 @@ const techStack = [
     subtitle="Inference, embedding, and document analysis run on the node serving your community — not on third-party AI services."
     background="gray"
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+    <div class="max-w-2xl space-y-6 text-ink/80">
       <p>
         Most AI-powered civic tools send your queries to third-party services. What legislation you're researching, what politicians you're looking up, what petitions you care about — all of it becomes someone else's data.
       </p>
@@ -414,20 +414,20 @@ const techStack = [
       </p>
       <div class="grid sm:grid-cols-2 gap-4 mt-6">
         <div class="text-sm">
-          <p class="font-medium text-slate-dark mb-1">No third-party AI services</p>
-          <p class="text-slate-dark/70">Inference runs on the node serving your community</p>
+          <p class="font-medium text-ink mb-1">No third-party AI services</p>
+          <p class="text-ink/70">Inference runs on the node serving your community</p>
         </div>
         <div class="text-sm">
-          <p class="font-medium text-slate-dark mb-1">No per-query costs</p>
-          <p class="text-slate-dark/70">Run as many analyses as you need</p>
+          <p class="font-medium text-ink mb-1">No per-query costs</p>
+          <p class="text-ink/70">Run as many analyses as you need</p>
         </div>
         <div class="text-sm">
-          <p class="font-medium text-slate-dark mb-1">Full auditability</p>
-          <p class="text-slate-dark/70">Inspect every model and every decision</p>
+          <p class="font-medium text-ink mb-1">Full auditability</p>
+          <p class="text-ink/70">Inspect every model and every decision</p>
         </div>
         <div class="text-sm">
-          <p class="font-medium text-slate-dark mb-1">100% open source</p>
-          <p class="text-slate-dark/70">No proprietary dependencies in the AI stack</p>
+          <p class="font-medium text-ink mb-1">100% open source</p>
+          <p class="text-ink/70">No proprietary dependencies in the AI stack</p>
         </div>
       </div>
     </div>
@@ -448,19 +448,19 @@ const techStack = [
   <Section background="dark">
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Bring this to your community</h2>
-      <p class="text-white/70 mb-8">
+      <p class="text-paper/70 mb-8">
         Every community deserves civic tools they own and control. Join the network or contribute to the platform.
       </p>
       <div class="flex gap-3">
         <a
           href="/get-involved"
-          class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+          class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
         >
           Get Involved
         </a>
         <a
           href="/open-source"
-          class="inline-flex items-center text-white/80 hover:text-white px-6 py-2.5 text-sm font-medium transition-colors"
+          class="inline-flex items-center text-paper/80 hover:text-paper px-6 py-2.5 text-sm font-medium transition-colors"
         >
           Contribute
         </a>

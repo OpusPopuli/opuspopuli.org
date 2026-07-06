@@ -10,18 +10,18 @@ interface Props {
 const { title, description, capabilities, badge, id } = Astro.props;
 ---
 
-<div id={id} class="border-l-2 border-sage pl-6 py-4 scroll-mt-24">
+<div id={id} class="border-l-2 border-border pl-6 py-4 scroll-mt-24">
   <div class="flex items-center gap-3 mb-2">
-    <h3 class="text-lg font-medium text-slate-dark">{title}</h3>
+    <h3 class="text-lg font-medium text-ink">{title}</h3>
     {badge && (
-      <span class="text-xs font-medium bg-sage/10 text-slate-dark/70 px-2.5 py-0.5 rounded-full">{badge}</span>
+      <span class="text-xs font-medium bg-off text-dim px-2.5 py-0.5 rounded-full">{badge}</span>
     )}
   </div>
-  <p class="text-slate-dark/80 text-sm leading-relaxed mb-4">{description}</p>
+  <p class="text-ink/80 text-sm leading-relaxed mb-4">{description}</p>
   <ul class="space-y-1.5">
     {capabilities.map(cap => (
-      <li class="text-sm text-slate-dark/70 flex items-start gap-2">
-        <span class="text-slate-dark/50 mt-1.5 text-xs" aria-hidden="true">&#9679;</span>
+      <li class="text-sm text-ink/70 flex items-start gap-2">
+        <span class="text-dim mt-1.5 text-xs" aria-hidden="true">&#9679;</span>
         {cap}
       </li>
     ))}

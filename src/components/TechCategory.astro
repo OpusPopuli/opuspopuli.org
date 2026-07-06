@@ -8,14 +8,14 @@ const { category, items } = Astro.props;
 ---
 
 <div>
-  <h3 class="text-sm font-medium uppercase tracking-wide text-slate-dark/70 mb-3">{category}</h3>
+  <h3 class="text-sm font-medium uppercase tracking-wide text-dim mb-3">{category}</h3>
   <div class="flex flex-wrap gap-2">
     {items.map(item => (
       <a
         href={item.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-sm text-slate-dark/80 border border-slate-dark/10 px-4 py-2 rounded-full hover:border-sage hover:text-sage transition-colors"
+        class="text-sm text-ink/80 border border-border px-4 py-2 rounded-full hover:border-ink hover:text-ink transition-colors"
       >
         {item.name}
       </a>

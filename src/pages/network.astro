@@ -112,7 +112,7 @@ const trustMechanisms = [
   <Section
     title="Structural isomorphism, not a design choice"
   >
-    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
       <p>
         Centralized civic platforms try to model fifty states, three thousand counties, and tens of thousands of municipalities from a single remote team. The data heterogeneity defeats them. Local civic records are not standardized across jurisdictions — ordinances, council minutes, local filings, and ballot measure records vary in format, schedule, and publication discipline.
       </p>
@@ -126,49 +126,49 @@ const trustMechanisms = [
     <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
       {tiers.map(row => (
         <div>
-          <h3 class="text-base font-medium text-slate-dark mb-1">{row.tier}</h3>
-          <p class="text-xs uppercase tracking-wide text-slate-dark/50 mb-3">{row.operator}</p>
-          <p class="text-sm text-slate-dark/80 mb-2">{row.scope}</p>
-          <p class="text-sm text-slate-dark/70 leading-relaxed">{row.note}</p>
+          <h3 class="text-base font-medium text-ink mb-1">{row.tier}</h3>
+          <p class="text-xs uppercase tracking-wide text-dim mb-3">{row.operator}</p>
+          <p class="text-sm text-ink/80 mb-2">{row.scope}</p>
+          <p class="text-sm text-ink/70 leading-relaxed">{row.note}</p>
         </div>
       ))}
     </div>
 
-    <p class="mt-12 text-slate-dark/80 max-w-2xl text-sm leading-relaxed">
+    <p class="mt-12 text-ink/80 max-w-2xl text-sm leading-relaxed">
       The federal edge cache is not a node anyone owns. A single shared infrastructure layer ingests Congress.gov and FEC data, and all state nodes draw from it — eliminating fifty redundant federal pipelines and creating a single auditable source of truth for federal data.
     </p>
   </Section>
 
   <Section title="Progressive decentralization">
-    <p class="max-w-2xl text-slate-dark/80 leading-relaxed mb-12">
+    <p class="max-w-2xl text-ink/80 leading-relaxed mb-12">
       The architecture is designed to start centralized and decentralize progressively — solving the cold-start problem that defeats most federated network designs. Every node is useful from day one because it has access to federal and state data regardless of whether any lower-tier nodes exist. Network effects are additive, not prerequisite.
     </p>
 
     <div class="grid md:grid-cols-3 gap-x-10 gap-y-10">
       {phases.map(phase => (
         <div>
-          <p class="text-xs uppercase tracking-wide text-sage-dark font-semibold mb-2">{phase.label}</p>
-          <h3 class="text-base font-medium text-slate-dark mb-2">{phase.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{phase.description}</p>
+          <p class="text-xs uppercase tracking-wide text-dim font-semibold mb-2">{phase.label}</p>
+          <h3 class="text-base font-medium text-ink mb-2">{phase.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{phase.description}</p>
         </div>
       ))}
     </div>
 
-    <p class="mt-12 text-slate-dark/80 max-w-2xl text-sm leading-relaxed">
+    <p class="mt-12 text-ink/80 max-w-2xl text-sm leading-relaxed">
       FIPS-aware routing at the state node detects each user's county and routes accordingly. If no county node exists for a given FIPS code, the state node serves county data from its warm cache. The handoff is invisible to the user.
     </p>
   </Section>
 
   <Section title="Network effects that align with the mission" background="gray">
-    <p class="max-w-2xl text-slate-dark/80 leading-relaxed mb-12">
+    <p class="max-w-2xl text-ink/80 leading-relaxed mb-12">
       Most platforms build network effects through surveillance capitalism. The civic mission rules that out. Opus Populi's network effects are stronger because they align with the mission: collective action produces public goods that benefit everyone, including newcomers.
     </p>
 
     <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
       {networkEffects.map(effect => (
         <div>
-          <h3 class="text-base font-medium text-slate-dark mb-2">{effect.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{effect.description}</p>
+          <h3 class="text-base font-medium text-ink mb-2">{effect.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{effect.description}</p>
         </div>
       ))}
     </div>
@@ -179,7 +179,7 @@ const trustMechanisms = [
       {benefits.map(benefit => (
         <div>
           <h3 class="font-medium mb-1">{benefit.title}</h3>
-          <p class="text-slate-dark/80 text-sm">{benefit.description}</p>
+          <p class="text-ink/80 text-sm">{benefit.description}</p>
         </div>
       ))}
     </div>
@@ -190,16 +190,16 @@ const trustMechanisms = [
     subtitle="A federated network is only as trustworthy as its weakest node. Here's how we solve the 'one bad apple' problem."
     background="gray"
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
+    <div class="max-w-2xl space-y-6 text-ink/80 mb-12">
       <p>
         Regions control which facts are available — their local data sources, their civic records, their meeting schedules. But no region can control how facts are interpreted. The analysis methodology is uniform across every node in the network. We continuously test analysis quality across the network — if a node's output diverges from the expected baseline, it's flagged for investigation. See the full <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">trust architecture</a> for how each layer works, or read about how <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">privacy is built into the architecture</a>.
       </p>
     </div>
     <div class="grid md:grid-cols-2 gap-8">
       {trustMechanisms.map(m => (
-        <div class="border-l-2 border-sage pl-6 py-2">
-          <h3 class="text-base font-medium text-slate-dark mb-2">{m.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{m.description}</p>
+        <div class="border-l-2 border-border pl-6 py-2">
+          <h3 class="text-base font-medium text-ink mb-2">{m.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{m.description}</p>
         </div>
       ))}
     </div>
@@ -207,16 +207,16 @@ const trustMechanisms = [
 
   <Section title="The trust equation">
     <div class="max-w-2xl">
-      <div class="bg-white rounded-lg p-6 border border-slate-dark/10">
-        <p class="text-sm text-slate-dark/80 leading-relaxed">
-          <span class="font-medium text-slate-dark">Open source code</span> (verifiable) +
-          <span class="font-medium text-slate-dark"> Consistent prompts</span> (uniform) +
-          <span class="font-medium text-slate-dark"> Cryptographic attestation</span> (tamper-proof) +
-          <span class="font-medium text-slate-dark"> Public-domain data</span> (auditable) =
-          <span class="font-medium text-slate-dark"> Trustworthy analysis at scale</span>
+      <div class="bg-paper rounded-lg p-6 border border-ink/10">
+        <p class="text-sm text-ink/80 leading-relaxed">
+          <span class="font-medium text-ink">Open source code</span> (verifiable) +
+          <span class="font-medium text-ink"> Consistent prompts</span> (uniform) +
+          <span class="font-medium text-ink"> Cryptographic attestation</span> (tamper-proof) +
+          <span class="font-medium text-ink"> Public-domain data</span> (auditable) =
+          <span class="font-medium text-ink"> Trustworthy analysis at scale</span>
         </p>
       </div>
-      <p class="text-slate-dark/80 text-sm mt-6">
+      <p class="text-ink/80 text-sm mt-6">
         Network rules are published in NETWORK.md and NETWORK-TERMS.md. Member requirements, data ownership, and termination rights are all documented and enforceable.
       </p>
     </div>
@@ -224,19 +224,19 @@ const trustMechanisms = [
 
   <Section title="Nodes" background="gray">
     {networkMembers.map(member => (
-      <div class="flex items-center justify-between py-4 border-b border-slate-dark/5 last:border-0">
+      <div class="flex items-center justify-between py-4 border-b border-ink/5 last:border-0">
         <div>
           <span class="font-medium">{member.name}</span>
-          <span class="text-slate-dark/80 text-sm ml-3">{member.note}</span>
+          <span class="text-ink/80 text-sm ml-3">{member.note}</span>
         </div>
-        <code class="text-xs text-slate-dark/80 bg-slate-dark/5 px-3 py-1 rounded-full">{member.subdomain}</code>
+        <code class="text-xs text-ink/80 bg-ink/5 px-3 py-1 rounded-full">{member.subdomain}</code>
       </div>
     ))}
 
     <div class="mt-10">
       <a
         href="/get-involved"
-        class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+        class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
       >
         Operate a Node
       </a>
@@ -246,26 +246,26 @@ const trustMechanisms = [
   <Section background="dark">
     <div class="max-w-2xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Community sovereignty</h2>
-      <p class="text-white/70 mb-10">
+      <p class="text-paper/70 mb-10">
         Being part of the network means gaining support — not giving up control.
       </p>
 
       <div class="grid sm:grid-cols-2 gap-8">
         <div>
           <h3 class="font-medium mb-1">Your data</h3>
-          <p class="text-white/70 text-sm">Stays where you decide, always</p>
+          <p class="text-paper/70 text-sm">Stays where you decide, always</p>
         </div>
         <div>
           <h3 class="font-medium mb-1">Your customizations</h3>
-          <p class="text-white/70 text-sm">Shape it for your community's needs</p>
+          <p class="text-paper/70 text-sm">Shape it for your community's needs</p>
         </div>
         <div>
           <h3 class="font-medium mb-1">Your infrastructure</h3>
-          <p class="text-white/70 text-sm">Run it where you want</p>
+          <p class="text-paper/70 text-sm">Run it where you want</p>
         </div>
         <div>
           <h3 class="font-medium mb-1">Your governance</h3>
-          <p class="text-white/70 text-sm">Your community makes the decisions</p>
+          <p class="text-paper/70 text-sm">Your community makes the decisions</p>
         </div>
       </div>
     </div>

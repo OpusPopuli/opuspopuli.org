@@ -2,6 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
+import Sunflower from '../components/Sunflower.astro';
+
+const philosophy = [
+  {
+    label: 'Heliotropism',
+    body: "The sunflower doesn't passively receive light — it actively turns toward it, daily. That's the civic ask: not passive consumers of news, but citizens who orient themselves toward truth.",
+  },
+  {
+    label: 'The mathematics',
+    body: 'Seeds grow at the golden angle — 137.5°, derived from φ. One rule, repeated identically by every seed, produces emergent spirals of breathtaking order. Equal participation, mathematically proven beautiful.',
+  },
+  {
+    label: 'The negative space',
+    body: 'After Picasso’s continuous line drawings: the line suggests, then stops. The eye completes what isn’t drawn — information asymmetry made visible by its outline. The viewer completes the picture.',
+  },
+];
 
 const tools = [
   {
@@ -72,57 +88,84 @@ const roadmap = [
   <Section>
     <div class="max-w-2xl">
       <h2 class="text-2xl font-bold mb-6 tracking-tight">Our mission</h2>
-      <p class="text-slate-dark/80 mb-4">
+      <p class="text-ink/80 mb-4">
         Information is buried in jargon. Participation requires expertise. And the platforms that promise to help often profit from the confusion.
       </p>
-      <p class="text-slate-dark/80 mb-10">
+      <p class="text-ink/80 mb-10">
         We believe there's a remedy: tools built by citizens, for citizens. Technology that communities own and control. That's what Opus Populi exists to build.
       </p>
 
       <div class="space-y-8">
-        <div class="border-l-2 border-sage pl-6">
+        <div class="border-l-2 border-border pl-6">
           <h3 class="font-medium mb-2">Civic information belongs to everyone</h3>
-          <p class="text-slate-dark/80 text-sm">Legislative text shouldn't require a law degree. We use <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI to make it accessible</a> to all.</p>
+          <p class="text-ink/80 text-sm">Legislative text shouldn't require a law degree. We use <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI to make it accessible</a> to all.</p>
         </div>
-        <div class="border-l-2 border-slate-dark/10 pl-6">
+        <div class="border-l-2 border-ink/10 pl-6">
           <h3 class="font-medium mb-2">Citizens should control civic infrastructure</h3>
-          <p class="text-slate-dark/80 text-sm">The tools that power democracy must be transparent, auditable, and <a href="/open-source" class="underline underline-offset-2 hover:opacity-70 transition-opacity">owned by communities</a>.</p>
+          <p class="text-ink/80 text-sm">The tools that power democracy must be transparent, auditable, and <a href="/open-source" class="underline underline-offset-2 hover:opacity-70 transition-opacity">owned by communities</a>.</p>
         </div>
-        <div class="border-l-2 border-slate-dark/10 pl-6">
+        <div class="border-l-2 border-ink/10 pl-6">
           <h3 class="font-medium mb-2">Privacy is a civic right</h3>
-          <p class="text-slate-dark/80 text-sm">Research your representatives, explore legislation, engage with your government — without being <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">tracked or monetized</a>.</p>
+          <p class="text-ink/80 text-sm">Research your representatives, explore legislation, engage with your government — without being <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">tracked or monetized</a>.</p>
         </div>
       </div>
     </div>
   </Section>
 
+  <Section eyebrow="The Philosophy" title="Why a sunflower">
+    <div class="flex items-start gap-6 mb-10">
+      <Sunflower state="idle" size={64} class="shrink-0 mt-1" />
+      <div class="max-w-2xl">
+        <p class="philosophy text-lg text-ink mb-4">“Sunlight is the best disinfectant.” — Louis Brandeis, 1913</p>
+        <p class="text-dim text-sm leading-loose">
+          Brandeis argued that concentrated power is checked not by regulation alone but by an informed public. One sentence, a century before Opus Populi. The same thesis — the flower carries the light metaphor silently, no sermon required.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-border border border-border rounded overflow-hidden">
+      {philosophy.map((p, i) => (
+        <div class:list={['p-7', i === 1 ? 'bg-off' : 'bg-paper']}>
+          <div class="text-xs uppercase tracking-[0.18em] text-dim mb-3">{p.label}</div>
+          <p class="text-sm text-ink/75 leading-relaxed">{p.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="declaration mt-10 max-w-2xl">
+      <p class="font-display text-lg md:text-xl font-bold text-ink leading-snug">
+        Democracy is messy — a line that crosses itself, doubles back, never quite closes. But when it works, it’s beautiful. The mark is the argument.
+      </p>
+    </div>
+  </Section>
+
   <Section title="How we're built to last" background="gray">
-    <p class="text-slate-dark/80 mb-12 max-w-2xl">
+    <p class="text-ink/80 mb-12 max-w-2xl">
       Civic infrastructure deserves to outlive the people who built it. Four structural commitments make that possible — and each is verifiable, not just asserted.
     </p>
 
     <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
       <div>
         <h3 class="font-medium mb-2">A nonprofit foundation paired with a corporation</h3>
-        <p class="text-slate-dark/80 text-sm leading-relaxed">
+        <p class="text-ink/80 text-sm leading-relaxed">
           Opus Populi is being established as a 501(c)(3) foundation paired with a corporation. The foundation safeguards the civic mission; the corporation funds it through commercial-tier licensing. Neither can quietly capture the other, so mission drift is structurally constrained rather than promised.
         </p>
       </div>
       <div>
         <h3 class="font-medium mb-2">AGPL-3.0 with a dual commercial license</h3>
-        <p class="text-slate-dark/80 text-sm leading-relaxed">
+        <p class="text-ink/80 text-sm leading-relaxed">
           Modifications stay open. The commercial license funds the foundation. Closing the source — the standard move for a venture-backed civic platform under investor pressure — would forfeit the entire open source ecosystem the platform depends on. Verifiable evidence of alignment, not a policy that could quietly be revised.
         </p>
       </div>
       <div>
         <h3 class="font-medium mb-2">Public-domain civic data only</h3>
-        <p class="text-slate-dark/80 text-sm leading-relaxed">
+        <p class="text-ink/80 text-sm leading-relaxed">
           Every primary data source — the Federal Election Commission, Congress.gov, California's Cal-Access — is public domain. No commercially-restricted vendor to negotiate with, no downstream license to disclose, no provenance chain that breaks when terms change. Anyone can audit it.
         </p>
       </div>
       <div>
         <h3 class="font-medium mb-2">Citizens are not the product</h3>
-        <p class="text-slate-dark/80 text-sm leading-relaxed">
+        <p class="text-ink/80 text-sm leading-relaxed">
           Citizens always access the platform for free. Revenue comes from institutional users of public data — commercial API licensing, journalism partnerships, institutional subscriptions — not from surveilling the citizens the platform serves. Individual users are not the product, never have been, and structurally cannot be.
         </p>
       </div>
@@ -131,17 +174,17 @@ const roadmap = [
 
   <Section title="Our story">
     <div class="max-w-2xl">
-      <p class="text-slate-dark/80 mb-10">
+      <p class="text-ink/80 mb-10">
         Opus Populi started with a simple observation: the information citizens need to participate in democracy is public, but it's scattered across dozens of government websites, buried in legal language, and nearly impossible to navigate without expertise. We're building the infrastructure to change that — not a startup looking for an exit, not a platform looking to monetize civic engagement, but a collective effort to put democratic tools in the hands of the people they serve.
       </p>
 
       <div class="space-y-6">
         {timeline.map(item => (
           <div class="flex gap-6">
-            <div class="text-sm font-medium text-slate-dark w-12 shrink-0">{item.year}</div>
-            <div class="flex-1 border-l-2 border-slate-dark/10 pl-6">
+            <div class="text-sm font-medium text-ink w-12 shrink-0">{item.year}</div>
+            <div class="flex-1 border-l-2 border-ink/10 pl-6">
               <h3 class="font-medium mb-1">{item.event}</h3>
-              <p class="text-slate-dark/80 text-sm">{item.detail}</p>
+              <p class="text-ink/80 text-sm">{item.detail}</p>
             </div>
           </div>
         ))}
@@ -156,19 +199,19 @@ const roadmap = [
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {tools.map(tool => (
-        <a href={tool.href} class="text-slate-dark block hover:opacity-80 transition-opacity">
+        <a href={tool.href} class="text-ink block hover:opacity-80 transition-opacity">
           <div class="flex items-center gap-2 mb-1">
             <h3 class="font-medium">{tool.title}</h3>
             {tool.badge && (
-              <span class="text-xs font-medium bg-sage/10 text-slate-dark/70 px-2 py-0.5 rounded-full">{tool.badge}</span>
+              <span class="text-xs font-medium bg-off text-dim px-2 py-0.5 rounded-full">{tool.badge}</span>
             )}
           </div>
-          <p class="text-slate-dark/80 text-sm">{tool.description}</p>
+          <p class="text-ink/80 text-sm">{tool.description}</p>
         </a>
       ))}
     </div>
     <div class="mt-10">
-      <a href="/platform" class="text-sm text-slate-dark/80 hover:text-slate-dark font-medium transition-colors">
+      <a href="/platform" class="text-sm text-ink/80 hover:text-ink font-medium transition-colors">
         See the full platform &rarr;
       </a>
     </div>
@@ -178,13 +221,13 @@ const roadmap = [
     <div class="max-w-2xl">
       <ul class="space-y-3">
         {roadmap.map(item => (
-          <li class="flex items-start gap-3 text-slate-dark/80">
-            <span class="text-slate-dark/50 mt-1.5 text-xs" aria-hidden="true">&#9679;</span>
+          <li class="flex items-start gap-3 text-ink/80">
+            <span class="text-dim mt-1.5 text-xs" aria-hidden="true">&#9679;</span>
             <span class="text-sm">{item}</span>
           </li>
         ))}
       </ul>
-      <p class="text-slate-dark/70 text-sm mt-8">
+      <p class="text-ink/70 text-sm mt-8">
         Interested in the <a href="/network" class="underline underline-offset-2 hover:opacity-70 transition-opacity">community network</a>? See how communities will connect and share improvements.
       </p>
     </div>
@@ -193,41 +236,41 @@ const roadmap = [
   <Section background="dark">
     <div class="max-w-2xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Community-owned from day one</h2>
-      <p class="text-white/70 mb-10">
+      <p class="text-paper/70 mb-10">
         This isn't a product you license. It's infrastructure you own. Every line of code is yours under AGPL-3.0. Fork it. Modify it. Make it serve your community. That's the point.
       </p>
 
       <div class="grid sm:grid-cols-3 gap-8">
         <div>
           <h3 class="font-medium mb-1">Fully transparent</h3>
-          <p class="text-white/70 text-sm">Audit the code. Verify our claims.</p>
+          <p class="text-paper/70 text-sm">Audit the code. Verify our claims.</p>
         </div>
         <div>
           <h3 class="font-medium mb-1">Community-controlled</h3>
-          <p class="text-white/70 text-sm">Your data. Your infrastructure. Your rules.</p>
+          <p class="text-paper/70 text-sm">Your data. Your infrastructure. Your rules.</p>
         </div>
         <div>
           <h3 class="font-medium mb-1">Collectively stronger</h3>
-          <p class="text-white/70 text-sm">What one community builds, all communities gain.</p>
+          <p class="text-paper/70 text-sm">What one community builds, all communities gain.</p>
         </div>
       </div>
     </div>
   </Section>
 
   <Section title="Get in touch">
-    <p class="text-slate-dark/80 mb-8 max-w-lg">
+    <p class="text-ink/80 mb-8 max-w-lg">
       Interested in bringing citizen-owned civic technology to your community?
     </p>
     <div class="flex gap-3">
       <a
         href="mailto:hello@opuspopuli.org"
-        class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+        class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
       >
         Contact Us
       </a>
       <a
         href="/get-involved"
-        class="inline-flex items-center text-slate-dark/80 hover:text-slate-dark px-6 py-2.5 text-sm font-medium transition-colors"
+        class="inline-flex items-center text-ink/80 hover:text-ink px-6 py-2.5 text-sm font-medium transition-colors"
       >
         Get Involved
       </a>

@@ -1,29 +1,31 @@
 ---
 interface Props {
   id?: string;
+  eyebrow?: string;
   title?: string;
   subtitle?: string;
   background?: 'white' | 'gray' | 'dark';
 }
 
-const { id, title, subtitle, background = 'white' } = Astro.props;
+const { id, eyebrow, title, subtitle, background = 'white' } = Astro.props;
 
 const bgClasses = {
-  white: 'bg-white',
-  gray: 'bg-gray-50',
-  dark: 'bg-slate-dark text-white',
+  white: 'bg-paper',
+  gray: 'bg-off',
+  dark: 'bg-ink text-paper on-ink',
 };
 ---
 
 <section id={id} class:list={['py-20 md:py-28', bgClasses[background]]}>
   <div class="container mx-auto px-6 max-w-5xl">
-    {(title || subtitle) && (
+    {(title || subtitle || eyebrow) && (
       <div class="max-w-2xl mb-16">
+        {eyebrow && <div class="eyebrow">{eyebrow}</div>}
         {title && (
-          <h2 class="text-2xl md:text-3xl font-bold mb-3 tracking-tight">{title}</h2>
+          <h2 class="stitle text-2xl md:text-3xl mb-3">{title}</h2>
         )}
         {subtitle && (
-          <p class:list={['text-base', background === 'dark' ? 'text-white/80' : 'text-slate-dark/80']}>
+          <p class:list={['text-base', background === 'dark' ? 'text-paper/80' : 'text-dim']}>
             {subtitle}
           </p>
         )}
