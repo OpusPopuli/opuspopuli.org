@@ -1,7 +1,14 @@
 ---
+import Sunflower from './Sunflower.astro';
+
 interface Props {
   title: string;
+  /** Trailing emphasized phrase, rendered as italic <em> after the title. */
+  titleEm?: string;
   subtitle?: string;
+  eyebrow?: string;
+  /** Gold-bar declaration pull-quote, rendered under the subtitle. */
+  declaration?: string;
   ctaText?: string;
   ctaHref?: string;
   secondaryCtaText?: string;
@@ -10,7 +17,10 @@ interface Props {
 
 const {
   title,
+  titleEm,
   subtitle,
+  eyebrow,
+  declaration,
   ctaText,
   ctaHref,
   secondaryCtaText,
@@ -18,23 +28,35 @@ const {
 } = Astro.props;
 ---
 
-<section class="bg-slate-dark text-white py-24 md:py-32">
-  <div class="container mx-auto px-6">
-    <div class="max-w-2xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-        {title}
+<section class="bg-paper border-b border-border py-24 md:py-32">
+  <div class="container mx-auto px-6 max-w-5xl">
+    <div class="max-w-3xl">
+      {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+
+      <h1 class="font-display text-4xl md:text-6xl font-black leading-[1.06] tracking-tight text-ink mb-6">
+        {title}{titleEm && <> <em>{titleEm}</em></>}
       </h1>
+
       {subtitle && (
-        <p class="text-lg text-white/70 mb-10 leading-relaxed">
+        <p class="text-lg text-dim leading-relaxed max-w-2xl">
           {subtitle}
         </p>
       )}
+
+      {declaration && (
+        <div class="declaration my-10 max-w-2xl">
+          <p class="font-display text-xl md:text-2xl font-bold text-ink leading-snug">
+            {declaration}
+          </p>
+        </div>
+      )}
+
       {(ctaText || secondaryCtaText) && (
-        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <div class="flex flex-col sm:flex-row gap-3 mt-10">
           {ctaText && ctaHref && (
             <a
               href={ctaHref}
-              class="inline-flex items-center justify-center bg-sage-dark text-white font-semibold px-8 py-3 rounded-lg hover:bg-sage-darker transition-colors"
+              class="inline-flex items-center justify-center bg-gold text-ink font-semibold px-8 py-3 rounded-lg hover:brightness-95 transition-[filter]"
             >
               {ctaText}
             </a>
@@ -42,7 +64,7 @@ const {
           {secondaryCtaText && secondaryCtaHref && (
             <a
               href={secondaryCtaHref}
-              class="inline-flex items-center justify-center text-white/80 px-6 py-3 hover:text-white transition-colors font-medium"
+              class="inline-flex items-center justify-center text-ink/80 px-6 py-3 hover:text-ink transition-colors font-medium"
             >
               {secondaryCtaText}
               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -52,6 +74,15 @@ const {
           )}
         </div>
       )}
+
+      <div class="flex items-center gap-4 mt-14">
+        <Sunflower state="idle" size={56} />
+        <div class="w-px h-9 bg-border"></div>
+        <div>
+          <div class="text-sm font-semibold tracking-[0.18em] uppercase text-ink leading-none">Opus Populi</div>
+          <div class="font-display italic text-xs text-dim mt-1 leading-none">The Work of the People</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

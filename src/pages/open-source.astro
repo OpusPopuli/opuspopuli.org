@@ -64,7 +64,7 @@ const principles = [
     title="Architecture"
     subtitle="A modular system designed so communities can customize and deploy independently."
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+    <div class="max-w-2xl space-y-6 text-ink/80">
       <p>
         Opus Populi is built as a set of independent, loosely coupled services behind a GraphQL Federation gateway. The backend runs four domain microservices — users, documents, knowledge (RAG), and regions (civic data) — each with its own schema, deployed independently. 16 pluggable provider packages abstract every external dependency behind swappable interfaces.
       </p>
@@ -82,7 +82,7 @@ const principles = [
     background="gray"
   >
     <div class="max-w-2xl">
-      <pre class="bg-slate-dark text-white/80 text-sm p-6 rounded-lg overflow-x-auto font-mono leading-relaxed"><code>opuspopuli/                        # Core platform (monorepo)
+      <pre tabindex="0" role="region" aria-label="Repository structure" class="bg-ink text-paper/80 text-sm p-6 rounded-lg overflow-x-auto font-mono leading-relaxed"><code>opuspopuli/                        # Core platform (monorepo)
 ├── apps/
 │   ├── frontend/                  # React 19 + Next.js 16
 │   └── backend/                   # NestJS microservices (4 services + gateway)
@@ -114,12 +114,12 @@ opuspopuli-regions/                # Region configs (separate repo)
 ├── schema/
 │   └── region-plugin.schema.json  # JSON Schema for validation
 └── __tests__/                     # Schema + connectivity tests</code></pre>
-      <p class="text-slate-dark/70 text-sm mt-4">
+      <p class="text-ink/70 text-sm mt-4">
         The platform lives in a monorepo. Region configs live in a <a href="https://github.com/OpusPopuli/opuspopuli-regions" class="underline underline-offset-2 hover:opacity-70 transition-opacity">separate repository</a>, published as an npm package — so civic domain experts can add regions without touching platform code.
       </p>
-      <div class="mt-8 border-l-2 border-sage pl-6">
-        <h3 class="text-base font-medium text-slate-dark mb-2">Pluggable by design</h3>
-        <p class="text-slate-dark/80 text-sm leading-relaxed">
+      <div class="mt-8 border-l-2 border-border pl-6">
+        <h3 class="text-base font-medium text-ink mb-2">Pluggable by design</h3>
+        <p class="text-ink/80 text-sm leading-relaxed">
           Every external dependency — database, AI model, vector store, embedding engine, auth, email, storage — is abstracted behind a pluggable provider interface. 16 provider packages mean communities can swap implementations without changing application code. Run a different LLM, use a different database, or switch vector stores — all through configuration, not code changes.
         </p>
       </div>
@@ -131,24 +131,24 @@ opuspopuli-regions/                # Region configs (separate repo)
   >
     <div class="grid md:grid-cols-4 gap-12">
       <div>
-        <div class="text-sm font-medium text-slate-dark mb-3">01</div>
+        <div class="text-sm font-medium text-ink mb-3">01</div>
         <h3 class="text-lg font-medium mb-2">Fork and clone</h3>
-        <p class="text-slate-dark/80 text-sm">Fork the repository on GitHub and clone it to your machine.</p>
+        <p class="text-ink/80 text-sm">Fork the repository on GitHub and clone it to your machine.</p>
       </div>
       <div>
-        <div class="text-sm font-medium text-slate-dark mb-3">02</div>
+        <div class="text-sm font-medium text-ink mb-3">02</div>
         <h3 class="text-lg font-medium mb-2">Set up your environment</h3>
-        <p class="text-slate-dark/80 text-sm">One command gets everything running locally with Docker Compose.</p>
+        <p class="text-ink/80 text-sm">One command gets everything running locally with Docker Compose.</p>
       </div>
       <div>
-        <div class="text-sm font-medium text-slate-dark mb-3">03</div>
+        <div class="text-sm font-medium text-ink mb-3">03</div>
         <h3 class="text-lg font-medium mb-2">Pick an issue</h3>
-        <p class="text-slate-dark/80 text-sm">Browse issues labeled "good first issue" for a guided starting point.</p>
+        <p class="text-ink/80 text-sm">Browse issues labeled "good first issue" for a guided starting point.</p>
       </div>
       <div>
-        <div class="text-sm font-medium text-slate-dark mb-3">04</div>
+        <div class="text-sm font-medium text-ink mb-3">04</div>
         <h3 class="text-lg font-medium mb-2">Submit a PR</h3>
-        <p class="text-slate-dark/80 text-sm">Open a pull request. We review promptly and help you get it merged.</p>
+        <p class="text-ink/80 text-sm">Open a pull request. We review promptly and help you get it merged.</p>
       </div>
     </div>
   </Section>
@@ -160,9 +160,9 @@ opuspopuli-regions/                # Region configs (separate repo)
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {contributionAreas.map(area => (
-        <div class="border-l-2 border-slate-dark/10 pl-6 py-2">
-          <h3 class="text-lg font-medium text-slate-dark mb-2">{area.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{area.description}</p>
+        <div class="border-l-2 border-ink/10 pl-6 py-2">
+          <h3 class="text-lg font-medium text-ink mb-2">{area.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{area.description}</p>
         </div>
       ))}
     </div>
@@ -173,9 +173,9 @@ opuspopuli-regions/                # Region configs (separate repo)
   >
     <div class="max-w-2xl space-y-6">
       {principles.map(p => (
-        <div class="border-l-2 border-sage pl-6">
-          <h3 class="text-base font-medium text-slate-dark mb-1">{p.title}</h3>
-          <p class="text-slate-dark/80 text-sm">{p.description}</p>
+        <div class="border-l-2 border-border pl-6">
+          <h3 class="text-base font-medium text-ink mb-1">{p.title}</h3>
+          <p class="text-ink/80 text-sm">{p.description}</p>
         </div>
       ))}
     </div>
@@ -188,45 +188,45 @@ opuspopuli-regions/                # Region configs (separate repo)
   >
     <div class="grid md:grid-cols-2 gap-12 mb-12">
       <div>
-        <h3 class="text-base font-medium text-slate-dark mb-4">What's open</h3>
-        <p class="text-slate-dark/80 text-sm mb-4">Open source code means anyone can verify:</p>
+        <h3 class="text-base font-medium text-ink mb-4">What's open</h3>
+        <p class="text-ink/80 text-sm mb-4">Open source code means anyone can verify:</p>
         <ul class="space-y-2">
-          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
-            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+          <li class="text-ink/80 text-sm flex items-start gap-2">
+            <span class="text-ink/70 mt-0.5" aria-hidden="true">&check;</span>
             What data the system collects
           </li>
-          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
-            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+          <li class="text-ink/80 text-sm flex items-start gap-2">
+            <span class="text-ink/70 mt-0.5" aria-hidden="true">&check;</span>
             How documents are processed
           </li>
-          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
-            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+          <li class="text-ink/80 text-sm flex items-start gap-2">
+            <span class="text-ink/70 mt-0.5" aria-hidden="true">&check;</span>
             What analysis results look like
           </li>
-          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
-            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+          <li class="text-ink/80 text-sm flex items-start gap-2">
+            <span class="text-ink/70 mt-0.5" aria-hidden="true">&check;</span>
             That no backdoors or data exfiltration exists
           </li>
         </ul>
       </div>
       <div>
-        <h3 class="text-base font-medium text-slate-dark mb-4">What's private</h3>
-        <p class="text-slate-dark/80 text-sm mb-4">Private prompts ensure:</p>
+        <h3 class="text-base font-medium text-ink mb-4">What's private</h3>
+        <p class="text-ink/80 text-sm mb-4">Private prompts ensure:</p>
         <ul class="space-y-2">
-          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
-            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+          <li class="text-ink/80 text-sm flex items-start gap-2">
+            <span class="text-ink/70 mt-0.5" aria-hidden="true">&check;</span>
             Consistent analysis quality across all nodes
           </li>
-          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
-            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+          <li class="text-ink/80 text-sm flex items-start gap-2">
+            <span class="text-ink/70 mt-0.5" aria-hidden="true">&check;</span>
             No one can game the system by studying prompt internals
           </li>
-          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
-            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+          <li class="text-ink/80 text-sm flex items-start gap-2">
+            <span class="text-ink/70 mt-0.5" aria-hidden="true">&check;</span>
             Continuous improvement without network disruption
           </li>
-          <li class="text-slate-dark/80 text-sm flex items-start gap-2">
-            <span class="text-slate-dark/70 mt-0.5" aria-hidden="true">&check;</span>
+          <li class="text-ink/80 text-sm flex items-start gap-2">
+            <span class="text-ink/70 mt-0.5" aria-hidden="true">&check;</span>
             Every node in the network is equally trustworthy
           </li>
         </ul>
@@ -234,22 +234,22 @@ opuspopuli-regions/                # Region configs (separate repo)
     </div>
 
     <div class="max-w-2xl">
-      <h3 class="text-base font-medium text-slate-dark mb-4">What IS transparent about prompts</h3>
+      <h3 class="text-base font-medium text-ink mb-4">What IS transparent about prompts</h3>
       <div class="space-y-3 mb-8">
-        <div class="border-l-2 border-sage pl-6">
-          <p class="text-slate-dark/80 text-sm"><span class="font-medium text-slate-dark">Methodology</span> — what kinds of analysis are performed and what questions they answer</p>
+        <div class="border-l-2 border-border pl-6">
+          <p class="text-ink/80 text-sm"><span class="font-medium text-ink">Methodology</span> — what kinds of analysis are performed and what questions they answer</p>
         </div>
-        <div class="border-l-2 border-sage pl-6">
-          <p class="text-slate-dark/80 text-sm"><span class="font-medium text-slate-dark">Design principles</span> — neutrality, completeness, source attribution, and balance</p>
+        <div class="border-l-2 border-border pl-6">
+          <p class="text-ink/80 text-sm"><span class="font-medium text-ink">Design principles</span> — neutrality, completeness, source attribution, and balance</p>
         </div>
-        <div class="border-l-2 border-sage pl-6">
-          <p class="text-slate-dark/80 text-sm"><span class="font-medium text-slate-dark">Version history</span> — when prompts changed, even if not exactly what changed</p>
+        <div class="border-l-2 border-border pl-6">
+          <p class="text-ink/80 text-sm"><span class="font-medium text-ink">Version history</span> — when prompts changed, even if not exactly what changed</p>
         </div>
-        <div class="border-l-2 border-sage pl-6">
-          <p class="text-slate-dark/80 text-sm"><span class="font-medium text-slate-dark">Integrity verification</span> — cryptographic hashing proves prompts aren't tampered with</p>
+        <div class="border-l-2 border-border pl-6">
+          <p class="text-ink/80 text-sm"><span class="font-medium text-ink">Integrity verification</span> — cryptographic hashing proves prompts aren't tampered with</p>
         </div>
       </div>
-      <p class="text-slate-dark/80 text-sm">
+      <p class="text-ink/80 text-sm">
         Think of it like a restaurant inspection system. The inspection criteria are public — what we look for. The training manual for inspectors is not — how we train them to look. Both serve the public interest. Open source alone isn't enough — a bad actor could fork the code and modify analysis. Private prompts alone isn't enough — users need to verify the system is honest. The combination gives users verifiable integrity with consistent quality.
       </p>
     </div>
@@ -258,7 +258,7 @@ opuspopuli-regions/                # Region configs (separate repo)
   <Section background="dark">
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Join the community</h2>
-      <p class="text-white/70 mb-8">
+      <p class="text-paper/70 mb-8">
         Building civic infrastructure is a collective effort. Whether you write code, documentation, or region configs — every contribution strengthens the network.
       </p>
       <div class="flex gap-3">
@@ -266,13 +266,13 @@ opuspopuli-regions/                # Region configs (separate repo)
           href="https://github.com/OpusPopuli/opuspopuli"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+          class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
         >
           View on GitHub
         </a>
         <a
           href="/get-involved"
-          class="inline-flex items-center text-white/80 hover:text-white px-6 py-2.5 text-sm font-medium transition-colors"
+          class="inline-flex items-center text-paper/80 hover:text-paper px-6 py-2.5 text-sm font-medium transition-colors"
         >
           Deploy for Your Community
         </a>

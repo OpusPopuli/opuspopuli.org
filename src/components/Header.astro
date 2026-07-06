@@ -1,4 +1,6 @@
 ---
+import Sunflower from './Sunflower.astro';
+
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/platform', label: 'Platform' },
@@ -10,17 +12,19 @@ const navLinks = [
 ];
 
 const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
 ---
 
-<header class="bg-white border-b border-slate-dark/10">
-  <nav class="container mx-auto px-6 py-5 max-w-5xl">
+<header class="bg-paper border-b border-border">
+  <nav class="container mx-auto px-6 py-4 max-w-5xl">
     <div class="flex items-center justify-between">
-      <a href="/" class="flex items-center">
-        <img
-          src="/logos/svg/op-horizontal-light.svg"
-          alt="Opus Populi"
-          class="h-8"
-        />
+      <a href="/" class="flex items-center gap-3 group" aria-label="Opus Populi — home">
+        <Sunflower state="idle" size={34} />
+        <span class="flex flex-col leading-none">
+          <span class="text-sm font-semibold tracking-[0.18em] uppercase text-ink">Opus Populi</span>
+          <span class="font-display italic text-xs text-dim mt-1">The Work of the People</span>
+        </span>
       </a>
 
       <ul class="hidden md:flex items-center gap-6">
@@ -28,9 +32,12 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href={link.href}
+              aria-current={isActive(link.href) ? 'page' : undefined}
               class:list={[
-                'text-sm text-slate-dark/70 hover:text-slate-dark transition-colors',
-                { 'text-slate-dark font-medium': currentPath === link.href }
+                'text-sm transition-colors',
+                isActive(link.href)
+                  ? 'text-ink font-semibold border-b-2 border-gold pb-0.5'
+                  : 'text-ink/60 hover:text-ink border-b-2 border-transparent pb-0.5',
               ]}
             >
               {link.label}
@@ -41,7 +48,7 @@ const currentPath = Astro.url.pathname;
 
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 text-slate-dark/70"
+        class="md:hidden p-2 text-ink/70"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
@@ -51,15 +58,18 @@ const currentPath = Astro.url.pathname;
       </button>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-slate-dark/10 pt-6">
+    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-border pt-6">
       <ul class="flex flex-col gap-4">
         {navLinks.map(link => (
           <li>
             <a
               href={link.href}
+              aria-current={isActive(link.href) ? 'page' : undefined}
               class:list={[
-                'block text-sm text-slate-dark/70 hover:text-slate-dark transition-colors',
-                { 'text-slate-dark font-medium': currentPath === link.href }
+                'block text-sm transition-colors',
+                isActive(link.href)
+                  ? 'text-ink font-semibold border-l-2 border-gold pl-3'
+                  : 'text-ink/60 hover:text-ink border-l-2 border-transparent pl-3',
               ]}
             >
               {link.label}

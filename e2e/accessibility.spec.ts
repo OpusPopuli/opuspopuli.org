@@ -53,6 +53,8 @@ const pages = [
   { name: "Privacy", path: "/privacy" },
   { name: "Press", path: "/press" },
   { name: "Transparency", path: "/transparency" },
+  { name: "Terms", path: "/terms" },
+  { name: "Brand", path: "/brand" },
 ];
 
 test.describe("Accessibility - All Pages", () => {

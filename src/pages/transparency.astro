@@ -224,18 +224,18 @@ const auditTrails = [
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
-            <tr class="border-b border-slate-dark/10">
-              <th class="text-left py-3 pr-4 font-medium text-slate-dark">Threat</th>
-              <th class="text-left py-3 pr-4 font-medium text-slate-dark">Risk</th>
-              <th class="text-left py-3 font-medium text-slate-dark">Defense layers</th>
+            <tr class="border-b border-ink/10">
+              <th class="text-left py-3 pr-4 font-medium text-ink">Threat</th>
+              <th class="text-left py-3 pr-4 font-medium text-ink">Risk</th>
+              <th class="text-left py-3 font-medium text-ink">Defense layers</th>
             </tr>
           </thead>
           <tbody>
             {threatModel.map(row => (
-              <tr class="border-b border-slate-dark/5">
-                <td class="py-3 pr-4 text-slate-dark font-medium align-top">{row.threat}</td>
-                <td class="py-3 pr-4 text-slate-dark/80 align-top">{row.description}</td>
-                <td class="py-3 text-slate-dark/70 text-xs align-top">{row.defense}</td>
+              <tr class="border-b border-ink/5">
+                <td class="py-3 pr-4 text-ink font-medium align-top">{row.threat}</td>
+                <td class="py-3 pr-4 text-ink/80 align-top">{row.description}</td>
+                <td class="py-3 text-ink/70 text-xs align-top">{row.defense}</td>
               </tr>
             ))}
           </tbody>
@@ -251,9 +251,9 @@ const auditTrails = [
   >
     <div class="grid md:grid-cols-2 gap-8">
       {principles.map(p => (
-        <div class="border-l-2 border-sage pl-6 py-2">
-          <h3 class="text-base font-medium text-slate-dark mb-2">{p.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{p.description}</p>
+        <div class="border-l-2 border-border pl-6 py-2">
+          <h3 class="text-base font-medium text-ink mb-2">{p.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{p.description}</p>
         </div>
       ))}
     </div>
@@ -264,7 +264,7 @@ const auditTrails = [
     title="The prompt service"
     subtitle="Why analysis prompts are private — and how the architecture makes that safe."
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
+    <div class="max-w-2xl space-y-6 text-ink/80 mb-12">
       <p>
         Every node in the network uses the same analysis prompts — the instructions that tell the AI how to summarize a ballot measure, extract campaign finance data, or analyze a civic document. These prompts are private. Not because we have something to hide, but because making them public would let bad actors game the system.
       </p>
@@ -278,16 +278,16 @@ const auditTrails = [
 
     <div class="space-y-6">
       {promptServiceLayers.map(layer => (
-        <div class="border-l-2 border-sage pl-6 py-2">
-          <h3 class="text-base font-medium text-slate-dark mb-2">{layer.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{layer.description}</p>
+        <div class="border-l-2 border-border pl-6 py-2">
+          <h3 class="text-base font-medium text-ink mb-2">{layer.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{layer.description}</p>
         </div>
       ))}
     </div>
 
-    <div class="bg-slate-dark/5 rounded-lg p-6 mt-10 max-w-2xl">
-      <p class="text-sm text-slate-dark/80 leading-relaxed">
-        <span class="font-medium text-slate-dark">The net result:</span> every node gets identical prompts, delivered securely, with a cryptographic receipt proving authenticity. No node can modify its prompts. No one can intercept them in transit. And if we change them, every node in the network knows — because the hashes change. We can improve analysis quality over time through controlled experiments, but we can never tamper with it silently.
+    <div class="bg-ink/5 rounded-lg p-6 mt-10 max-w-2xl">
+      <p class="text-sm text-ink/80 leading-relaxed">
+        <span class="font-medium text-ink">The net result:</span> every node gets identical prompts, delivered securely, with a cryptographic receipt proving authenticity. No node can modify its prompts. No one can intercept them in transit. And if we change them, every node in the network knows — because the hashes change. We can improve analysis quality over time through controlled experiments, but we can never tamper with it silently.
       </p>
     </div>
   </Section>
@@ -298,27 +298,27 @@ const auditTrails = [
     subtitle="How the network detects bias, drift, and manipulation across all nodes."
     background="gray"
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
+    <div class="max-w-2xl space-y-6 text-ink/80 mb-12">
       <p>
         Prompt lock ensures every node uses the same instructions. But that's not enough. A compromised model, a misconfigured server, or subtle infrastructure differences could produce biased output even with identical prompts. The canary document system is designed to catch what prompt lock cannot.
       </p>
-      <p class="text-sm bg-white rounded-lg border border-slate-dark/10 p-4">
-        <span class="font-medium text-slate-dark">Status:</span> The canary document system is designed and specified. Implementation is scheduled alongside the multi-region federation rollout — when it becomes operationally necessary to verify consistency across independently operated nodes.
+      <p class="text-sm bg-paper rounded-lg border border-ink/10 p-4">
+        <span class="font-medium text-ink">Status:</span> The canary document system is designed and specified. Implementation is scheduled alongside the multi-region federation rollout — when it becomes operationally necessary to verify consistency across independently operated nodes.
       </p>
     </div>
 
     <div class="space-y-6">
       {canaryDetails.map(detail => (
-        <div class="border-l-2 border-sage pl-6 py-2">
-          <h3 class="text-base font-medium text-slate-dark mb-2">{detail.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{detail.description}</p>
+        <div class="border-l-2 border-border pl-6 py-2">
+          <h3 class="text-base font-medium text-ink mb-2">{detail.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{detail.description}</p>
         </div>
       ))}
     </div>
 
-    <div class="bg-slate-dark/5 rounded-lg p-6 mt-10 max-w-2xl">
-      <p class="text-sm text-slate-dark/80 leading-relaxed">
-        <span class="font-medium text-slate-dark">Why this matters for bias:</span> Bias in civic AI is insidious because it's invisible to users. A voter reading a ballot measure summary has no way to know if the AI subtly emphasized fiscal costs over benefits, or presented one side's arguments more favorably. Canary documents with known-correct baselines make invisible bias detectable — and they do it continuously, not just during audits.
+    <div class="bg-ink/5 rounded-lg p-6 mt-10 max-w-2xl">
+      <p class="text-sm text-ink/80 leading-relaxed">
+        <span class="font-medium text-ink">Why this matters for bias:</span> Bias in civic AI is insidious because it's invisible to users. A voter reading a ballot measure summary has no way to know if the AI subtly emphasized fiscal costs over benefits, or presented one side's arguments more favorably. Canary documents with known-correct baselines make invisible bias detectable — and they do it continuously, not just during audits.
       </p>
     </div>
   </Section>
@@ -328,7 +328,7 @@ const auditTrails = [
     title="Region config integrity"
     subtitle="How civic data sources are validated, published, and verified — from JSON file to running node."
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80 mb-12">
+    <div class="max-w-2xl space-y-6 text-ink/80 mb-12">
       <p>
         Every jurisdiction's civic data — where to find propositions, how to access campaign finance records, which URLs serve representative directories — is defined in a JSON config file. A corrupted or malicious config could feed false data to an entire community. The integrity pipeline has four built layers and two planned layers.
       </p>
@@ -336,21 +336,21 @@ const auditTrails = [
 
     <div class="space-y-6">
       {regionIntegrityLayers.map(layer => (
-        <div class="border-l-2 border-sage pl-6 py-2">
+        <div class="border-l-2 border-border pl-6 py-2">
           <div class="flex items-center gap-2 mb-2">
-            <h3 class="text-base font-medium text-slate-dark">{layer.title}</h3>
-            <span class={`text-xs px-2 py-0.5 rounded-full font-medium ${layer.status === 'Built' ? 'bg-sage/15 text-sage-dark' : 'bg-slate-dark/10 text-slate-dark/60'}`}>
+            <h3 class="text-base font-medium text-ink">{layer.title}</h3>
+            <span class={`text-xs px-2 py-0.5 rounded-full font-medium ${layer.status === 'Built' ? 'bg-gold text-ink' : 'bg-off text-dim'}`}>
               {layer.status}
             </span>
           </div>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{layer.description}</p>
+          <p class="text-ink/80 text-sm leading-relaxed">{layer.description}</p>
         </div>
       ))}
     </div>
 
-    <div class="bg-slate-dark/5 rounded-lg p-6 mt-10 max-w-2xl">
-      <p class="text-sm text-slate-dark/80 leading-relaxed">
-        <span class="font-medium text-slate-dark">The self-healing dimension:</span> Even with validated configs, government websites change constantly. The scraping pipeline uses AI structural analysis to generate versioned extraction rules. When it detects a structural change (via SHA-256 hashing of page structure), it re-analyzes and generates new rules automatically. If extraction quality degrades — missing fields, item count drops — the pipeline triggers self-healing before bad data reaches users.
+    <div class="bg-ink/5 rounded-lg p-6 mt-10 max-w-2xl">
+      <p class="text-sm text-ink/80 leading-relaxed">
+        <span class="font-medium text-ink">The self-healing dimension:</span> Even with validated configs, government websites change constantly. The scraping pipeline uses AI structural analysis to generate versioned extraction rules. When it detects a structural change (via SHA-256 hashing of page structure), it re-analyzes and generates new rules automatically. If extraction quality degrades — missing fields, item count drops — the pipeline triggers self-healing before bad data reaches users.
       </p>
     </div>
   </Section>
@@ -363,24 +363,24 @@ const auditTrails = [
     <div class="overflow-x-auto">
       <table class="w-full text-sm">
         <thead>
-          <tr class="border-b border-slate-dark/10">
-            <th class="text-left py-3 pr-4 font-medium text-slate-dark">Commitment</th>
-            <th class="text-left py-3 pr-4 font-medium text-slate-dark">Why it matters</th>
-            <th class="text-left py-3 font-medium text-slate-dark">Technical control</th>
+          <tr class="border-b border-ink/10">
+            <th class="text-left py-3 pr-4 font-medium text-ink">Commitment</th>
+            <th class="text-left py-3 pr-4 font-medium text-ink">Why it matters</th>
+            <th class="text-left py-3 font-medium text-ink">Technical control</th>
           </tr>
         </thead>
         <tbody>
           {commitments.map(row => (
-            <tr class="border-b border-slate-dark/5">
-              <td class="py-3 pr-4 text-slate-dark font-medium">{row.commitment}</td>
-              <td class="py-3 pr-4 text-slate-dark/80">{row.why}</td>
-              <td class="py-3 text-slate-dark/70 text-xs">{row.control}</td>
+            <tr class="border-b border-ink/5">
+              <td class="py-3 pr-4 text-ink font-medium">{row.commitment}</td>
+              <td class="py-3 pr-4 text-ink/80">{row.why}</td>
+              <td class="py-3 text-ink/70 text-xs">{row.control}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p class="mt-8 text-slate-dark/80 text-sm max-w-2xl">
+    <p class="mt-8 text-ink/80 text-sm max-w-2xl">
       We built the system so that these things are technically impossible — not just policy violations. The architecture enforces the commitments, not a terms-of-service document.
     </p>
   </Section>
@@ -392,9 +392,9 @@ const auditTrails = [
   >
     <div class="grid md:grid-cols-2 gap-8">
       {auditTrails.map(trail => (
-        <div class="border-l-2 border-sage pl-6 py-2">
-          <h3 class="text-base font-medium text-slate-dark mb-2">{trail.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{trail.description}</p>
+        <div class="border-l-2 border-border pl-6 py-2">
+          <h3 class="text-base font-medium text-ink mb-2">{trail.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{trail.description}</p>
         </div>
       ))}
     </div>
@@ -407,13 +407,13 @@ const auditTrails = [
   >
     <div class="grid md:grid-cols-3 gap-8">
       {transparencyHub.map(item => (
-        <div class="border-l-2 border-sage pl-6 py-2">
-          <h3 class="text-base font-medium text-slate-dark mb-2">{item.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{item.description}</p>
+        <div class="border-l-2 border-border pl-6 py-2">
+          <h3 class="text-base font-medium text-ink mb-2">{item.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{item.description}</p>
         </div>
       ))}
     </div>
-    <p class="mt-8 text-slate-dark/80 text-sm max-w-2xl">
+    <p class="mt-8 text-ink/80 text-sm max-w-2xl">
       These documents are built into the application — accessible from any page, at any time. Transparency isn't a page you visit once. It's infrastructure you can rely on.
     </p>
   </Section>
@@ -421,7 +421,7 @@ const auditTrails = [
   <Section
     title="Why this matters"
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+    <div class="max-w-2xl space-y-6 text-ink/80">
       <p>
         Most AI-powered platforms ask you to trust them. We ask you to verify us. The entire codebase is open source under AGPL-3.0. The analysis methodology is published. The prompt integrity is cryptographically provable. The audit trails are immutable.
       </p>
@@ -431,7 +431,7 @@ const auditTrails = [
       <p>
         That's why our trust model has multiple independent layers. Prompt lock prevents divergent analysis. Canary documents detect invisible bias. Region config validation prevents corrupted data. Audit trails make every action accountable. And open source code means anyone can verify all of it.
       </p>
-      <p class="font-medium text-slate-dark">
+      <p class="font-medium text-ink">
         Trust in civic AI should be earned through architecture, not demanded through terms of service.
       </p>
     </div>
@@ -440,13 +440,13 @@ const auditTrails = [
   <Section background="dark">
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Don't take our word for it</h2>
-      <p class="text-white/70 mb-8">
+      <p class="text-paper/70 mb-8">
         Every claim on this page is verifiable. Read the code. Audit the architecture. Deploy the platform yourself and see how it works.
       </p>
       <div class="flex gap-3">
         <a
           href="/open-source"
-          class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+          class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
         >
           Explore the Code
         </a>
@@ -454,7 +454,7 @@ const auditTrails = [
           href="https://github.com/OpusPopuli/opuspopuli"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center text-white/80 hover:text-white px-6 py-2.5 text-sm font-medium transition-colors"
+          class="inline-flex items-center text-paper/80 hover:text-paper px-6 py-2.5 text-sm font-medium transition-colors"
         >
           View on GitHub
         </a>

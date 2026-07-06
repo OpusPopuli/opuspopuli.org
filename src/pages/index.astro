@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
+import Field from '../components/Field.astro';
+import Seed from '../components/Seed.astro';
 
 const supportingTools = [
   {
@@ -89,8 +91,11 @@ const techStack = [
 
 <BaseLayout title="Make American Democracy Legible" description="Opus Populi is a federated civic transparency platform that maps the relationships between representatives, their donors, and their votes — built on public-domain civic data and open source under AGPL-3.0.">
   <Hero
-    title="Make American democracy legible."
+    eyebrow="The Work of the People"
+    title="Make American democracy"
+    titleEm="legible."
     subtitle="Lobbyists have researchers, analysts, and communications professionals to translate public records into actionable intelligence. Ordinary citizens do not. Opus Populi closes that gap — mapping the relationships between representatives, their donors, and their votes on a federated network whose architecture mirrors American government itself."
+    declaration="Self-governance is our right. We've been denied the information we need to exercise it. Opus Populi gives it back."
     ctaText="See the Platform"
     ctaHref="/platform"
     secondaryCtaText="View Source on GitHub"
@@ -101,14 +106,14 @@ const techStack = [
     id="problem"
     title="The data is public. The asymmetry is structural."
   >
-    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
       <p>
         American democracy produces an extraordinary volume of public information — voting records, campaign finance disclosures, meeting minutes, ballot measure texts, personal financial disclosures — and then makes it practically inaccessible to the citizens it is meant to serve.
       </p>
       <p>
         The information asymmetry between professional lobbyists and ordinary citizens is not primarily a legal problem. The data is public. The asymmetry is structural: lobbyists employ researchers, analysts, and communications professionals to translate raw civic data into actionable intelligence. Citizens have no equivalent apparatus.
       </p>
-      <p class="font-medium text-slate-dark">
+      <p class="font-medium text-ink">
         We're building that apparatus — and putting it in citizens' hands under an <a href="/open-source" class="underline underline-offset-2 hover:opacity-70 transition-opacity">open-source license that cannot be quietly closed</a>.
       </p>
     </div>
@@ -120,7 +125,7 @@ const techStack = [
     subtitle="Representative. Donors. Votes. Conflicts. One lens on the relationships that shape every law that touches your life."
     background="gray"
   >
-    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed mb-10">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed mb-10">
       <p>
         The Influence Graph is the platform's flagship view — an interactive map of who funds whom, who votes how, and where the alignment between donor industry and legislative outcome crosses from coincidence into pattern.
       </p>
@@ -131,7 +136,7 @@ const techStack = [
         It composes the underlying civic tools — proposition explorer, campaign finance tracker, representative directory, meeting calendar — into a single coherent view of how political money moves through American government.
       </p>
     </div>
-    <a href="/platform#influence-graph" class="text-sm text-slate-dark/80 hover:text-slate-dark font-medium transition-colors">
+    <a href="/platform#influence-graph" class="text-sm text-ink/80 hover:text-ink font-medium transition-colors">
       How the Influence Graph works &rarr;
     </a>
   </Section>
@@ -142,22 +147,22 @@ const techStack = [
     subtitle="Each works on its own. Together they compose the Influence Graph."
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <a href="/platform#campaign-finance" class="text-slate-dark border-l-2 border-sage pl-6 py-2 hover:opacity-80 transition-opacity">
+      <a href="/platform#campaign-finance" class="text-ink border-l-2 border-gold pl-6 py-2 hover:opacity-80 transition-opacity">
         <div class="flex items-center gap-2 mb-1">
           <h3 class="font-medium">Campaign Finance Tracker</h3>
-          <span class="text-xs bg-sage/15 text-sage-dark px-2 py-0.5 rounded-full font-medium">Graph core</span>
+          <span class="text-xs bg-off text-dim px-2 py-0.5 rounded-full font-medium">Graph core</span>
         </div>
-        <p class="text-slate-dark/80 text-sm">See exactly who funded what initiative. Contributions, expenditures, and outside spending — aggregated from state and federal databases.</p>
+        <p class="text-ink/80 text-sm">See exactly who funded what initiative. Contributions, expenditures, and outside spending — aggregated from state and federal databases.</p>
       </a>
       {supportingTools.map(tool => (
-        <a href={tool.href} class="text-slate-dark border-l-2 border-slate-dark/10 pl-6 py-2 hover:border-sage transition-colors">
+        <a href={tool.href} class="text-ink border-l-2 border-border pl-6 py-2 hover:border-ink transition-colors">
           <div class="flex items-center gap-2 mb-1">
             <h3 class="font-medium">{tool.title}</h3>
             {tool.badge && (
-              <span class="text-xs bg-sage/15 text-sage-dark px-2 py-0.5 rounded-full font-medium">{tool.badge}</span>
+              <span class="text-xs bg-off text-dim px-2 py-0.5 rounded-full font-medium">{tool.badge}</span>
             )}
           </div>
-          <p class="text-slate-dark/80 text-sm">{tool.description}</p>
+          <p class="text-ink/80 text-sm">{tool.description}</p>
         </a>
       ))}
     </div>
@@ -169,7 +174,7 @@ const techStack = [
     subtitle="One commitment that cannot be quietly revised: every civic data source is public domain."
     background="gray"
   >
-    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
       <p>
         Opus Populi's primary data sources — the Federal Election Commission, Congress.gov, and California's Cal-Access campaign finance database — are public domain. There is no downstream license to negotiate, no commercial reuse restriction to disclose, no provenance chain that breaks when a vendor changes terms.
       </p>
@@ -185,11 +190,28 @@ const techStack = [
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
       {values.map(v => (
         <div>
-          <h3 class="text-sm font-medium text-slate-dark mb-1">{v.title}</h3>
-          <p class="text-slate-dark/70 text-sm">{v.description}</p>
+          <Seed activated size={22} class="mb-2" />
+          <h3 class="text-sm font-medium text-ink mb-1">{v.title}</h3>
+          <p class="text-ink/70 text-sm">{v.description}</p>
         </div>
       ))}
     </div>
+  </Section>
+
+  <Section
+    id="the-field"
+    eyebrow="04 — The Field"
+    background="gray"
+  >
+    <div class="max-w-2xl mb-12">
+      <p class="font-display text-3xl md:text-4xl font-bold text-ink leading-tight mb-5">
+        Democracy is messy. But when it works, it's <em>beautiful.</em>
+      </p>
+      <p class="text-dim leading-relaxed">
+        Every civic action plants a flower. Over time, participation becomes a field — thousands of independent citizens, one shared orientation. Civic metrics are usually bar charts and streaks: the language of compliance. This is the language of cultivation. Nobody wants to maintain a streak. Everyone wants to tend a garden.
+      </p>
+    </div>
+    <Field count={26} region="Sonoma County" current={4218} total={26000} />
   </Section>
 
   <Section
@@ -198,7 +220,7 @@ const techStack = [
     subtitle="Federal, state, county, municipal. The data lives where the governance lives."
     background="gray"
   >
-    <div class="max-w-2xl space-y-5 text-slate-dark/80 leading-relaxed mb-8">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed mb-8">
       <p>
         Opus Populi is not a centralized platform layered on top of civic data. It is a federated network whose architecture intentionally mirrors the hierarchical structure of American democratic governance.
       </p>
@@ -209,7 +231,7 @@ const techStack = [
         Federation produces cross-jurisdictional pattern intelligence — donor networks that span states, model legislation that spreads simultaneously, astroturfing patterns invisible from any single county — that emerges from the network itself. No centralized scraper can replicate it.
       </p>
     </div>
-    <a href="/network" class="text-sm text-slate-dark/80 hover:text-slate-dark font-medium transition-colors">
+    <a href="/network" class="text-sm text-ink/80 hover:text-ink font-medium transition-colors">
       How the network works &rarr;
     </a>
   </Section>
@@ -221,10 +243,10 @@ const techStack = [
   >
     <div class="grid md:grid-cols-3 gap-8">
       {audiences.map(a => (
-        <div class="border-l-2 border-sage pl-6 py-2">
+        <div class="border-l-2 border-border pl-6 py-2">
           <h3 class="font-medium mb-2">{a.title}</h3>
-          <p class="text-slate-dark/80 text-sm mb-4">{a.description}</p>
-          <a href={a.href} class="text-sm text-slate-dark/80 hover:text-slate-dark font-medium transition-colors">
+          <p class="text-ink/80 text-sm mb-4">{a.description}</p>
+          <a href={a.href} class="text-sm text-ink/80 hover:text-ink font-medium transition-colors">
             {a.linkText} &rarr;
           </a>
         </div>
@@ -244,7 +266,7 @@ const techStack = [
           href={tech.url}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-sm text-slate-dark/80 border border-slate-dark/10 px-4 py-2 rounded-full hover:border-sage hover:text-sage transition-colors"
+          class="text-sm text-ink/80 border border-border px-4 py-2 rounded-full hover:border-ink hover:text-ink transition-colors"
         >
           {tech.name}
         </a>
@@ -255,19 +277,19 @@ const techStack = [
   <Section background="dark">
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Build with us.</h2>
-      <p class="text-white/70 mb-8">
+      <p class="text-paper/70 mb-8">
         Whether you're a citizen, a newsroom, or a regional operator — the network grows by who shows up. Run a node. Contribute code. Add your jurisdiction. Make American democracy a little more legible.
       </p>
       <div class="flex gap-3">
         <a
           href="/get-involved"
-          class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+          class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
         >
           Get Involved
         </a>
         <a
           href="/why"
-          class="inline-flex items-center text-white/80 hover:text-white px-6 py-2.5 text-sm font-medium transition-colors"
+          class="inline-flex items-center text-paper/80 hover:text-paper px-6 py-2.5 text-sm font-medium transition-colors"
         >
           Why It Matters
         </a>

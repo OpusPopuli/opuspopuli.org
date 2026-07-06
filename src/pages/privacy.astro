@@ -112,14 +112,14 @@ const comparison = [
   <Section
     title="The problem with civic technology"
   >
-    <div class="max-w-2xl space-y-6 text-slate-dark/80">
+    <div class="max-w-2xl space-y-6 text-ink/80">
       <p>
         When you use most civic technology platforms, you're creating a detailed record of your political interests. Which legislation you research. Which representatives you contact. Which meetings you attend. Which petitions you care about.
       </p>
       <p>
         That data — what you care about politically — is some of the most sensitive information about you. And on most platforms, it's collected, stored, and often shared with third parties. Even platforms built with good intentions typically rely on external AI services that receive every query you make.
       </p>
-      <p class="font-medium text-slate-dark">
+      <p class="font-medium text-ink">
         Your civic research should be as private as your vote.
       </p>
     </div>
@@ -132,9 +132,9 @@ const comparison = [
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {protections.map(p => (
-        <div class="border-l-2 border-sage pl-6 py-2">
-          <h3 class="text-base font-medium text-slate-dark mb-2">{p.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{p.description}</p>
+        <div class="border-l-2 border-border pl-6 py-2">
+          <h3 class="text-base font-medium text-ink mb-2">{p.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{p.description}</p>
         </div>
       ))}
     </div>
@@ -147,13 +147,13 @@ const comparison = [
     <div class="max-w-2xl">
       <ul class="space-y-3">
         {neverDo.map(item => (
-          <li class="flex items-start gap-3 text-slate-dark/80">
-            <span class="text-slate-dark/50 mt-1 text-sm font-bold" aria-hidden="true">&times;</span>
+          <li class="flex items-start gap-3 text-ink/80">
+            <span class="text-dim mt-1 text-sm font-bold" aria-hidden="true">&times;</span>
             <span class="text-sm">{item}</span>
           </li>
         ))}
       </ul>
-      <p class="mt-8 text-slate-dark/80 text-sm">
+      <p class="mt-8 text-ink/80 text-sm">
         These aren't aspirational goals. They're architectural constraints. The system is built so that most of these things are technically impossible — not just against policy.
       </p>
     </div>
@@ -166,9 +166,9 @@ const comparison = [
   >
     <div class="grid md:grid-cols-2 gap-8">
       {aiDataHandling.map(item => (
-        <div class="border-l-2 border-sage pl-6 py-2">
-          <h3 class="text-base font-medium text-slate-dark mb-2">{item.title}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{item.description}</p>
+        <div class="border-l-2 border-border pl-6 py-2">
+          <h3 class="text-base font-medium text-ink mb-2">{item.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{item.description}</p>
         </div>
       ))}
     </div>
@@ -180,8 +180,8 @@ const comparison = [
     <div class="max-w-2xl space-y-8">
       {aiFaq.map(item => (
         <div>
-          <h3 class="text-base font-medium text-slate-dark mb-2">{item.question}</h3>
-          <p class="text-slate-dark/80 text-sm leading-relaxed">{item.answer}</p>
+          <h3 class="text-base font-medium text-ink mb-2">{item.question}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{item.answer}</p>
         </div>
       ))}
     </div>
@@ -195,18 +195,18 @@ const comparison = [
     <div class="overflow-x-auto">
       <table class="w-full max-w-2xl text-sm">
         <thead>
-          <tr class="border-b border-slate-dark/10">
-            <th class="text-left py-3 pr-4 font-medium text-slate-dark"></th>
-            <th class="text-left py-3 pr-4 font-medium text-slate-dark">Opus Populi</th>
-            <th class="text-left py-3 font-medium text-slate-dark">Typical civic platforms</th>
+          <tr class="border-b border-ink/10">
+            <th class="text-left py-3 pr-4 font-medium text-ink"></th>
+            <th class="text-left py-3 pr-4 font-medium text-ink">Opus Populi</th>
+            <th class="text-left py-3 font-medium text-ink">Typical civic platforms</th>
           </tr>
         </thead>
         <tbody>
           {comparison.map(row => (
-            <tr class="border-b border-slate-dark/5">
-              <td class="py-3 pr-4 text-slate-dark/70 text-xs uppercase tracking-wide">{row.category}</td>
-              <td class="py-3 pr-4 text-slate-dark/80">{row.opus}</td>
-              <td class="py-3 text-slate-dark/70">{row.typical}</td>
+            <tr class="border-b border-ink/5">
+              <td class="py-3 pr-4 text-ink/70 text-xs uppercase tracking-wide">{row.category}</td>
+              <td class="py-3 pr-4 text-ink/80">{row.opus}</td>
+              <td class="py-3 text-ink/70">{row.typical}</td>
             </tr>
           ))}
         </tbody>
@@ -217,19 +217,19 @@ const comparison = [
   <Section background="dark">
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Don't take our word for it</h2>
-      <p class="text-white/70 mb-8">
+      <p class="text-paper/70 mb-8">
         Every privacy claim on this page is verifiable. The entire codebase is open source under AGPL-3.0. Read the code. Audit the architecture. Deploy it yourself.
       </p>
       <div class="flex gap-3">
         <a
           href="/platform"
-          class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+          class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
         >
           See the Platform
         </a>
         <a
           href="/open-source"
-          class="inline-flex items-center text-white/80 hover:text-white px-6 py-2.5 text-sm font-medium transition-colors"
+          class="inline-flex items-center text-paper/80 hover:text-paper px-6 py-2.5 text-sm font-medium transition-colors"
         >
           Audit the Code
         </a>

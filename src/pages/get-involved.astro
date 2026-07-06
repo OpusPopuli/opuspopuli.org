@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
+import Seed from '../components/Seed.astro';
+import Sprout from '../components/Sprout.astro';
+import Sunflower from '../components/Sunflower.astro';
 
 const requirements = [
   { title: 'A community to serve', description: 'Whether you\'re a non-profit, civic group, or local government' },
@@ -68,16 +71,53 @@ const faqSchema = {
 
 <BaseLayout title="Get Involved" description="Bring citizen-owned civic technology to your community." extraSchema={[faqSchema]}>
   <Hero
-    title="Get involved"
+    eyebrow="Plant Your Seed"
+    title="Get"
+    titleEm="involved."
     subtitle="Every community deserves tools that serve them — not the other way around."
+    ctaText="Start the Conversation"
+    ctaHref="mailto:hello@opuspopuli.org?subject=Community%20Interest"
+    secondaryCtaText="View on GitHub"
+    secondaryCtaHref="https://github.com/OpusPopuli/opuspopuli"
   />
+
+  <Section
+    eyebrow="The Arc of Participation"
+    title="Seed, sprout, flower"
+    subtitle="A dormant seed is line only. When a citizen acts, it fills — gold is earned, never given. First briefing read, first action taken, the line rises. Full civic activation is one flower among the 3.5%."
+    background="gray"
+  >
+    <div class="grid sm:grid-cols-3 gap-px bg-border border border-border rounded overflow-hidden">
+      <div class="bg-paper p-8 flex flex-col items-center gap-4 text-center">
+        <Seed activated size={72} />
+        <div>
+          <div class="text-xs uppercase tracking-[0.18em] text-dim mb-1">Seed — joined</div>
+          <p class="text-sm text-ink/70">Account created. Node joined. Planted.</p>
+        </div>
+      </div>
+      <div class="bg-off p-8 flex flex-col items-center gap-4 text-center">
+        <Sprout size={80} />
+        <div>
+          <div class="text-xs uppercase tracking-[0.18em] text-dim mb-1">Sprout — growing</div>
+          <p class="text-sm text-ink/70">First actions. The line is rising.</p>
+        </div>
+      </div>
+      <div class="bg-paper p-8 flex flex-col items-center gap-4 text-center">
+        <Sunflower state="idle" size={84} />
+        <div>
+          <div class="text-xs uppercase tracking-[0.18em] text-dim mb-1">Flower — activated</div>
+          <p class="text-sm text-ink/70">Full civic activation. One of the 3.5%.</p>
+        </div>
+      </div>
+    </div>
+  </Section>
 
   <Section title="Who this is for">
     <div class="grid md:grid-cols-2 gap-6">
       {requirements.map(req => (
-        <div class="border-l-2 border-slate-dark/10 pl-6">
+        <div class="border-l-2 border-ink/10 pl-6">
           <h3 class="font-medium mb-1">{req.title}</h3>
-          <p class="text-slate-dark/80 text-sm">{req.description}</p>
+          <p class="text-ink/80 text-sm">{req.description}</p>
         </div>
       ))}
     </div>
@@ -92,7 +132,7 @@ const faqSchema = {
       {communityFeatures.map(item => (
         <div>
           <h3 class="font-medium mb-1">{item.title}</h3>
-          <p class="text-slate-dark/80 text-sm">{item.description}</p>
+          <p class="text-ink/80 text-sm">{item.description}</p>
         </div>
       ))}
     </div>
@@ -104,10 +144,10 @@ const faqSchema = {
     <div class="space-y-10">
       {steps.map(step => (
         <div class="flex gap-6">
-          <div class="text-sm font-medium text-slate-dark w-8">{step.step}</div>
+          <div class="text-sm font-medium text-ink w-8">{step.step}</div>
           <div class="flex-1">
             <h3 class="font-medium mb-2">{step.title}</h3>
-            <p class="text-slate-dark/80 text-sm">{step.description}</p>
+            <p class="text-ink/80 text-sm">{step.description}</p>
           </div>
         </div>
       ))}
@@ -116,7 +156,7 @@ const faqSchema = {
     <div class="mt-12">
       <a
         href="mailto:hello@opuspopuli.org?subject=Community%20Interest"
-        class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+        class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
       >
         Start the Conversation
       </a>
@@ -129,16 +169,16 @@ const faqSchema = {
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {devAreas.map(area => (
-        <div class="border-l-2 border-sage pl-6 py-2">
-          <h3 class="text-base font-medium text-slate-dark mb-1">{area.title}</h3>
-          <p class="text-slate-dark/80 text-sm">{area.description}</p>
+        <div class="border-l-2 border-border pl-6 py-2">
+          <h3 class="text-base font-medium text-ink mb-1">{area.title}</h3>
+          <p class="text-ink/80 text-sm">{area.description}</p>
         </div>
       ))}
     </div>
     <div class="mt-10 flex gap-3">
       <a
         href="/open-source"
-        class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+        class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
       >
         Contributor Guide
       </a>
@@ -146,7 +186,7 @@ const faqSchema = {
         href="https://github.com/OpusPopuli/opuspopuli"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center text-slate-dark/80 hover:text-slate-dark px-6 py-2.5 text-sm font-medium transition-colors"
+        class="inline-flex items-center text-ink/80 hover:text-ink px-6 py-2.5 text-sm font-medium transition-colors"
       >
         View on GitHub
       </a>
@@ -154,18 +194,18 @@ const faqSchema = {
   </Section>
 
   <Section title="Infrastructure costs" background="gray">
-    <p class="text-slate-dark/80 text-sm mb-8">Monthly estimates. Each community manages their own infrastructure.</p>
+    <p class="text-ink/80 text-sm mb-8">Monthly estimates. Each community manages their own infrastructure.</p>
     <div class="space-y-3 max-w-2xl">
       {costs.map(cost => (
-        <div class="py-3 border-b border-slate-dark/5 last:border-0">
+        <div class="py-3 border-b border-ink/5 last:border-0">
           <div class="flex justify-between mb-1">
             <div>
               <span class="font-medium">{cost.tier}</span>
-              <span class="text-slate-dark/80 text-sm ml-3">{cost.use}</span>
+              <span class="text-ink/80 text-sm ml-3">{cost.use}</span>
             </div>
-            <span class="text-slate-dark/80">{cost.cost}/mo</span>
+            <span class="text-ink/80">{cost.cost}/mo</span>
           </div>
-          <p class="text-slate-dark/70 text-xs">{cost.notes}</p>
+          <p class="text-ink/70 text-xs">{cost.notes}</p>
         </div>
       ))}
     </div>
@@ -174,12 +214,12 @@ const faqSchema = {
   <Section background="dark">
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Ready to talk?</h2>
-      <p class="text-white/70 mb-6">
+      <p class="text-paper/70 mb-6">
         We're preparing for launch. Tell us about your community, your jurisdiction, and how you'd like to use the platform.
       </p>
       <a
         href="mailto:hello@opuspopuli.org?subject=Community%20Interest"
-        class="inline-flex items-center bg-sage-dark text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-sage-darker transition-colors text-sm"
+        class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
       >
         Contact Us
       </a>
@@ -189,12 +229,12 @@ const faqSchema = {
   <Section title="Frequently asked questions">
     <div class="space-y-1 max-w-2xl">
       {faqs.map(faq => (
-        <details class="group border-b border-slate-dark/5">
-          <summary class="flex items-center justify-between cursor-pointer py-4 font-medium text-slate-dark hover:text-slate-dark/80 transition-colors">
+        <details class="group border-b border-ink/5">
+          <summary class="flex items-center justify-between cursor-pointer py-4 font-medium text-ink hover:text-ink/80 transition-colors">
             {faq.q}
-            <span class="text-slate-dark/40 group-open:rotate-45 transition-transform text-lg ml-4" aria-hidden="true">+</span>
+            <span class="text-dim group-open:rotate-45 transition-transform text-lg ml-4" aria-hidden="true">+</span>
           </summary>
-          <p class="text-slate-dark/80 text-sm pb-4">{faq.a}</p>
+          <p class="text-ink/80 text-sm pb-4">{faq.a}</p>
         </details>
       ))}
     </div>
