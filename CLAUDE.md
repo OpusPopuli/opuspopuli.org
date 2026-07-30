@@ -48,3 +48,7 @@ Deployed as a static site. `npm run build` produces `dist/`. The deployment targ
 - `@astrojs/sitemap`
 
 Keep the dependency footprint small — this is a static marketing site, not an application.
+
+## SDLC tooling
+
+Org-wide `op-*` workflow commands (`/op-review`, `/op-release`, `/op-issue-plan`, …) come from the shared **[opuspopuli-sdlc](https://github.com/OpusPopuli/opuspopuli-sdlc)** Claude Code plugin, auto-enabled via the committed `.claude/settings.json` (trust the repo folder once).
