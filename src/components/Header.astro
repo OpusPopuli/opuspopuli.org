@@ -10,7 +10,8 @@ const navLinks = [
   { href: '/open-source', label: 'Open Source' },
 ];
 
-const signInUrl = 'https://app-us-ca.opuspopuli.org/';
+// Keep in sync with the California entry in src/pages/network.astro.
+const signInUrl = 'https://california.opuspopuli.org/';
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
