@@ -11,6 +11,8 @@ const navLinks = [
   { href: '/get-involved', label: 'Get Involved' },
 ];
 
+const signInUrl = 'https://app-us-ca.opuspopuli.org/';
+
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? currentPath === '/' : currentPath.startsWith(href);
@@ -27,24 +29,33 @@ const isActive = (href: string) =>
         </span>
       </a>
 
-      <ul class="hidden md:flex items-center gap-6">
-        {navLinks.map(link => (
-          <li>
-            <a
-              href={link.href}
-              aria-current={isActive(link.href) ? 'page' : undefined}
-              class:list={[
-                'text-sm transition-colors',
-                isActive(link.href)
-                  ? 'text-ink font-semibold border-b-2 border-gold pb-0.5'
-                  : 'text-ink/60 hover:text-ink border-b-2 border-transparent pb-0.5',
-              ]}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div class="hidden md:flex items-center gap-6">
+        <ul class="flex items-center gap-6">
+          {navLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                class:list={[
+                  'text-sm transition-colors',
+                  isActive(link.href)
+                    ? 'text-ink font-semibold border-b-2 border-gold pb-0.5'
+                    : 'text-ink/60 hover:text-ink border-b-2 border-transparent pb-0.5',
+                ]}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href={signInUrl}
+          class="inline-flex items-center bg-gold text-ink font-semibold px-4 py-2 rounded-lg hover:brightness-95 transition-[filter] text-sm"
+        >
+          Sign In
+        </a>
+      </div>
 
       <button
         id="mobile-menu-btn"
@@ -77,6 +88,13 @@ const isActive = (href: string) =>
           </li>
         ))}
       </ul>
+
+      <a
+        href={signInUrl}
+        class="mt-6 inline-flex items-center justify-center w-full bg-gold text-ink font-semibold px-4 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
+      >
+        Sign In
+      </a>
     </div>
   </nav>
 </header>
