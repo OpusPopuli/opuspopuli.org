@@ -11,9 +11,8 @@ const navLinks = [
   { href: '/get-involved', label: 'Get Involved' },
 ];
 
-// Interim host. The intended canonical name is california.opuspopuli.org —
-// change this and the node list in src/pages/network.astro together.
-const signInUrl = 'https://app-us-ca.opuspopuli.org/';
+// Keep in sync with the California entry in src/pages/network.astro.
+const signInUrl = 'https://california.opuspopuli.org/';
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
