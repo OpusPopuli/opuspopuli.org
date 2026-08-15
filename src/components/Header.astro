@@ -49,11 +49,20 @@ const isActive = (href: string) =>
           ))}
         </ul>
 
+        {/*
+          Names the region deliberately. This is the NETWORK site, and
+          networkMembers in src/pages/network.astro is a list built to grow --
+          a bare "Sign In" quietly sends every visitor to one particular node,
+          which reads fine with one member and misleads the moment there are
+          two. Spelled out rather than "CA" to match how the node is named on
+          the network page, and because a state code is not obvious to a
+          first-time visitor from elsewhere.
+        */}
         <a
           href={signInUrl}
           class="inline-flex items-center bg-gold text-ink font-semibold px-4 py-2 rounded-lg hover:brightness-95 transition-[filter] text-sm"
         >
-          Sign In
+          Sign In — California
         </a>
       </div>
 
@@ -89,11 +98,12 @@ const isActive = (href: string) =>
         ))}
       </ul>
 
+      {/* Mobile. Keep the label identical to the desktop button above. */}
       <a
         href={signInUrl}
         class="mt-6 inline-flex items-center justify-center w-full bg-gold text-ink font-semibold px-4 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
       >
-        Sign In
+        Sign In — California
       </a>
     </div>
   </nav>
