@@ -66,13 +66,13 @@ const principles = [
   >
     <div class="max-w-2xl space-y-6 text-ink/80">
       <p>
-        Opus Populi is built as a set of independent, loosely coupled services behind a GraphQL Federation gateway. The backend runs four domain microservices — users, documents, knowledge (RAG), and regions (civic data) — each with its own schema, deployed independently. 16 pluggable provider packages abstract every external dependency behind swappable interfaces.
+        Opus Populi is built as a set of independent, loosely coupled services behind a GraphQL Federation gateway. The backend runs four domain microservices — users, documents, knowledge (RAG), and regions (civic data) — each with its own schema, deployed independently, alongside three background workers. 14 pluggable provider packages abstract every external dependency behind swappable interfaces.
       </p>
       <p>
         The frontend is a React 19 + Next.js 16 application with Apollo Client for state management, passkey authentication, and offline support as a progressive web app. AI runs entirely locally — Transformers.js for embeddings, pgvector for similarity search, and Ollama for LLM inference. Never as an external dependency.
       </p>
       <p>
-        This modularity is deliberate. Region-specific configuration lives in its own repository — a community in Texas can add their data sources without ever touching platform code, while both Texas and California benefit from shared pipeline improvements. The boundary is clean: open-source pipeline framework, declarative config per jurisdiction.
+        This modularity is deliberate. Region-specific configuration lives in its own repository — a community in Texas can add their data sources without ever touching application code, while both Texas and California benefit from shared pipeline improvements. The boundary is clean: open-source pipeline framework, declarative config per jurisdiction.
       </p>
     </div>
   </Section>
@@ -82,11 +82,11 @@ const principles = [
     background="gray"
   >
     <div class="max-w-2xl">
-      <pre tabindex="0" role="region" aria-label="Repository structure" class="bg-ink text-paper/80 text-sm p-6 rounded-lg overflow-x-auto font-mono leading-relaxed"><code>opuspopuli/                        # Core platform (monorepo)
+      <pre tabindex="0" role="region" aria-label="Repository structure" class="bg-ink text-paper/80 text-sm p-6 rounded-lg overflow-x-auto font-mono leading-relaxed"><code>opuspopuli/                        # Core application (monorepo)
 ├── apps/
 │   ├── frontend/                  # React 19 + Next.js 16
-│   └── backend/                   # NestJS microservices (4 services + gateway)
-├── packages/                      # 16 pluggable provider packages
+│   └── backend/                   # NestJS (4 services + gateway + 3 workers)
+├── packages/                      # 14 provider packages + 3 shared
 │   ├── region-provider/           # Declarative civic data plugin loader
 │   ├── scraping-pipeline/         # AI-powered schema-on-read extraction
 │   ├── prompt-client/             # Prompt service (circuit breaker + HMAC)
@@ -115,12 +115,12 @@ opuspopuli-regions/                # Region configs (separate repo)
 │   └── region-plugin.schema.json  # JSON Schema for validation
 └── __tests__/                     # Schema + connectivity tests</code></pre>
       <p class="text-ink/70 text-sm mt-4">
-        The platform lives in a monorepo. Region configs live in a <a href="https://github.com/OpusPopuli/opuspopuli-regions" class="underline underline-offset-2 hover:opacity-70 transition-opacity">separate repository</a>, published as an npm package — so civic domain experts can add regions without touching platform code.
+        The application lives in a monorepo. Region configs live in a <a href="https://github.com/OpusPopuli/opuspopuli-regions" class="underline underline-offset-2 hover:opacity-70 transition-opacity">separate repository</a>, published as an npm package — so civic domain experts can add regions without touching application code.
       </p>
       <div class="mt-8 border-l-2 border-border pl-6">
         <h3 class="text-base font-medium text-ink mb-2">Pluggable by design</h3>
         <p class="text-ink/80 text-sm leading-relaxed">
-          Every external dependency — database, AI model, vector store, embedding engine, auth, email, storage — is abstracted behind a pluggable provider interface. 16 provider packages mean communities can swap implementations without changing application code. Run a different LLM, use a different database, or switch vector stores — all through configuration, not code changes.
+          Every external dependency — database, AI model, vector store, embedding engine, auth, email, storage — is abstracted behind a pluggable provider interface. 14 provider packages mean communities can swap implementations without changing application code. Run a different LLM, use a different database, or switch vector stores — all through configuration, not code changes.
         </p>
       </div>
     </div>

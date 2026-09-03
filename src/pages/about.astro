@@ -11,7 +11,7 @@ const philosophy = [
   },
   {
     label: 'The mathematics',
-    body: 'Seeds grow at the golden angle — 137.5°, derived from φ. One rule, repeated identically by every seed, produces emergent spirals of breathtaking order. Equal participation, mathematically proven beautiful.',
+    body: 'Seeds grow at the golden angle — 137.5°, derived from φ. One rule, repeated identically by every seed, produces emergent spirals of order. Equal participation, made visible.',
   },
   {
     label: 'The negative space',
@@ -23,39 +23,39 @@ const tools = [
   {
     title: 'Petition Scanner',
     description: 'Point your phone at any petition and get an instant, plain-language breakdown. A community organizer encounters a petition outside a grocery store — they scan it and share a clear analysis with their civic group in seconds.',
-    href: '/platform#petition-scanner',
+    href: '/tools#petition-scanner',
     badge: 'AI-Powered',
   },
   {
     title: 'Proposition Explorer',
     description: 'Browse ballot measures with plain-language summaries and full text access. Before an election, voters can read what each measure actually does — not just the campaign slogans — and understand the fiscal impact.',
-    href: '/platform#proposition-explorer',
+    href: '/tools#proposition-explorer',
   },
   {
     title: 'Campaign Finance Tracker',
     description: 'Follow the money behind any ballot measure or candidate. See which organizations are funding campaigns, how money is being spent, and who stands to benefit from the outcome.',
-    href: '/platform#campaign-finance',
+    href: '/tools#campaign-finance',
   },
   {
     title: 'Representative Directory',
     description: 'Find who represents you at every level and contact them directly. When a community cares about a local issue, they can identify the right official and reach out — all from one place.',
-    href: '/platform#representative-directory',
+    href: '/tools#representative-directory',
   },
   {
     title: 'Meeting Calendar',
     description: 'Browse upcoming legislative meetings with agendas and video links. A neighborhood association tracking a zoning change can find every relevant hearing and show up prepared.',
-    href: '/platform#meeting-calendar',
+    href: '/tools#meeting-calendar',
   },
   {
     title: 'Document Q&A',
     description: 'Upload any civic document and ask questions in plain language. A journalist analyzing a 200-page budget document gets answers with citations pointing to exact passages — in minutes, not days.',
-    href: '/platform#document-qa',
+    href: '/tools#document-qa',
     badge: 'AI-Powered',
   },
   {
     title: 'Region Plugins',
-    description: 'Add any jurisdiction\'s data sources without writing code. Communities configure their own data connections through declarative setup, so civic data from any state or city can flow into the platform.',
-    href: '/platform#regions',
+    description: 'Add any jurisdiction\'s data sources without writing code. Communities configure their own data connections through declarative setup, so civic data from any state or city can flow in.',
+    href: '/tools#regions',
   },
 ];
 
@@ -71,6 +71,11 @@ const timeline = [
 ];
 
 const roadmap = [
+  // Keep the first three in sync with the status labels on /tools — a reader
+  // who sees "In development" there should find the same items here.
+  'Influence Graph — the integrated view composing the six built tools into one lens',
+  'Civic Advocacy Engine — compose correspondence to representatives with public records cited inline',
+  'Publisher Network — embeddable civic data widgets for regional newsrooms',
   'Region Plugin Marketplace — discover and install community-contributed data sources',
   'Mobile application — native iOS and Android with offline civic data access',
   'Multi-region federation — connect independently operated community instances into a shared network',
@@ -82,7 +87,7 @@ const roadmap = [
 <BaseLayout title="About Opus Populi" description="Learn about Opus Populi and our mission to strengthen democracy through citizen-built civic technology.">
   <Hero
     title="About"
-    subtitle="Democracy is in trouble. Not because people stopped caring — but because the tools of civic life were built for institutions, not citizens."
+    subtitle="Democracy is in trouble. Not because people stopped caring, but because the knowledge needed to take part is distributed as unevenly as wealth. An organized few decide. The disorganized many do not."
   />
 
   <Section>
@@ -92,7 +97,7 @@ const roadmap = [
         Information is buried in jargon. Participation requires expertise. And the platforms that promise to help often profit from the confusion.
       </p>
       <p class="text-ink/80 mb-10">
-        We believe there's a remedy: tools built by citizens, for citizens. Technology that communities own and control. That's what Opus Populi exists to build.
+        There is a remedy, and it is not asking people to care more. It is lowering what it costs to know: tools built by citizens, for citizens, owned and controlled by the communities that use them. That is what Opus Populi exists to build. <a href="/why" class="underline underline-offset-2 hover:opacity-70 transition-opacity">The argument behind it</a> is public, and so are <a href="/foundation" class="underline underline-offset-2 hover:opacity-70 transition-opacity">the objections we have not answered</a>.
       </p>
 
       <div class="space-y-8">
@@ -112,13 +117,13 @@ const roadmap = [
     </div>
   </Section>
 
-  <Section eyebrow="The Philosophy" title="Why a sunflower">
+  <Section eyebrow="The Mark" title="Why a sunflower">
     <div class="flex items-start gap-6 mb-10">
       <Sunflower state="idle" size={64} class="shrink-0 mt-1" />
       <div class="max-w-2xl">
-        <p class="philosophy text-lg text-ink mb-4">“Sunlight is the best disinfectant.” — Louis Brandeis, 1913</p>
+        <p class="philosophy text-lg text-ink mb-4">“Sunlight is said to be the best of disinfectants; electric light the most efficient policeman.” — Louis Brandeis, <em>What Publicity Can Do</em>, Harper’s Weekly, 20 December 1913</p>
         <p class="text-dim text-sm leading-loose">
-          Brandeis argued that concentrated power is checked not by regulation alone but by an informed public. One sentence, a century before Opus Populi. The same thesis — the flower carries the light metaphor silently, no sermon required.
+          Brandeis argued that concentrated power is checked not by regulation alone but by an informed public. One sentence, a century before Opus Populi. The flower carries the light metaphor silently, no sermon required.
         </p>
       </div>
     </div>
@@ -154,19 +159,19 @@ const roadmap = [
       <div>
         <h3 class="font-medium mb-2">AGPL-3.0 with a dual commercial license</h3>
         <p class="text-ink/80 text-sm leading-relaxed">
-          Modifications stay open. The commercial license funds the foundation. Closing the source — the standard move for a venture-backed civic platform under investor pressure — would forfeit the entire open source ecosystem the platform depends on. Verifiable evidence of alignment, not a policy that could quietly be revised.
+          Modifications stay open. The commercial license funds the foundation. Closing the source — the standard move for a venture-backed civic platform under investor pressure — would forfeit the entire open source ecosystem the project depends on. Verifiable evidence of alignment, not a policy that could quietly be revised.
         </p>
       </div>
       <div>
         <h3 class="font-medium mb-2">Public-domain civic data only</h3>
         <p class="text-ink/80 text-sm leading-relaxed">
-          Every primary data source — the Federal Election Commission, Congress.gov, California's Cal-Access — is public domain. No commercially-restricted vendor to negotiate with, no downstream license to disclose, no provenance chain that breaks when terms change. Anyone can audit it.
+          Every data source is public domain: the Federal Election Commission and California's Cal-Access today, Congress.gov as the federal layer expands. No commercially-restricted vendor to negotiate with, no downstream license to disclose, no provenance chain that breaks when terms change. Anyone can audit it.
         </p>
       </div>
       <div>
         <h3 class="font-medium mb-2">Citizens are not the product</h3>
         <p class="text-ink/80 text-sm leading-relaxed">
-          Citizens always access the platform for free. Revenue comes from institutional users of public data — commercial API licensing, journalism partnerships, institutional subscriptions — not from surveilling the citizens the platform serves. Individual users are not the product, never have been, and structurally cannot be.
+          Citizens always access the tools for free. Revenue comes from institutional users of public data — commercial API licensing, journalism partnerships, institutional subscriptions — not from surveilling the citizens it serves. Individual users are not the product, never have been, and structurally cannot be.
         </p>
       </div>
     </div>
@@ -194,7 +199,7 @@ const roadmap = [
 
   <Section
     title="What's built"
-    subtitle="Seven tools that give communities direct access to civic information."
+    subtitle="Six tools that give communities direct access to civic information, plus the region plugin system that connects any jurisdiction's data."
     background="gray"
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -211,8 +216,8 @@ const roadmap = [
       ))}
     </div>
     <div class="mt-10">
-      <a href="/platform" class="text-sm text-ink/80 hover:text-ink font-medium transition-colors">
-        See the full platform &rarr;
+      <a href="/tools" class="text-sm text-ink/80 hover:text-ink font-medium transition-colors">
+        See all the tools &rarr;
       </a>
     </div>
   </Section>

@@ -30,7 +30,7 @@ const communityFeatures = [
 ];
 
 const devAreas = [
-  { title: 'Code', description: 'React 19 + Next.js 16 frontend, NestJS microservices, GraphQL Federation APIs, and 16 pluggable provider packages.' },
+  { title: 'Code', description: 'React 19 + Next.js 16 frontend, NestJS microservices, GraphQL Federation APIs, and 14 pluggable provider packages.' },
   { title: 'Region plugins', description: 'Add your jurisdiction\'s data sources so your community can access local civic information.' },
   { title: 'Documentation', description: 'Guides, API docs, tutorials, and onboarding materials for new contributors.' },
   { title: 'Translations', description: 'Help expand language support beyond English and Spanish.' },
@@ -39,7 +39,7 @@ const devAreas = [
 ];
 
 const costs = [
-  { tier: 'Starter', use: 'Development and testing', cost: '$100-200', notes: 'Suitable for setting up and evaluating the platform' },
+  { tier: 'Starter', use: 'Development and testing', cost: '$100-200', notes: 'Suitable for setting up and evaluating Opus Populi' },
   { tier: 'Standard', use: 'Production deployment', cost: '$460-610', notes: 'Database, compute, storage, and AI processing for a typical community' },
   { tier: 'Enterprise', use: 'High traffic communities', cost: '$800-1,200', notes: 'Scaled infrastructure for larger jurisdictions with heavy usage' },
 ];
@@ -53,9 +53,9 @@ const faqs = [
   { q: 'How can developers contribute?', a: 'Fork the repo, pick an issue labeled "good first issue," and submit a PR. We review promptly. See our open source page for the full guide.' },
   { q: 'What if we need help?', a: 'We\'re here to help communities succeed. Contact us about support options that fit your needs.' },
   { q: 'How much technical expertise does our community need?', a: 'Deployment is handled through Infrastructure as Code — you don\'t need to write application code. A team member comfortable with basic server administration and Docker can get a community instance running. We provide documentation and support throughout the process.' },
-  { q: 'Can we customize the platform for our region?', a: 'Yes. Region plugins let you connect your jurisdiction\'s data sources through declarative configuration — no coding required. You can also customize branding, feature toggles, and content to match your community\'s needs.' },
+  { q: 'Can we customize Opus Populi for our region?', a: 'Yes. Region plugins let you connect your jurisdiction\'s data sources through declarative configuration — no coding required. You can also customize branding, feature toggles, and content to match your community\'s needs.' },
   { q: 'What kind of ongoing maintenance is needed?', a: 'Primarily software updates from upstream (security patches and new features), periodic data source monitoring to ensure civic feeds remain connected, and community moderation if you enable user-facing features. Most updates can be applied with a single command.' },
-  { q: 'Is there a demo we can try?', a: 'The California pilot is launching in 2026. The full platform is built and running in development — contact us to discuss early access or schedule a walkthrough.' },
+  { q: 'Is there a demo we can try?', a: 'The California pilot is launching in 2026. The tools are built and running in development — contact us to discuss early access or schedule a walkthrough.' },
 ];
 
 const faqSchema = {
@@ -84,7 +84,7 @@ const faqSchema = {
   <Section
     eyebrow="The Arc of Participation"
     title="Seed, sprout, flower"
-    subtitle="A dormant seed is line only. When a citizen acts, it fills — gold is earned, never given. First briefing read, first action taken, the line rises. Full civic activation is one flower among the 3.5%."
+    subtitle="A dormant seed is line only. When a citizen acts, it fills — gold is earned, never given. First briefing read, first action taken, the line rises. A flower is a citizen who can be counted: one signature among the few thousand that compel a county board to act."
     background="gray"
   >
     <div class="grid sm:grid-cols-3 gap-px bg-border border border-border rounded overflow-hidden">
@@ -106,7 +106,7 @@ const faqSchema = {
         <Sunflower state="idle" size={84} />
         <div>
           <div class="text-xs uppercase tracking-[0.18em] text-dim mb-1">Flower — activated</div>
-          <p class="text-sm text-ink/70">Full civic activation. One of the 3.5%.</p>
+          <p class="text-sm text-ink/70">Full civic activation. One of the few thousand who move a county.</p>
         </div>
       </div>
     </div>
@@ -215,7 +215,7 @@ const faqSchema = {
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Ready to talk?</h2>
       <p class="text-paper/70 mb-6">
-        We're preparing for launch. Tell us about your community, your jurisdiction, and how you'd like to use the platform.
+        We're preparing for launch. Tell us about your community, your jurisdiction, and how you'd like to use it.
       </p>
       <a
         href="mailto:hello@opuspopuli.org?subject=Community%20Interest"

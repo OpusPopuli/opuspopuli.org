@@ -5,6 +5,16 @@
  * shared orientation. Each flower sways on its own phase, like wind through
  * a real crop.
  *
+ * The number under the field is a STATUTORY THRESHOLD, not a progress bar.
+ * Under California Elections Code §9118 a county initiative petition signed
+ * by 10% of that county's gubernatorial vote compels the board of
+ * supervisors to act. That figure is set by statute and verifiable at any
+ * county elections office — which is the whole point of showing it.
+ *
+ * `current` is deliberately optional and has NO default. A participation
+ * count we cannot source is an invented figure, and inventing figures is
+ * how the previous framing here died. Pass it only when it is real.
+ *
  * Flowers are generated at build time with a seeded PRNG (deterministic →
  * stable static output). The sway is pure CSS, so it works without JS and
  * respects prefers-reduced-motion.
@@ -12,18 +22,21 @@
 interface Props {
   count?: number;
   seed?: number;
-  region?: string;
+  /** Jurisdiction label. Pass with `threshold` via fieldFor() so the two cannot disagree. */
+  region: string;
+  /** Signatures required under Elections Code §9118 — 10% of the county's gubernatorial vote. */
+  threshold: number;
+  /** Real, sourced signature count. Omit unless it can be cited. */
   current?: number;
-  total?: number;
   caption?: string;
 }
 
 const {
   count = 26,
   seed = 42,
-  region = 'Sonoma County',
-  current = 4218,
-  total = 26000,
+  region,
+  threshold,
+  current,
   caption = 'Every flower, a citizen doing the work',
 } = Astro.props;
 
@@ -53,8 +66,8 @@ const flowers: Flower[] = Array.from({ length: count }, () => {
   return { size, duration, delay, isSprout, margin: (-size * 0.22).toFixed(1) };
 });
 
-const currentLabel = current.toLocaleString('en-US');
-const totalLabel = total.toLocaleString('en-US');
+const thresholdLabel = threshold.toLocaleString('en-US');
+const currentLabel = current?.toLocaleString('en-US');
 ---
 
 <div class="rounded bg-off border border-border pt-12 px-8 overflow-hidden relative">
@@ -95,7 +108,7 @@ const totalLabel = total.toLocaleString('en-US');
         <path d="M 46 26 C 38 32, 32 42, 32 52 C 32 64, 40 72, 50 72 C 60 72, 68 64, 68 52 C 68 42, 62 32, 54 26" stroke="#1A1714" stroke-width="5" stroke-linecap="round" fill="none" />
       </svg>
       <span class="text-xs text-dim">
-        {region} · <span class="text-ink font-semibold">{currentLabel}</span> of {totalLabel} toward the 3.5%
+        {region} · {currentLabel && <><span class="text-ink font-semibold">{currentLabel}</span> of </>}<span class="text-ink font-semibold">{thresholdLabel}</span> signatures compel the board · <a href="/thresholds" class="underline underline-offset-2 hover:text-ink transition-colors">Elections Code §9118</a>
       </span>
     </div>
     <span class="font-display italic text-xs text-dim">{caption}</span>

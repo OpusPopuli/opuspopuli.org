@@ -1,2 +1,7 @@
 # Redirect www to bare domain
 https://www.opuspopuli.org/* https://opuspopuli.org/:splat 301
+
+# The /platform route was renamed to /tools. Real 301 where Cloudflare
+# Pages applies it; src/pages/platform.astro is the portable fallback.
+/platform /tools 301
+/platform/* /tools/:splat 301

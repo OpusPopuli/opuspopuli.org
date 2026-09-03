@@ -19,10 +19,21 @@
   --color-border: #E0DDD8;
 }
 
+/* Height of the sticky header. Keep in sync with the padding in
+   src/components/Header.astro — measured at 73px on both breakpoints. */
+:root {
+  --header-height: 73px;
+}
+
 /* Base styles */
 html {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   scroll-behavior: smooth;
+  /* The header is sticky, so anchor jumps (/tools#petition-scanner and the
+     rest) would otherwise land with the target tucked underneath it. This
+     also keeps keyboard focus clear of the header when tabbing, which
+     WCAG 2.2 AA requires (2.4.11 Focus Not Obscured). */
+  scroll-padding-top: calc(var(--header-height) + 1rem);
 }
 
 body {

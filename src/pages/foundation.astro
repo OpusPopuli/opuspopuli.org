@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+
+/*
+ * The intellectual case behind Opus Populi, stated in public.
+ *
+ * House rule, inherited from the canonical foundation document: PARAPHRASE,
+ * NEVER QUOTE. Nearly every work below is in copyright and the argument does
+ * not depend on anyone's exact wording. Do not add quotation marks to this
+ * page. Do not add a page number, a figure, or a citation that cannot be
+ * checked.
+ */
+
+const descriptiveCanon = [
+  {
+    author: 'Gaetano Mosca',
+    work: 'The Ruling Class',
+    year: '1896',
+    claim: 'A minority governs not because it is wiser or better born, but because it is organized against a majority that is not. Numbers are not power until they are coordinated. This is the backbone of the county threshold: the signature requirement is Mosca’s thesis expressed in arithmetic.',
+  },
+  {
+    author: 'Robert Michels',
+    work: 'Political Parties',
+    year: '1911',
+    claim: 'The iron law of oligarchy. Organization itself concentrates control, including in movements founded expressly to prevent that. This is the hardest version of our own finding, and it applies to us.',
+  },
+  {
+    author: 'E. E. Schattschneider',
+    work: 'The Semisovereign People',
+    year: '1960',
+    claim: 'Power lies in controlling which alternatives are considered at all, and the chorus of organized interests sings with an upper-class accent. Whoever frames the ballot has won most of the argument before any vote is cast. It explains why a ballot explainer is a political intervention rather than a public service.',
+  },
+  {
+    author: 'Alexis de Tocqueville',
+    work: 'Democracy in America',
+    year: '1835',
+    claim: 'Local institutions are where citizens learn the practice of liberty. It is why our unit of analysis is the county.',
+  },
+];
+
+const normativeCanon = [
+  {
+    author: 'John Rawls',
+    work: 'A Theory of Justice',
+    year: '1971',
+    claim: 'The political liberties must have fair value, not merely formal equality. A liberty that some citizens lack the resources to exercise is a liberty in name only, and its worth must be guaranteed rather than asserted. It converts the mission from an aspiration into a claim about what justice requires.',
+  },
+  {
+    author: 'John Dewey',
+    work: 'The Public and Its Problems',
+    year: '1927',
+    claim: 'The public is eclipsed, not absent. It cannot recognize itself or trace which decisions affect it. The remedy lies in improving the conditions of inquiry and communication. Written as a direct answer to Lippmann; that exchange is the founding argument of this field and it is still live.',
+  },
+  {
+    author: 'Thomas Paine',
+    work: 'Common Sense',
+    year: '1776',
+    claim: 'Paine wrote in deliberately plain language because comprehensibility was itself the political act. The pamphlet was simultaneously the argument and the distribution method. His plainness is the standard this project holds itself to.',
+  },
+  {
+    author: 'Hannah Arendt',
+    work: 'The Human Condition / On Revolution',
+    year: '1958, 1963',
+    claim: 'Politics is action taken in public among equals, and freedom is a practice rather than a possession. Pairs naturally with Tocqueville on why the local scale is where this is actually available to people.',
+  },
+  {
+    author: 'Jürgen Habermas',
+    work: 'The Structural Transformation of the Public Sphere',
+    year: '1962',
+    claim: 'Legitimacy arises from reasoned discourse among informed equals; as the public sphere is captured by commercial and administrative interests, that discourse thins into publicity. Legitimacy thins into publicity as the sphere is captured.',
+  },
+];
+
+const objections = [
+  {
+    author: 'Anthony Downs',
+    work: 'An Economic Theory of Democracy',
+    year: '1957',
+    label: 'Rational ignorance',
+    objection: 'A single vote decides essentially nothing, so the expected benefit of becoming informed is near zero while the cost is entirely real. Remaining ignorant is not a character failure; it is the correct decision. On this account, publishing more information changes nobody’s behavior, because cost was never the binding constraint. Pointlessness was.',
+    answer: 'Downs’s conclusion rests on a product of two terms: the cost of knowing, multiplied by how little one’s participation matters. The tool attacks the first term. The county scale attacks the second, and attacks it harder. One signature among the 5,074 that compel Nevada County’s board is not a lottery ticket. It is approximately one part in five thousand of a binding outcome, several orders of magnitude removed from one vote among eleven million in a statewide race. Downs is right about the state. He is much weaker about the county. That gap is not a fact about California; it is a fact about scale, and it reappears in any state wherever a binding decision rests on a small enough number of people.',
+  },
+  {
+    author: 'Walter Lippmann',
+    work: 'Public Opinion / The Phantom Public',
+    year: '1922, 1925',
+    label: 'The competence objection',
+    objection: 'Ordinary citizens cannot know enough to govern a modern society. Decisions should rest with those who can.',
+    answer: 'Dewey’s reply relocated the problem from the citizen to the conditions the citizen acts under, and that is our wager: that what presents as incapacity is substantially an access cost. Nothing yet proves the wager right.',
+  },
+  {
+    author: 'Jason Brennan',
+    work: 'Against Democracy',
+    year: '2016',
+    label: 'The contemporary Lippmann',
+    objection: 'Voters are ignorant and prone to motivated reasoning, so political power should be weighted toward competence.',
+    answer: 'Worth engaging directly rather than dismissing. Readers who lean this way already know the book, and refusing to name it reads as evasion. Our position is falsifiable and must remain so. If civic knowledge becomes genuinely cheap and participation does not improve, Brennan gains ground, and we should say so rather than move the goalposts.',
+  },
+];
+
+const concessions = [
+  {
+    title: 'Ten percent qualifies a measure; it does not pass one.',
+    body: 'A majority at the ballot is a separate and much larger problem, and nothing about a signature threshold addresses it.',
+  },
+  {
+    title: 'Lowering the cost of knowing does not supply a motive for caring.',
+    body: 'We have no evidence yet that it does.',
+  },
+  {
+    title: 'Michels applies to Opus Populi.',
+    body: 'An organization built to disperse civic power will tend to concentrate it. This is why the code is open, the AI charter is public, and the governing structure is a foundation rather than a company. Those are mitigations, not immunity.',
+  },
+  {
+    title: 'A tool that makes organizing cheaper makes it cheaper for everyone.',
+    body: 'Including people whose aims we would find objectionable. That is what neutrality costs, and we think it is the right price.',
+  },
+];
+
+---
+
+<BaseLayout
+  title="Philosophical Foundation"
+  description="The intellectual case behind Opus Populi: the canon it draws on, the strongest objections against it stated at full strength, and what we concede in public."
+>
+  <Hero
+    eyebrow="Philosophical Foundation"
+    title="The argument, and the case"
+    titleEm="against it."
+    subtitle="This is the intellectual foundation of Opus Populi: what we think is true about how political power is distributed, why we think unequal civic knowledge is a problem of justice rather than of apathy, and the best arguments that we are wrong about both."
+    declaration="A case that only survives when its weaknesses are hidden is not a case worth making."
+    secondaryCtaText="Read the short version"
+    secondaryCtaHref="/why"
+  />
+
+  <Section eyebrow="01" title="The argument in three moves">
+    <div class="max-w-2xl space-y-6 text-ink/80 leading-relaxed">
+      <p>
+        <strong class="text-ink">Descriptive.</strong> In any large polity, an organized few decide
+        and the disorganized many do not. This is not a claim about corruption or conspiracy; it is a
+        claim about coordination costs. It is also measurable. Under California Elections Code §9118,
+        a petition signed by 10% of a county's gubernatorial vote compels its board of supervisors to
+        act. That is roughly sixty people in Alpine County. A group that size already governs there,
+        whether or not it is the people who live there.
+      </p>
+      <p>
+        <strong class="text-ink">Normative.</strong> Formal political equality is worth little when
+        the knowledge required to use it is distributed as unevenly as wealth is. This is not a
+        complaint about apathy. It is a defect in the fair value of political liberty, and on Rawls's
+        account a just society is obliged to repair it rather than merely declare the right and walk
+        away.
+      </p>
+      <p>
+        <strong class="text-ink">Remedial.</strong> The response is not to hand government to experts,
+        and not to exhort citizens to care more. It is to change the conditions under which citizens
+        act: lower the cost of knowing what is on the ballot, who is paying for it, and what can be
+        done about it, at the scale where a single person's participation is not negligible.
+      </p>
+      <p class="font-medium text-ink">
+        That third move is the product. The first two are why it matters.
+      </p>
+    </div>
+  </Section>
+
+  <Section
+    eyebrow="02 — The Canon"
+    title="The organized minority"
+    subtitle="Why an organized minority decides, and why numbers alone do not."
+    background="gray"
+  >
+    <div class="space-y-10 max-w-3xl">
+      {descriptiveCanon.map(entry => (
+        <div class="border-l-2 border-ink/10 pl-6">
+          <h3 class="text-base font-medium text-ink">
+            {entry.author} — <em class="font-display">{entry.work}</em>
+            <span class="text-dim font-normal not-italic"> ({entry.year})</span>
+          </h3>
+          <p class="text-ink/80 text-sm leading-relaxed mt-2">{entry.claim}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    title="Why unequal knowledge is a justice problem"
+    subtitle="Why the uneven distribution of civic knowledge is a defect in justice rather than a failure of attention."
+  >
+    <div class="space-y-10 max-w-3xl">
+      {normativeCanon.map(entry => (
+        <div class="border-l-2 border-ink/10 pl-6">
+          <h3 class="text-base font-medium text-ink">
+            {entry.author} — <em class="font-display">{entry.work}</em>
+            <span class="text-dim font-normal not-italic"> ({entry.year})</span>
+          </h3>
+          <p class="text-ink/80 text-sm leading-relaxed mt-2">{entry.claim}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    eyebrow="03 — The Objections"
+    title="Stated at full strength"
+    subtitle="Anything premised on better civic information must answer the argument that better civic information changes nothing."
+    background="gray"
+  >
+    <div class="space-y-12 max-w-3xl">
+      {objections.map(o => (
+        <div>
+          <div class="eyebrow">{o.label}</div>
+          <h3 class="text-base font-medium text-ink mb-4">
+            {o.author} — <em class="font-display">{o.work}</em>
+            <span class="text-dim font-normal not-italic"> ({o.year})</span>
+          </h3>
+          <div class="border-l-2 border-ink/25 pl-6 mb-5">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-dim mb-2">The objection</div>
+            <p class="text-ink/80 text-sm leading-relaxed">{o.objection}</p>
+          </div>
+          <div class="border-l-2 border-gold pl-6">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-dim mb-2">Our answer</div>
+            <p class="text-ink/80 text-sm leading-relaxed">{o.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section
+    eyebrow="04"
+    title="What we concede"
+    subtitle="The limits of the argument, stated plainly."
+  >
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+      {concessions.map(c => (
+        <div class="border-l-2 border-gold pl-6">
+          <h3 class="text-base font-medium text-ink mb-2">{c.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{c.body}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-bold mb-4 tracking-tight">The third move is the product.</h2>
+      <p class="text-paper/70 mb-8">
+        The argument is only worth as much as what gets built on it. See what lowering the cost of
+        knowing actually looks like.
+      </p>
+      <div class="flex gap-3">
+        <a
+          href="/tools"
+          class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
+        >
+          See the Tools
+        </a>
+        <a
+          href="/why"
+          class="inline-flex items-center text-paper/80 hover:text-paper px-6 py-2.5 text-sm font-medium transition-colors"
+        >
+          Why It Matters
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

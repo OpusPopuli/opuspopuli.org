@@ -26,10 +26,13 @@ const directAccessExamples = [
   },
   {
     title: 'For your representatives',
-    description: 'Enter your address. See every elected official who represents you — with bios, committee assignments, peer-reviewed effectiveness scores, and a built-in contact form. No tracking of which representatives you look up or what you write to them.',
+    description: 'Enter your address. See every elected official who represents you — with bios, committee assignments, and a built-in contact form. No tracking of which representatives you look up or what you write to them.',
   },
 ];
 
+// Live, maintained sources only. GovTrack's bulk data and API ended in 2017 and
+// ProPublica's Congress API shut down on 10 July 2024; both were previously listed
+// here as current. Do not re-add a source without checking it still publishes.
 const academicSources = [
   {
     title: 'Legislative Effectiveness Score',
@@ -41,38 +44,112 @@ const academicSources = [
     source: 'Poole & Rosenthal',
     description: 'The academic standard for classifying legislative voting behavior across the left-right spectrum. Decades of methodological refinement and peer review.',
   },
+];
+
+// The limits of the argument, stated on the page rather than left implicit.
+const concessions = [
   {
-    title: 'GovTrack metrics',
-    source: 'Civic Impulse / GovTrack.us',
-    description: 'Leadership and ideology metrics derived from co-sponsorship networks. Open methodology, open data, used by journalists and researchers across the political spectrum.',
+    title: 'Ten percent qualifies a measure. It does not pass one.',
+    body: 'Winning a majority at the ballot is a separate and far larger problem. Nothing about a signature threshold addresses it.',
   },
   {
-    title: 'ProPublica Congress API',
-    source: 'ProPublica',
-    description: 'Calculated fields including missed vote percentage and party-line voting rate, derived from official Congressional records under open-data journalism standards.',
+    title: 'Cheaper knowledge is not a motive to care.',
+    body: 'We can lower what it costs to understand what is on your ballot. We cannot manufacture the desire to look. We have no evidence yet that the first produces the second.',
+  },
+  {
+    title: 'The iron law applies to us.',
+    body: 'Michels held that organization concentrates control even in movements founded to prevent exactly that. An organization built to disperse civic power will tend to accumulate it. Open code, a public AI charter, and a foundation rather than a company are mitigations. They are not immunity.',
+  },
+  {
+    title: 'Cheaper organizing is cheaper for everyone.',
+    body: 'A tool that lowers coordination costs lowers them for people whose aims we would find objectionable too. That is what neutrality costs, and we think it is the right price.',
   },
 ];
 ---
 
-<BaseLayout title="Why Civic Technology Matters" description="The chains are written in code. Why citizen-built civic tools matter — and the empirical theory of change that makes them work.">
+<BaseLayout
+  title="Why It Matters"
+  description="An organized few decide and the disorganized many do not. Why that is a problem of justice, why the county is the scale where it can be answered, and the strongest argument that we are wrong."
+>
   <Hero
-    title="The chains are written in code"
-    subtitle="Rousseau wrote that man is born free, yet everywhere in chains. Today, those chains aren't forged by monarchs. They're algorithms, platforms, and systems that shape our political reality without our consent."
+    eyebrow="The Argument"
+    title="Numbers are not power until they are"
+    titleEm="organized."
+    subtitle="In any large polity, an organized few decide and the disorganized many do not. This is not a claim about corruption or conspiracy. It is a claim about coordination costs, and unlike most claims in politics it can be checked against a statute."
+    declaration="Under California Elections Code §9118, a petition signed by 10% of a county's gubernatorial vote compels its board of supervisors to act. In Alpine County that is roughly sixty people. A group that size already governs there, whether or not it is the people who live there."
+    ctaText="See the Tools"
+    ctaHref="/tools"
+    secondaryCtaText="The Philosophical Foundation"
+    secondaryCtaHref="/foundation"
   />
 
-  <Section title="We've delegated our sovereignty">
-    <div class="max-w-2xl space-y-6 text-ink/80">
+  <Section eyebrow="01 — Descriptive" title="The organized few">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
       <p>
-        When you scroll through your feed, an algorithm is representing your interests to you. You never voted for it. You can't vote it out. You can't even see the principles by which it operates.
+        Mosca's argument, made in 1896 and not seriously dislodged since, is that a minority governs
+        not because it is wiser or better born, but because it is organized against a majority that
+        is not. Numbers alone are inert. Coordination is what converts them into power.
       </p>
       <p>
-        The platforms that dominate civic life weren't built for citizens. They were built for engagement metrics, for <a href="/privacy" class="underline underline-offset-2 hover:opacity-70 transition-opacity">data extraction</a>, for quarterly revenue. They're designed to capture attention, not enable understanding. To maximize time-on-site, not help you make informed decisions and move on.
+        Schattschneider sharpened it sixty years later. The decisive power is not the vote but the
+        prior question of which alternatives get considered at all, and the chorus of organized
+        interests, he observed, sings with an upper-class accent. Whoever frames the ballot has won
+        most of the argument before anyone votes.
       </p>
       <p class="font-medium text-ink">
-        This isn't a technical problem. It's a power problem.
+        This is why a ballot explainer is a political intervention and not a public service.
       </p>
       <p>
-        We've delegated not just lawmaking to representatives, but something more fundamental: the curation of our information environment. And unlike elected representatives, we never chose the systems that now mediate our political reality.
+        Tocqueville supplies the last piece, and it is the reason this site is organized around
+        counties rather than states. Local institutions are where citizens actually learn the
+        practice of liberty. The county is not a design convenience. It is the scale at which the
+        practice is available to an ordinary person.
+      </p>
+    </div>
+  </Section>
+
+  <Section eyebrow="02 — Normative" title="A liberty you cannot afford to use" background="gray">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
+      <p>
+        Formal political equality is worth very little when the knowledge required to use it is
+        distributed as unevenly as wealth is. Every citizen has the right to petition, to comment, to
+        show up, to vote. Exercising those rights well requires time, research, and interpretive
+        skill that are not distributed equally at all.
+      </p>
+      <p>
+        Rawls gave this defect its name. The political liberties must have <strong class="text-ink">fair
+        value</strong>, not merely formal existence. A liberty that some citizens lack the resources
+        to exercise is a liberty in name only, and its worth has to be guaranteed rather than
+        asserted. This is the strongest claim we make, because it converts the mission from an
+        aspiration into an obligation.
+      </p>
+      <p>
+        Dewey, writing in 1927 against Lippmann, located the failure in the same place. The public is
+        not absent; it is eclipsed. It cannot recognize itself or trace which decisions affect it.
+        The remedy is not better citizens but better conditions of inquiry and communication.
+      </p>
+      <p class="font-medium text-ink">
+        This is not a complaint about apathy. It is a defect in the fair value of political liberty.
+      </p>
+    </div>
+  </Section>
+
+  <Section eyebrow="03 — Remedial" title="Change the conditions, not the citizens">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
+      <p>
+        The response is not to hand government to experts, and not to exhort citizens to care more.
+        Both have been tried for a century. The response is to change the conditions under which
+        citizens act: lower the cost of knowing what is on the ballot, who is paying for it, and what
+        can be done about it, at the scale where one person's participation is not negligible.
+      </p>
+      <p>
+        Paine is the ancestor here, more than any of the others. He wrote in deliberately plain
+        language because comprehensibility was itself the political act; the pamphlet was
+        simultaneously the argument and the distribution method. That is the standard this project
+        holds itself to.
+      </p>
+      <p class="font-medium text-ink">
+        That third move is the product. The first two are why it matters.
       </p>
     </div>
   </Section>
@@ -111,35 +188,95 @@ const academicSources = [
     </p>
   </Section>
 
-  <Section title="How change actually happens">
+  <Section eyebrow="The Objection" title="The strongest argument that we are wrong">
     <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
       <p>
-        Philosophy is necessary. It is not sufficient. The question worth taking seriously is whether civic technology can actually shift how institutions respond to citizens — and political science has been answering it for two decades.
+        Anything built on the premise that better civic information matters has to answer the argument
+        that it changes nothing. The best version of that argument is Anthony Downs's.
       </p>
       <p>
-        Harvard political scientist Erica Chenoweth's analysis of 323 nonviolent campaigns from 1900 to 2006 produced a finding that upended centuries of assumptions about how political change works: <strong class="text-ink">no government has ever successfully resisted a nonviolent challenge once 3.5% of the population became actively engaged</strong>. The 3.5% rule is not a theoretical model. It is a descriptive statistic drawn from historical data. Every movement that crossed the threshold succeeded. Most movements succeeded without reaching it.
+        <strong class="text-ink">Rational ignorance.</strong> A single vote decides essentially
+        nothing. The expected benefit of becoming informed is therefore near zero, while the cost in
+        time and attention is entirely real. On this account, remaining ignorant is not a character
+        failure. It is the correct decision, arrived at rationally. Publishing more information
+        changes nobody's behavior, because cost was never the binding constraint. Pointlessness was.
       </p>
       <p>
-        The mechanism matters as much as the threshold. At that level of committed participation, Chenoweth found, something structural shifts: leaders from economic, political, cultural, and media sectors begin defecting to the side of the movement — not because they are persuaded, but because the trajectory becomes unmistakable. Institutional resistance softens before the majority changes its mind.
+        That argument is serious and it cannot be waved away. But notice its shape.
+        Downs's conclusion rests on a product of two terms: the cost of knowing, multiplied by how
+        little one's participation matters. Most civic technology attacks only the first term, which
+        is why most civic technology fails on exactly Downs's prediction.
       </p>
       <p class="font-medium text-ink">
-        A committed minority creates a sense of inevitability that functions like a majority.
+        The county scale attacks the second term, and attacks it harder.
       </p>
       <p>
-        Opus Populi is not asking the general public to change its behavior. It is asking a committed minority — civically engaged citizens, journalists, advocates, local officials, organizers — to use a better tool for work they are already doing. When that layer of civic society has access to lobbyist-grade analysis of public records, the signal reaches institutions with or without mass adoption first. Paine did not need to reach every colonist. He needed to reach the printers, the ministers, the tavern owners, the local officers. <em>Common Sense</em> found those people, and the cascade followed.
+        One signature among the 5,074 that compel Nevada County's board of supervisors is not a
+        lottery ticket. It is roughly one part in five thousand of a binding outcome, several orders
+        of magnitude removed from one vote among eleven million in a statewide race. Downs is right
+        about the state. He is much weaker about the county, and the threshold for
+        <a href="/thresholds" class="underline underline-offset-2 hover:opacity-70 transition-opacity">every one of California’s 58 counties</a>
+        is published, sourced, and checkable.
+      </p>
+      <p>
+        This is why the local threshold, rather than a statewide target, is the organizing device of
+        this entire project. It is not a presentation choice. It is the load-bearing response to the
+        strongest objection anyone has made to us.
+      </p>
+      <p>
+        California is where we start, not the limit of the argument. Every state has bodies whose
+        decisions turn on the attention of very few people, and most set the numbers that bind them
+        by statute. The figures differ, the statutes differ, and in some states the citizen
+        initiative does not exist at all. The method survives all of that: find the real number in
+        your jurisdiction, publish it, and work at that scale.
+      </p>
+      <p>
+        Lippmann and, in our own decade, Jason Brennan press a different line: that ordinary citizens
+        cannot know enough to govern, so power should sit with those who can. Both are worth engaging
+        rather than dismissing, and both are answered at length, along with Downs, in the
+        <a href="/foundation" class="underline underline-offset-2 hover:opacity-70 transition-opacity">philosophical foundation</a>.
       </p>
     </div>
   </Section>
 
-  <Section title="We don't grade your representative. Political scientists already do." background="gray">
-    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed mb-12">
+  <Section title="What we concede" background="gray">
+    <div class="max-w-2xl mb-12 text-ink/80 leading-relaxed">
       <p>
-        A natural extension of mapping the financial relationships behind votes is asking how effectively a representative actually does the work of legislating. We will not invent a proprietary scoring methodology for this.
-      </p>
-      <p>
-        The academic and journalistic standards already exist. They have been peer-reviewed for decades. Opus Populi aggregates what they already measure and adds the layer none of them currently provide: <strong class="text-ink">what those scores mean for a specific constituent, in their district, on the issues they care about.</strong>
+        These are the limits of the argument. A case that only survives when its weaknesses are hidden
+        is not a case worth making.
       </p>
     </div>
+
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+      {concessions.map(c => (
+        <div class="border-l-2 border-gold pl-6">
+          <h3 class="text-base font-medium text-ink mb-2">{c.title}</h3>
+          <p class="text-ink/80 text-sm leading-relaxed">{c.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-12 text-ink/80 max-w-2xl text-sm leading-relaxed">
+      One more. <strong class="text-ink">Our position is falsifiable and has to stay that way.</strong> If civic knowledge becomes genuinely cheap and participation does not improve, Brennan gains ground and we should say so rather than move the goalposts.
+    </p>
+  </Section>
+
+  <Section title="We don't grade your representative. Political scientists already do.">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed mb-12">
+      <p>
+        A natural extension of mapping the financial relationships behind votes is asking how effectively a representative actually does the work of legislating. When we build it, we will not invent a proprietary scoring methodology for it.
+      </p>
+      <p>
+        The academic standards already exist and have been peer-reviewed for decades. The plan is to aggregate what they already measure and add the layer none of them currently provide: <strong class="text-ink">what those scores mean for a specific constituent, in their district, on the issues they care about.</strong>
+      </p>
+    </div>
+
+        <p class="text-sm bg-off rounded-lg border border-ink/10 p-4 max-w-2xl mb-12">
+      <span class="font-medium text-ink">Status:</span> Effectiveness scoring is designed, not built.
+      The sources below are the ones we intend to aggregate, not ones the tool reads today.
+      <a href="/tools" class="underline underline-offset-2 hover:opacity-70 transition-opacity">The tools page</a>
+      tracks what has actually shipped.
+    </p>
 
     <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
       {academicSources.map(source => (
@@ -152,17 +289,20 @@ const academicSources = [
     </div>
 
     <p class="mt-12 text-ink/80 max-w-2xl text-sm leading-relaxed">
-      The platform is the interface. The authority belongs to the sources. We translate peer-reviewed political science into something a working voter can read in five minutes — and link back to the original methodology every time.
+      The tool is the interface. The authority belongs to the sources. The intent is to translate peer-reviewed political science into something a working voter can read in five minutes, linking back to the original methodology every time.
     </p>
   </Section>
 
-  <Section title="Direct access">
+  <Section title="Direct access" background="gray">
     <div class="max-w-2xl space-y-6 text-ink/80">
       <p>
-        Rousseau believed freedom meant living under laws you've genuinely chosen for yourself. Not laws you've been manipulated into accepting. Not laws imposed by others. Laws that emerge from genuine understanding.
+        Lowering the cost of knowing is not an abstraction. It is a set of specific things a person
+        can do in an afternoon that currently take a professional researcher a week.
       </p>
       <p>
-        That kind of freedom requires infrastructure. In Rousseau's time: assemblies, pamphlets, public squares. In ours: civic technology designed for direct access rather than algorithmic mediation.
+        Paine's insight was that the form of the argument and its distribution were the same problem.
+        Making a 47-page measure legible is not a courtesy extended to citizens after the real
+        political work is done. It <em>is</em> the political work.
       </p>
       <p class="font-medium text-ink">
         What does direct access look like?
@@ -179,25 +319,8 @@ const academicSources = [
     </div>
 
     <p class="mt-10 text-ink/80 max-w-2xl">
-      No intermediary deciding what you should see. Just direct access to the information you need to make your own decisions. See <a href="/platform" class="underline underline-offset-2 hover:opacity-70 transition-opacity">what's built</a> and how our <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI stays neutral</a>.
+      No intermediary deciding what you should see. Just direct access to the information you need to make your own decisions. See <a href="/tools" class="underline underline-offset-2 hover:opacity-70 transition-opacity">what's built</a> and how our <a href="/transparency" class="underline underline-offset-2 hover:opacity-70 transition-opacity">AI stays neutral</a>.
     </p>
-  </Section>
-
-  <Section title="The chains are choices" background="gray">
-    <div class="max-w-2xl space-y-6 text-ink/80">
-      <p>
-        We've delegated more than we realize. But we can reclaim it.
-      </p>
-      <p>
-        Not by abandoning technology. By building technology that serves democratic agency rather than replacing it. Infrastructure that enhances your sovereignty rather than delegating it. Tools that help you understand both your interests and the common good — rather than just showing you whatever keeps you scrolling.
-      </p>
-      <p>
-        The chains are still there: algorithms, platforms, engagement metrics. But they're not inevitable. They're choices — choices about what we build and who we build it for.
-      </p>
-      <p class="font-medium text-ink">
-        And choices can be changed.
-      </p>
-    </div>
   </Section>
 
   <Section background="dark">
@@ -214,16 +337,16 @@ const academicSources = [
           Get Involved
         </a>
         <a
-          href="/about"
+          href="/foundation"
           class="inline-flex items-center text-paper/80 hover:text-paper px-6 py-2.5 text-sm font-medium transition-colors"
         >
-          Learn More
+          Read the Foundation
         </a>
       </div>
     </div>
 
     <p class="mt-12 text-paper/50 text-xs max-w-xl">
-      This page draws on Erica Chenoweth's research on civil resistance, Craig Volden and Alan Wiseman's Legislative Effectiveness Score, and <a href="https://rodneygagnon.substack.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-paper/70 transition-colors">Democracy Dialogues</a> — exploring how classical political philosophy illuminates our digital challenges.
+      This page draws on the <a href="/foundation" class="underline hover:text-paper/70 transition-colors">philosophical foundation</a>, on Craig Volden and Alan Wiseman's Legislative Effectiveness Score, and on <a href="https://rodneygagnon.substack.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-paper/70 transition-colors">Democracy Dialogues</a>, which explores how classical political philosophy illuminates our digital challenges.
     </p>
   </Section>
 </BaseLayout>
