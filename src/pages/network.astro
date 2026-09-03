@@ -7,7 +7,7 @@ const tiers = [
   {
     tier: 'Federal edge',
     operator: 'Shared infrastructure',
-    scope: 'FEC, Congress.gov',
+    scope: 'FEC (Congress.gov planned)',
     note: 'A single shared layer no one owns. One ingestion job, one auditable source of truth, fifty redundant pipelines eliminated.',
   },
   {
@@ -51,7 +51,7 @@ const phases = [
 const networkEffects = [
   {
     title: 'Jurisdictional coverage',
-    description: 'More certified operators means more of the country covered, which makes the platform more useful to more people. Each new node adds local document ingestion, local RAG context, and geographic resilience.',
+    description: 'More certified operators means more of the country covered, which makes the network more useful to more people. Each new node adds local document ingestion, local RAG context, and geographic resilience.',
   },
   {
     title: 'Civic intelligence compounding',
@@ -73,7 +73,7 @@ const networkMembers = [
     // Keep in sync with signInUrl in src/components/Header.astro.
     subdomain: 'california.opuspopuli.org',
     status: 'development',
-    note: 'Proof-of-concept state node — 7 data sources across Secretary of State, Assembly, Senate, and Cal-Access',
+    note: 'State node in development — 19 configured data sources across the Secretary of State, Attorney General, Assembly, Senate, leginfo, and Cal-Access',
   },
 ];
 
@@ -136,7 +136,7 @@ const trustMechanisms = [
     </div>
 
     <p class="mt-12 text-ink/80 max-w-2xl text-sm leading-relaxed">
-      The federal edge cache is not a node anyone owns. A single shared infrastructure layer ingests Congress.gov and FEC data, and all state nodes draw from it — eliminating fifty redundant federal pipelines and creating a single auditable source of truth for federal data.
+      The federal edge cache is not a node anyone owns. A single shared infrastructure layer ingests FEC data, with Congress.gov planned, and all state nodes draw from it — eliminating fifty redundant federal pipelines and creating a single auditable source of truth for federal data.
     </p>
   </Section>
 

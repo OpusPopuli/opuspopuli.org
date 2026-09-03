@@ -3,42 +3,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import Field from '../components/Field.astro';
+import { fieldFor } from '../data/thresholds/california';
 import Seed from '../components/Seed.astro';
 
 const supportingTools = [
   {
     title: 'Proposition Explorer',
     description: '47 pages of legal text become a 5-minute interactive summary — with fiscal impact, arguments for and against, and the full source text always one click away.',
-    href: '/platform#proposition-explorer',
+    href: '/tools#proposition-explorer',
   },
   {
     title: 'Representative Directory',
     description: 'Enter your address. See every representative from city council to Congress — with bios, committee assignments, and built-in contact forms.',
-    href: '/platform#representative-directory',
+    href: '/tools#representative-directory',
   },
   {
     title: 'Meeting Calendar',
     description: 'Every public legislative meeting in your jurisdiction, searchable by body — with agendas, minutes, and video links.',
-    href: '/platform#meeting-calendar',
+    href: '/tools#meeting-calendar',
   },
   {
     title: 'Petition Scanner',
     description: 'Point your phone at a petition. Get an instant plain-language breakdown with automatic ballot measure matching.',
     badge: 'AI-Powered',
-    href: '/platform#petition-scanner',
+    href: '/tools#petition-scanner',
   },
   {
     title: 'Document Q&A',
     description: 'Upload any civic document. Ask questions in plain English. Get answers with citations — processed on the node serving your community.',
     badge: 'AI-Powered',
-    href: '/platform#document-qa',
+    href: '/tools#document-qa',
   },
 ];
 
 const values = [
   {
     title: 'Public-domain data only',
-    description: 'FEC, Congress.gov, Cal-Access. No commercially-restricted sources. An auditable provenance chain anyone can verify.',
+    description: 'FEC and Cal-Access today, Congress.gov next. No commercially-restricted sources. An auditable provenance chain anyone can verify.',
   },
   {
     title: 'Open code, durable license',
@@ -58,8 +59,8 @@ const audiences = [
   {
     title: 'Citizens',
     description: 'Read the ballot in plain language. See who funded the campaign. Find your representative. Show up to the meeting. Send the email with the public record cited inline.',
-    href: '/platform',
-    linkText: 'See the Platform',
+    href: '/tools',
+    linkText: 'See the Tools',
   },
   {
     title: 'Journalists & researchers',
@@ -89,15 +90,15 @@ const techStack = [
 ];
 ---
 
-<BaseLayout title="Make American Democracy Legible" description="Opus Populi is a federated civic transparency platform that maps the relationships between representatives, their donors, and their votes — built on public-domain civic data and open source under AGPL-3.0.">
+<BaseLayout title="Make American Democracy Legible" description="Opus Populi is a federated civic transparency project that maps the relationships between representatives, their donors, and their votes — built on public-domain civic data and open source under AGPL-3.0.">
   <Hero
     eyebrow="The Work of the People"
     title="Make American democracy"
     titleEm="legible."
     subtitle="Lobbyists have researchers, analysts, and communications professionals to translate public records into actionable intelligence. Ordinary citizens do not. Opus Populi closes that gap — mapping the relationships between representatives, their donors, and their votes on a federated network whose architecture mirrors American government itself."
-    declaration="Self-governance is our right. We've been denied the information we need to exercise it. Opus Populi gives it back."
-    ctaText="See the Platform"
-    ctaHref="/platform"
+    declaration="Self-governance is our right. The knowledge it takes to exercise it is priced out of reach for most people. Opus Populi lowers that price."
+    ctaText="See the Tools"
+    ctaHref="/tools"
     secondaryCtaText="View Source on GitHub"
     secondaryCtaHref="https://github.com/OpusPopuli/opuspopuli"
   />
@@ -127,16 +128,20 @@ const techStack = [
   >
     <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed mb-10">
       <p>
-        The Influence Graph is the platform's flagship view — an interactive map of who funds whom, who votes how, and where the alignment between donor industry and legislative outcome crosses from coincidence into pattern.
+        The Influence Graph is the flagship view — an interactive map of who funds whom, who votes how, and where the alignment between donor industry and legislative outcome crosses from coincidence into pattern.
       </p>
       <p>
         Donors and PACs visualized by contribution size and industry. Voting records cross-referenced against donor industry through semantic matching on bill content. Conflict-of-interest arcs surfaced algorithmically when alignment exceeds threshold.
       </p>
       <p>
-        It composes the underlying civic tools — proposition explorer, campaign finance tracker, representative directory, meeting calendar — into a single coherent view of how political money moves through American government.
+                It composes the underlying civic tools — proposition explorer, campaign finance tracker, representative directory, meeting calendar — into a single coherent view of how political money moves through American government.
+      </p>
+      <p class="text-sm bg-paper rounded-lg border border-ink/10 p-4">
+        <span class="font-medium text-ink">Status:</span> The integrated graph view is in active
+        development. The six tools beneath it are built, work standalone, and feed the graph.
       </p>
     </div>
-    <a href="/platform#influence-graph" class="text-sm text-ink/80 hover:text-ink font-medium transition-colors">
+    <a href="/tools#influence-graph" class="text-sm text-ink/80 hover:text-ink font-medium transition-colors">
       How the Influence Graph works &rarr;
     </a>
   </Section>
@@ -144,10 +149,10 @@ const techStack = [
   <Section
     id="tools"
     title="The tools beneath the graph"
-    subtitle="Each works on its own. Together they compose the Influence Graph."
+    subtitle="Each works on its own today. Together they will compose the Influence Graph."
   >
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <a href="/platform#campaign-finance" class="text-ink border-l-2 border-gold pl-6 py-2 hover:opacity-80 transition-opacity">
+      <a href="/tools#campaign-finance" class="text-ink border-l-2 border-gold pl-6 py-2 hover:opacity-80 transition-opacity">
         <div class="flex items-center gap-2 mb-1">
           <h3 class="font-medium">Campaign Finance Tracker</h3>
           <span class="text-xs bg-off text-dim px-2 py-0.5 rounded-full font-medium">Graph core</span>
@@ -176,10 +181,10 @@ const techStack = [
   >
     <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
       <p>
-        Opus Populi's primary data sources — the Federal Election Commission, Congress.gov, and California's Cal-Access campaign finance database — are public domain. There is no downstream license to negotiate, no commercial reuse restriction to disclose, no provenance chain that breaks when a vendor changes terms.
+        Opus Populi's data sources are public domain: the Federal Election Commission and California's Cal-Access campaign finance database today, with Congress.gov to follow as the federal layer expands. There is no downstream license to negotiate, no commercial reuse restriction to disclose, no provenance chain that breaks when a vendor changes terms.
       </p>
       <p>
-        This is a deliberate strategic decision. A civic transparency platform that depends on commercially-restricted civic data inherits the restrictions of its sources. Anyone can audit our data provenance. Anyone can replicate our pipelines. Methodological openness is the platform's strongest legal and political protection.
+        This is a deliberate strategic decision. Any civic tool that depends on commercially-restricted civic data inherits the restrictions of its sources. Anyone can audit our data provenance. Anyone can replicate our pipelines. Methodological openness is our strongest legal and political protection.
       </p>
     </div>
   </Section>
@@ -211,7 +216,7 @@ const techStack = [
         Every civic action plants a flower. Over time, participation becomes a field — thousands of independent citizens, one shared orientation. Civic metrics are usually bar charts and streaks: the language of compliance. This is the language of cultivation. Nobody wants to maintain a streak. Everyone wants to tend a garden.
       </p>
     </div>
-    <Field count={26} region="Sonoma County" current={4218} total={26000} />
+    <Field count={26} {...fieldFor('Nevada')} />
   </Section>
 
   <Section
@@ -225,7 +230,7 @@ const techStack = [
         Opus Populi is not a centralized platform layered on top of civic data. It is a federated network whose architecture intentionally mirrors the hierarchical structure of American democratic governance.
       </p>
       <p>
-        A shared federal layer ingests Congress.gov and FEC data once. State nodes own their state legislative and campaign finance corpus. County and municipal operators progressively take over local jurisdictions as they come online.
+        A shared federal layer ingests FEC data once, and will ingest Congress.gov as the federal layer expands. State nodes own their state legislative and campaign finance corpus. County and municipal operators progressively take over local jurisdictions as they come online.
       </p>
       <p>
         Federation produces cross-jurisdictional pattern intelligence — donor networks that span states, model legislation that spreads simultaneously, astroturfing patterns invisible from any single county — that emerges from the network itself. No centralized scraper can replicate it.

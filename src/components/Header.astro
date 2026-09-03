@@ -3,7 +3,7 @@ import Sunflower from './Sunflower.astro';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/platform', label: 'Platform' },
+  { href: '/tools', label: 'Tools' },
   { href: '/about', label: 'About' },
   { href: '/why', label: 'Why' },
   { href: '/network', label: 'Network' },
@@ -18,7 +18,7 @@ const isActive = (href: string) =>
   href === '/' ? currentPath === '/' : currentPath.startsWith(href);
 ---
 
-<header class="bg-paper border-b border-border">
+<header class="sticky top-0 z-50 bg-paper border-b border-border">
   <nav class="container mx-auto px-6 py-4 max-w-5xl">
     <div class="flex items-center justify-between">
       <a href="/" class="flex items-center gap-3 group" aria-label="Opus Populi — home">
@@ -78,7 +78,7 @@ const isActive = (href: string) =>
       </button>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-border pt-6">
+    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-border pt-6 max-h-[calc(100dvh-var(--header-height))] overflow-y-auto">
       <ul class="flex flex-col gap-4">
         {navLinks.map(link => (
           <li>

@@ -44,9 +44,11 @@ async function checkAccessibility(
 
 const pages = [
   { name: "Home", path: "/" },
-  { name: "Platform", path: "/platform" },
+  { name: "Tools", path: "/tools" },
   { name: "About", path: "/about" },
   { name: "Why", path: "/why" },
+  { name: "Foundation", path: "/foundation" },
+  { name: "Thresholds", path: "/thresholds" },
   { name: "Network", path: "/network" },
   { name: "Open Source", path: "/open-source" },
   { name: "Get Involved", path: "/get-involved" },

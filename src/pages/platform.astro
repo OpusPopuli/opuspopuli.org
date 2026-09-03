@@ -1,0 +1,33 @@
+---
+/*
+ * Redirect: /platform -> /tools
+ *
+ * The route was renamed because the site argues that platforms mediate and
+ * tools enable (see /why). Naming the product page "Platform" contradicted the
+ * argument it was making.
+ *
+ * Written as a page rather than an `astro.config.mjs` redirect entry so the
+ * fragment survives. Astro's static redirects emit a bare meta-refresh, which
+ * drops the hash, and the old deep links were all anchors
+ * (/platform#petition-scanner and friends). The script carries hash and query
+ * across; the meta refresh is the no-JS fallback.
+ *
+ * public/_redirects additionally gives Cloudflare Pages a real 301 where it
+ * takes precedence over the static asset. Either path lands on /tools.
+ *
+ * Safe to delete once external inbound links to /platform have aged out.
+ */
+const target = '/tools';
+---
+
+<!-- prettier-ignore -->
+<meta http-equiv="refresh" content={`0;url=${target}`} />
+<meta name="robots" content="noindex" />
+<link rel="canonical" href={target} />
+<title>Redirecting to the tools</title>
+<script is:inline define:vars={{ target }}>
+  location.replace(target + location.search + location.hash);
+</script>
+<p>
+  This page moved to <a href={target}>{target}</a>.
+</p>

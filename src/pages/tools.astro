@@ -19,25 +19,25 @@ const layers = [
     number: '01',
     title: 'The Influence Graph',
     status: 'Components built · integrated view in development',
-    summary: 'Representative → donors → votes, with conflict-of-interest arcs surfaced algorithmically when donor industry and bill topic alignment exceeds threshold. The public-facing front door of the platform.',
+    summary: 'Representative → donors → votes, with conflict-of-interest arcs surfaced algorithmically when donor industry and bill topic alignment exceeds threshold. The public-facing front door.',
   },
   {
     number: '02',
     title: 'Civic Advocacy Engine',
     status: 'In development',
-    summary: 'Compose correspondence to your representatives with platform documents — vote records, campaign finance data, meeting minutes, ballot measure texts — cited inline. Lobbyist-grade communication, for citizens.',
+    summary: 'Compose correspondence to your representatives with civic documents — vote records, campaign finance data, meeting minutes, ballot measure texts — cited inline. Lobbyist-grade communication, for citizens.',
   },
   {
     number: '03',
     title: 'Publisher Network',
     status: 'In development',
-    summary: 'Embeddable civic data widgets that surface conflict-of-interest summaries, vote trackers, and donor maps directly inside regional journalism — building institutional credibility for the platform and a content flywheel for partner newsrooms.',
+    summary: 'Embeddable civic data widgets that surface conflict-of-interest summaries, vote trackers, and donor maps directly inside regional journalism — building institutional credibility for the project and a content flywheel for partner newsrooms.',
   },
   {
     number: '04',
     title: 'Regional Node Network',
     status: 'Federation architecture built',
-    summary: "The platform's infrastructure and civic-expansion mechanism. Each certified node is a deployment of Opus Populi serving a specific jurisdiction, operated under a license that aligns commercial incentives with the civic mission.",
+    summary: "The infrastructure and civic-expansion mechanism. Each certified node is a deployment of Opus Populi serving a specific jurisdiction, operated under a license that aligns commercial incentives with the civic mission.",
   },
 ];
 
@@ -202,7 +202,7 @@ const techStack = [
 ];
 ---
 
-<BaseLayout title="The Platform" description="Opus Populi is built in four product layers — the Influence Graph, the Civic Advocacy Engine, the Publisher Network, and the Regional Node Network. See what's built, what's in development, and how the layers compose.">
+<BaseLayout title="The Tools" description="Opus Populi is built in four layers — the Influence Graph, the Civic Advocacy Engine, the Publisher Network, and the Regional Node Network. See what's built, what's in development, and how the layers compose.">
   <Hero
     title="Four layers. One civic infrastructure."
     subtitle="The Influence Graph maps the relationships. The Civic Advocacy Engine acts on them. The Publisher Network distributes them. The Regional Node Network hosts all of it — federally, statewide, county by county. Open source under AGPL-3.0."
@@ -243,7 +243,7 @@ const techStack = [
   <Section
     id="influence-graph"
     title="Layer 1 — The Influence Graph"
-    subtitle="The platform's flagship view: an interactive map of who funds whom, who votes how, and where alignment between donor industry and legislative outcome crosses from coincidence into pattern."
+    subtitle="The flagship view: an interactive map of who funds whom, who votes how, and where alignment between donor industry and legislative outcome crosses from coincidence into pattern."
     background="gray"
   >
     <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed mb-12">
@@ -272,7 +272,7 @@ const techStack = [
         Lobbyists communicate with elected officials by citing the public record. Ordinary citizens, lacking the same research apparatus, send messages institutional staff are trained to treat as noise. The Civic Advocacy Engine closes that gap.
       </p>
       <p>
-        Citizens compose correspondence with platform documents — vote records, campaign finance data, meeting minutes, ballot measure texts — embedded as inline citations linking back to primary sources. Correspondence flows through a routing proxy designed to preserve correspondent privacy while preserving the integrity of the message.
+        Citizens compose correspondence with civic documents — vote records, campaign finance data, meeting minutes, ballot measure texts — embedded as inline citations linking back to primary sources. Correspondence flows through a routing proxy designed to preserve correspondent privacy while preserving the integrity of the message.
       </p>
     </div>
   </Section>
@@ -285,7 +285,7 @@ const techStack = [
   >
     <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
       <p>
-        Regional journalism partners embed Opus Populi civic data widgets — conflict-of-interest summaries, vote trackers, donor maps — directly within news coverage. The platform gains institutional credibility; partner newsrooms gain a content flywheel built on certified public-domain data.
+        Regional journalism partners embed Opus Populi civic data widgets — conflict-of-interest summaries, vote trackers, donor maps — directly within news coverage. The project gains institutional credibility; partner newsrooms gain a content flywheel built on certified public-domain data.
       </p>
       <p>
         The Publisher Network is non-exclusive and preserves editorial independence. A regional node with two or three journalism partners embedded generates widget traffic and credibility that accelerates adoption across that region.
@@ -300,7 +300,7 @@ const techStack = [
   >
     <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed mb-8">
       <p>
-        Each certified regional node is a deployment of Opus Populi serving a specific jurisdiction. A shared federal layer ingests Congress.gov and FEC data once. State nodes own state legislative and campaign finance corpora. County and municipal operators progressively take over local jurisdictions as they come online.
+        Each certified regional node is a deployment of Opus Populi serving a specific jurisdiction. A shared federal layer ingests FEC data once, with Congress.gov planned. State nodes own state legislative and campaign finance corpora. County and municipal operators progressively take over local jurisdictions as they come online.
       </p>
       <p>
         Cross-jurisdictional pattern intelligence — donor networks spanning states, model legislation spreading simultaneously, astroturfing patterns invisible from any single county — emerges from the federated network itself. No centralized scraper can replicate it.
@@ -361,7 +361,7 @@ const techStack = [
         Our pipeline uses a <strong>schema-on-read</strong> approach: AI analyzes website structure to generate versioned extraction rules (structural manifests), rather than relying on brittle selectors. When a site changes, the system detects the structural shift, re-analyzes, and adapts — no developer intervention needed.
       </p>
       <p>
-        The pipeline handles three source types: HTML scraping with AI structural analysis, paginated REST APIs, and bulk file downloads (ZIP/CSV/TSV). Every extracted record is validated against domain rules before entering the platform.
+        The pipeline handles three source types: HTML scraping with AI structural analysis, paginated REST APIs, and bulk file downloads (ZIP/CSV/TSV). Every extracted record is validated against domain rules before entering the corpus.
       </p>
     </div>
   </Section>
@@ -449,7 +449,7 @@ const techStack = [
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Bring this to your community</h2>
       <p class="text-paper/70 mb-8">
-        Every community deserves civic tools they own and control. Join the network or contribute to the platform.
+        Every community deserves civic tools they own and control. Join the network or contribute to the code.
       </p>
       <div class="flex gap-3">
         <a

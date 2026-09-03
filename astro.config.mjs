@@ -8,8 +8,10 @@ export default defineConfig({
   site: 'https://opuspopuli.org',
   integrations: [
     sitemap({
+      // /platform is a noindex redirect stub to /tools, not a page.
+      filter: page => !page.endsWith('/platform/'),
       serialize(item) {
-        const highPriority = ['/platform/', '/about/', '/get-involved/'];
+        const highPriority = ['/tools/', '/about/', '/why/', '/foundation/', '/thresholds/', '/get-involved/'];
         if (item.url === 'https://opuspopuli.org/') {
           item.priority = 1.0;
         } else if (highPriority.some(p => item.url.endsWith(p))) {

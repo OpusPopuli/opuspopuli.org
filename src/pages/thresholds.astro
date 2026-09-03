@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import {
+  COUNTY_THRESHOLDS,
+  SOURCE_URL,
+  SOURCE_PAGE_URL,
+  SOURCE_LABEL,
+  STATUTE_URL,
+  STATEWIDE_VOTES,
+  STATEWIDE_STATUTE,
+  STATEWIDE_AMENDMENT,
+} from '../data/thresholds/california';
+
+const n = (v: number) => v.toLocaleString('en-US');
+
+const smallest = COUNTY_THRESHOLDS[0];
+const largest = COUNTY_THRESHOLDS[COUNTY_THRESHOLDS.length - 1];
+
+const statewide = [
+  {
+    label: 'County initiative',
+    basis: '10% of the county gubernatorial vote',
+    value: `${n(smallest.threshold)} – ${n(largest.threshold)}`,
+    note: `Varies by county. ${smallest.county} at the low end, ${largest.county} at the high end.`,
+  },
+  {
+    label: 'Statewide initiative statute',
+    basis: '5% of the statewide gubernatorial vote',
+    value: n(STATEWIDE_STATUTE),
+    note: 'One threshold for the entire state.',
+  },
+  {
+    label: 'Statewide constitutional amendment',
+    basis: '8% of the statewide gubernatorial vote',
+    value: n(STATEWIDE_AMENDMENT),
+    note: 'One threshold for the entire state.',
+  },
+];
+---
+
+<BaseLayout
+  title="County Signature Thresholds"
+  description="The number of signatures required to compel each of California's 58 county boards of supervisors to act, under Elections Code §9118, derived from the Secretary of State's official Statement of the Vote. California is the first state node; the method replicates, the statute does not."
+>
+  <Hero
+    eyebrow="Elections Code §9118"
+    title="Sixty-two people in"
+    titleEm="Alpine County."
+    subtitle="A county initiative petition signed by 10% of that county's gubernatorial vote compels its board of supervisors to act: adopt the ordinance, put it to the voters, or order a report. These are the real numbers, for all 58 California counties, derived from the Secretary of State's official Statement of the Vote."
+    declaration="Every figure on this page comes from one public file, linked below. You can reproduce all of them with a calculator."
+  />
+
+  <Section title="What this number is">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
+      <p>
+        Under <a href={STATUTE_URL} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:opacity-70 transition-opacity">California Elections Code §9118</a>,
+        a county initiative petition must be signed by voters not less in number than 10 percent of
+        the entire vote cast within that county for all candidates for Governor at the last
+        gubernatorial election. Reaching it obliges the board of supervisors to act.
+      </p>
+      <p>
+        The last gubernatorial election was November 8, 2022. It was a top-two general, so the vote
+        cast for all candidates is the sum of the two on the ballot. Ten percent of that county
+        total, rounded up, is the threshold.
+      </p>
+      <p class="font-medium text-ink">
+        The numbers are set by statute, published by the state, and verifiable at any county elections
+        office.
+      </p>
+      <p>
+        The limit matters too. <strong class="text-ink">Ten percent qualifies a
+        measure. It does not pass one.</strong> Winning a majority at the ballot is a separate and
+        much larger problem, and nothing on this page addresses it. See
+        <a href="/foundation" class="underline underline-offset-2 hover:opacity-70 transition-opacity">what else we concede</a>.
+      </p>
+    </div>
+  </Section>
+
+  <Section title="For comparison" background="gray">
+    <div class="space-y-3 max-w-3xl">
+      {statewide.map(row => (
+        <div class="py-4 border-b border-ink/10 last:border-0">
+          <div class="flex justify-between items-baseline gap-6 flex-wrap mb-1">
+            <div>
+              <span class="font-medium text-ink">{row.label}</span>
+              <span class="text-dim text-sm ml-3">{row.basis}</span>
+            </div>
+            <span class="font-display font-bold text-ink text-lg tabular-nums">{row.value}</span>
+          </div>
+          <p class="text-dim text-xs">{row.note}</p>
+        </div>
+      ))}
+    </div>
+    <p class="mt-8 text-ink/80 text-sm max-w-2xl leading-relaxed">
+      The statewide gubernatorial vote in 2022 was {n(STATEWIDE_VOTES)}. The gap between one
+      statewide threshold and {n(smallest.threshold)} signatures in {smallest.county} County is the
+      entire argument for organizing at the county scale.
+    </p>
+  </Section>
+
+  <Section
+    title="All 58 counties"
+    subtitle="Ascending by threshold. Votes cast for Governor, November 8 2022, and the resulting §9118 signature requirement."
+  >
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <caption class="sr-only">
+          California county initiative signature thresholds under Elections Code §9118, ascending by threshold
+        </caption>
+        <thead>
+          <tr class="border-b border-ink/20">
+            <th scope="col" class="text-left py-3 pr-4 font-medium text-ink">County</th>
+            <th scope="col" class="text-right py-3 pr-4 font-medium text-ink">Gubernatorial vote, 2022</th>
+            <th scope="col" class="text-right py-3 font-medium text-ink">Signatures required</th>
+          </tr>
+        </thead>
+        <tbody>
+          {COUNTY_THRESHOLDS.map(c => (
+            <tr class="border-b border-ink/5">
+              <th scope="row" class="text-left py-2.5 pr-4 font-normal text-ink/80">{c.county}</th>
+              <td class="text-right py-2.5 pr-4 text-ink/70 tabular-nums">{n(c.votes)}</td>
+              <td class="text-right py-2.5 text-ink font-semibold tabular-nums">{n(c.threshold)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </Section>
+
+    <Section title="Beyond California">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
+      <p>
+        California is the first node, not the boundary of the idea. What generalizes is the method:
+        find the number that a statute already sets, the one that obliges a local body to act,
+        publish it, and organize at that scale. What does not generalize is §9118 itself.
+      </p>
+      <p>
+        Citizen initiative powers are not universal. By the National Conference of State
+        Legislatures' count, 24 states plus the District of Columbia and the U.S. Virgin Islands
+        have a statewide initiative process, and 23 plus DC and the Virgin Islands have popular
+        referendum. Where those powers exist, the thresholds are set by that state's own code and
+        computed from its own election records. They are not 10% of a gubernatorial vote just
+        because California's are.
+      </p>
+      <p>
+        In states without citizen initiative, the levers are different rather than absent: public
+        comment, recall, charter amendment, budget hearings, candidate filing, and the ordinary
+        business of a board that a handful of people attend. The claim underneath this page never
+        depended on initiative existing. An organized few decide everywhere. Where formal levers are
+        fewer, that is more true, not less.
+      </p>
+      <p class="font-medium text-ink">
+        The constraint we hold ourselves to: no state gets a number here until it is derived from
+        that state's official election data.
+      </p>
+      <p>
+        No estimates, no interpolation, and no carrying California's formula across a state line. A
+        threshold that cannot be checked at a county elections office is worth less than no
+        threshold at all. Each state node publishes its own, sourced the way this one is.
+      </p>
+    </div>
+  </Section>
+
+  <Section title="Source and method" background="gray">
+    <div class="max-w-2xl space-y-5 text-ink/80 leading-relaxed">
+      <p>
+        Every figure on this page derives from a single official file. The link is below, so the
+        numbers can be checked against the source.
+      </p>
+
+      <div class="border-l-2 border-gold pl-6 py-1 space-y-3">
+        <div>
+          <div class="text-[10px] uppercase tracking-[0.18em] text-dim mb-1">Source data</div>
+          <p class="text-sm text-ink/80">{SOURCE_LABEL}</p>
+        </div>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href={SOURCE_URL} target="_blank" rel="noopener noreferrer" class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">
+              Governor results by county (official XLSX)
+            </a>
+            <span class="text-dim">, the exact file these numbers come from</span>
+          </li>
+          <li>
+            <a href={SOURCE_PAGE_URL} target="_blank" rel="noopener noreferrer" class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">
+              Full Statement of the Vote
+            </a>
+            <span class="text-dim">, the Secretary of State landing page</span>
+          </li>
+                    <li>
+            <a href={STATUTE_URL} target="_blank" rel="noopener noreferrer" class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">
+              Elections Code §9118
+            </a>
+            <span class="text-dim">, the statute itself</span>
+          </li>
+          <li>
+            <a href="https://www.ncsl.org/elections-and-campaigns/initiative-and-referendum-processes" target="_blank" rel="noopener noreferrer" class="text-ink underline underline-offset-2 hover:opacity-70 transition-opacity">
+              NCSL, initiative and referendum processes by state
+            </a>
+            <span class="text-dim">, for which states have these powers at all</span>
+          </li>
+        </ul>
+      </div>
+
+      <p>
+        <strong class="text-ink">Method.</strong> County threshold is the sum of votes for all
+        gubernatorial candidates in that county, divided by ten, rounded up. §9118 requires not less
+        than 10 percent, so any remainder rounds up.
+      </p>
+      <p>
+        <strong class="text-ink">Verification.</strong> The county vote totals sum to
+        {' '}{n(STATEWIDE_VOTES)}, matching the Statement of Vote's own state totals. Five percent of
+        that sum is {n(STATEWIDE_STATUTE)} and eight percent is {n(STATEWIDE_AMENDMENT)}, exactly
+        California's published statewide signature requirements for an initiative statute and a
+        constitutional amendment in this cycle. The same vote basis reproducing both published
+        figures is what tells us the county numbers are right.
+      </p>
+      <p class="text-sm text-dim">
+        These thresholds hold until the next gubernatorial election, after which they are recalculated
+        from that election's Statement of the Vote.
+      </p>
+    </div>
+  </Section>
+
+  <Section background="dark">
+    <div class="max-w-xl">
+      <h2 class="text-2xl font-bold mb-4 tracking-tight">Why this is the organizing device</h2>
+      <p class="text-paper/70 mb-8">
+        The strongest objection to civic technology is that a single participant changes nothing, so
+        becoming informed is irrational. At the county scale that objection is much weaker, and the
+        numbers on this page are why.
+      </p>
+      <div class="flex gap-3">
+        <a
+          href="/why"
+          class="inline-flex items-center bg-gold text-ink font-semibold px-6 py-2.5 rounded-lg hover:brightness-95 transition-[filter] text-sm"
+        >
+          The Argument
+        </a>
+        <a
+          href="/foundation"
+          class="inline-flex items-center text-paper/80 hover:text-paper px-6 py-2.5 text-sm font-medium transition-colors"
+        >
+          Philosophical Foundation
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

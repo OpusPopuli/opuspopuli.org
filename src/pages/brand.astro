@@ -6,6 +6,7 @@ import Sunflower from '../components/Sunflower.astro';
 import Seed from '../components/Seed.astro';
 import Sprout from '../components/Sprout.astro';
 import Field from '../components/Field.astro';
+import { fieldFor } from '../data/thresholds/california';
 
 const markStates = [
   { state: 'idle', label: 'Idle — sway', on: 'paper' },
@@ -60,7 +61,7 @@ const rules = [
   </Section>
 
   <Section eyebrow="04 — The Field" title="Democracy made beautiful" subtitle="Every civic action plants a flower. Over time, participation becomes a field — thousands of independent citizens, one shared orientation. This is the language of cultivation, not compliance.">
-    <Field count={30} region="Sonoma County" current={4218} total={26000} />
+    <Field count={30} {...fieldFor('Nevada')} />
   </Section>
 
   <Section eyebrow="The Rules" title="What never changes" background="gray">

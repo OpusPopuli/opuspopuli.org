@@ -46,7 +46,7 @@ const principles = [
   },
   {
     title: 'Pre-trained models only',
-    description: 'We use open-source models like Qwen 3.5, Mistral, and Llama 3.1 through Ollama. We never train on your documents, your queries, or your usage patterns. The AI learns nothing from you.',
+    description: 'We run open-source models locally through Ollama; nodes currently run Qwen 3.5, and an operator can configure any Ollama model. We never train on your documents, your queries, or your usage patterns. The AI learns nothing from you.',
   },
 ];
 
@@ -174,7 +174,7 @@ const commitments = [
 const transparencyHub = [
   {
     title: 'System Card',
-    description: 'How the AI works, what models are used, and what data flows where. Available to every user inside the platform.',
+    description: 'How the AI works, what models are used, and what data flows where. Available to every user inside the app.',
   },
   {
     title: 'AI Commitments',
@@ -200,7 +200,7 @@ const auditTrails = [
     description: 'Every template change is recorded with SHA-256 hashes in an append-only history. Auditors can reconstruct exactly which prompt version produced any analysis.',
   },
   {
-    title: 'Platform audit log',
+    title: 'Application audit log',
     description: 'Application-level audit logging with automatic PII masking, client IP and user-agent forwarding, and configurable retention policies.',
   },
 ];
@@ -210,8 +210,8 @@ const auditTrails = [
   <Hero
     title="Trust architecture"
     subtitle="Civic AI carries a unique responsibility. When software helps people understand ballot measures, campaign finance, or legislative meetings, even small biases can influence democratic outcomes. Our trust model is built on architectural constraints — not policies someone could quietly change."
-    ctaText="See the Platform"
-    ctaHref="/platform"
+    ctaText="See the Tools"
+    ctaHref="/tools"
     secondaryCtaText="Read the Privacy Architecture"
     secondaryCtaHref="/privacy"
   />
@@ -402,7 +402,7 @@ const auditTrails = [
 
   <Section
     title="Transparency hub"
-    subtitle="Every user can access AI transparency documentation directly inside the platform — not just on a marketing page."
+    subtitle="Every user can access AI transparency documentation directly inside the app, not just on a marketing page."
     background="gray"
   >
     <div class="grid md:grid-cols-3 gap-8">
@@ -441,7 +441,7 @@ const auditTrails = [
     <div class="max-w-xl">
       <h2 class="text-2xl font-bold mb-4 tracking-tight">Don't take our word for it</h2>
       <p class="text-paper/70 mb-8">
-        Every claim on this page is verifiable. Read the code. Audit the architecture. Deploy the platform yourself and see how it works.
+        Every claim on this page is verifiable. Read the code. Audit the architecture. Deploy it yourself and see how it works.
       </p>
       <div class="flex gap-3">
         <a
