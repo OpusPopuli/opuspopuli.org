@@ -6,6 +6,11 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://opuspopuli.org',
+  // Astro 7 defaults to 'jsx' whitespace rules, which drop the line break
+  // between a word and a link on the next source line ("forevery",
+  // "countiesis"). The copy here is prose with links wrapped mid-sentence, so
+  // keep Astro 5's lossless compression, which preserves rendered spacing.
+  compressHTML: true,
   integrations: [
     sitemap({
       // /platform is a noindex redirect stub to /tools, not a page.
