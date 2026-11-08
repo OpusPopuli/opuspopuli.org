@@ -57,6 +57,7 @@ const pages = [
   { name: "Transparency", path: "/transparency" },
   { name: "Terms", path: "/terms" },
   { name: "Brand", path: "/brand" },
+  { name: "Maintenance", path: "/maintenance" },
 ];
 
 test.describe("Accessibility - All Pages", () => {

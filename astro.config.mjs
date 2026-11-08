@@ -14,7 +14,9 @@ export default defineConfig({
   integrations: [
     sitemap({
       // /platform is a noindex redirect stub to /tools, not a page.
-      filter: page => !page.endsWith('/platform/'),
+      // /maintenance is only reached through a temporary Cloudflare redirect
+      // from the app's domain while a node is being upgraded.
+      filter: page => !page.endsWith('/platform/') && !page.endsWith('/maintenance/'),
       serialize(item) {
         const highPriority = ['/tools/', '/about/', '/why/', '/foundation/', '/thresholds/', '/get-involved/'];
         if (item.url === 'https://opuspopuli.org/') {

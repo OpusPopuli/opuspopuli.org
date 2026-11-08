@@ -8,6 +8,8 @@ interface Props {
   description?: string;
   image?: string;
   extraSchema?: Record<string, unknown>[];
+  /** Keep the page out of search results (and out of the sitemap, in astro.config.mjs). */
+  noindex?: boolean;
 }
 
 const {
@@ -15,6 +17,7 @@ const {
   description = 'Opus Populi - Open-source civic technology for engaged democracy',
   image = '/social/op-banner-light.png',
   extraSchema = [],
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -94,6 +97,7 @@ const softwareSchema = {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#1A1714" />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex" />}
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicons/favicon-32.svg" />

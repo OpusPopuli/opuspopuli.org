@@ -1,0 +1,72 @@
+---
+/*
+ * Maintenance notice for the California app.
+ *
+ * Nothing on this site links here. During an upgrade window a Cloudflare
+ * redirect rule sends california.opuspopuli.org/* to this page, so every way
+ * into the app (bookmarks, search results, the installed app) lands here, not
+ * only the header's sign-in button. Deleting the rule reopens the app; this
+ * page can stay deployed between windows.
+ *
+ * The app is bilingual (English/Spanish) and the people redirected here are
+ * its users, so the notice is given in both. The Spanish block carries
+ * lang="es" so screen readers switch pronunciation.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+
+const contactEmail = 'hello@opuspopuli.org';
+const linkClass = 'text-ink underline underline-offset-2 hover:opacity-70 transition-opacity';
+---
+
+<BaseLayout
+  title="Down for maintenance"
+  description="Opus Populi California is briefly offline while we upgrade it."
+  noindex
+>
+  <Hero
+    eyebrow="Opus Populi California"
+    title="We're upgrading"
+    titleEm="California."
+    subtitle="The California app is briefly offline while we install a major update. Your account and saved information are safe, and there's nothing you need to do."
+  />
+
+  <Section>
+    <div class="grid gap-12 md:grid-cols-2 max-w-4xl">
+      <div>
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">What's happening</h2>
+        <div class="space-y-3 text-ink/80">
+          <p>
+            We're bringing the app up to date with several months of work, including
+            bill summaries on request and more complete campaign finance records. We
+            closed it during the upgrade so nobody sees a half-finished page.
+          </p>
+          <p>
+            Please check back soon. If you have a question in the meantime,
+            write to us at <a href={`mailto:${contactEmail}`} class={linkClass}>{contactEmail}</a>.
+          </p>
+        </div>
+      </div>
+
+      <div lang="es">
+        <h2 class="text-xl font-semibold mb-4 tracking-tight">En mantenimiento</h2>
+        <div class="space-y-3 text-ink/80">
+          <p>
+            La aplicación de California está temporalmente fuera de línea mientras
+            instalamos una actualización importante. Su cuenta y su información
+            guardada están seguras; no tiene que hacer nada.
+          </p>
+          <p>
+            Vuelva a visitarnos pronto. Si tiene alguna pregunta, escríbanos a
+            <a href={`mailto:${contactEmail}`} class={linkClass}>{contactEmail}</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-14">
+      <a href="/" class={linkClass}>Return to opuspopuli.org</a>
+    </p>
+  </Section>
+</BaseLayout>
